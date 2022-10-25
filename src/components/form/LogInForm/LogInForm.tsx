@@ -1,33 +1,21 @@
 import { FC } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Box } from "../../global/Box";
 import { Button } from "../../global/Button/Button";
-import { schema } from "../LogInForm/schema";
 import { Form, Label, NameInput } from "./LogInForm.styled";
-import { TextError } from "../GlobalForm.styled";
-
-interface IFormInputs {
-  username: string;
-  password: string;
-}
+import { TextError, TextErrorServer } from "../GlobalForm.styled";
+import { useAuth, typeSchema } from "../hook/useAuth";
 
 export const LogInForm: FC = () => {
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInputs>({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmit = (data: IFormInputs) => {
-    console.log(data);
-  };
+    error,
+    form: { register, handleSubmit, errors },
+    onSubmit,
+  } = useAuth(typeSchema.LOGIN);
 
   return (
     <Box>
+      {error && <TextErrorServer>{error}</TextErrorServer>}
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Label>
           <NameInput>Nike name</NameInput>

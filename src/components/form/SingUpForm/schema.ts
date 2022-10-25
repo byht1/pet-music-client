@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const schema = yup
+export const schemaSingUp = yup
   .object({
     username: yup.string().required("⚠ Поле обов'язкове для заповнення"),
     email: yup.string().required("⚠ Поле обов'язкове для заповнення"),

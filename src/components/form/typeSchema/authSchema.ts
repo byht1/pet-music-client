@@ -1,6 +1,6 @@
-export interface IFormInputs {
+export interface authSchema {
   username: string;
-  email: string;
+  email?: string;
   password: string;
   confirmPassword?: string;
 }

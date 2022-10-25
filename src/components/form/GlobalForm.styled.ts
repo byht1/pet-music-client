@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const TextErrorServer = styled.p`
+  text-align: center;
+  color: #bf1650;
+`;
+
 export const TextError = styled.span`
   position: absolute;
   top: 100%;
