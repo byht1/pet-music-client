@@ -1,39 +1,45 @@
+import { Box } from "components/global/Box";
 import React, { Suspense } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { Header, NavList, NLink } from "./AppBar.styled";
 
 export default function AppBar() {
   return (
-    <div>
-      <header>
-        <ul>
-          <li>
-            <NavLink to={"/"} end>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"/sing-up"}>Регистрація</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/log-in"}>Авторизація</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/track-list"}>Список треків користувача</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/new-track"}>Додати нові трекі</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/profile"}>Мій профіль</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/comment"}>Коментарі</NavLink>
-          </li>
-        </ul>
-      </header>
+    <>
+      <Header>
+        <Box p={4}>
+          <nav>
+            <NavList>
+              <li>
+                <NLink to={"/"} end>
+                  Home
+                </NLink>
+              </li>
+              <li>
+                <NLink to={"/sing-up"}>Регистрація</NLink>
+              </li>
+              <li>
+                <NLink to={"/log-in"}>Авторизація</NLink>
+              </li>
+              <li>
+                <NLink to={"/track-list"}>Список треків користувача</NLink>
+              </li>
+              <li>
+                <NLink to={"/new-track"}>Додати нові трекі</NLink>
+              </li>
+              <li>
+                <NLink to={"/profile"}>Мій профіль</NLink>
+              </li>
+              <li>
+                <NLink to={"/comment"}>Коментарі</NLink>
+              </li>
+            </NavList>
+          </nav>
+        </Box>
+      </Header>
       <Suspense fallback={"Loader..."}>
         <Outlet />
       </Suspense>
-    </div>
+    </>
   );
 }

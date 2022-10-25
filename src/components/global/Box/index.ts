@@ -1,1 +1,1 @@
-export * as Box from "./Box";
+export * from "./Box";

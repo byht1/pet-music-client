@@ -11,7 +11,7 @@ import {
   typography,
 } from "styled-system";
 
-const Box = styled.div<any>`
+export const Box = styled.div<any>`
   ${color};
   ${space};
   ${layout};
@@ -22,5 +22,3 @@ const Box = styled.div<any>`
   ${position};
   ${typography};
 `;
-
-export default Box;
