@@ -5,17 +5,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Box } from "../../global/Box";
 import { Button } from "../../global/Button/Button";
 import { Form, Label, NameInput } from "./SingUpForm.styled";
-import { schema } from "./schema";
+import { schema } from "./helper/schema";
 import { TextError } from "./../GlobalForm.styled";
-
-interface IFormInputs {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword?: string;
-}
+import { IFormInputs } from "./helper/type";
+import { useNewUserMutation } from "redux/auth/authStore";
 
 export const SingUpForm: FC = () => {
+  const [post] = useNewUserMutation();
   const {
     register,
     handleSubmit,
@@ -24,9 +20,10 @@ export const SingUpForm: FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: IFormInputs) => {
+  const onSubmit = async (data: IFormInputs) => {
     delete data.confirmPassword;
-    console.log(data);
+    const response = await post(data);
+    console.log("🚀 ~ response", response);
   };
 
   return (

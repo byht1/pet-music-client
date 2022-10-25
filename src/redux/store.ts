@@ -1,15 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 // import { contactsApi } from "./itemsContact";
 // import { filterContacts } from "./filterContacts";
+import { authApi } from "./auth/authStore";
 
 export const store = configureStore({
   reducer: {
-    // [contactsApi.reducerPath]: contactsApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
     // [filterContacts.name]: filterContacts.reducer,
   },
-  //   middleware: (getDefaultMiddleware) => [
-  //     ...getDefaultMiddleware(),
-  //     contactsApi.middleware,
-  //   ],
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    authApi.middleware,
+  ],
   devTools: process.env.NODE_ENV !== "production",
 });
