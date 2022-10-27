@@ -1,14 +1,15 @@
 import { FC } from "react";
 
-import { Box } from "../../global/Box";
-import { Button } from "../../global/Button/Button";
+import { Box } from "../../../global/Box";
+import { Button } from "../../../global/Button/Button";
 import { Form, Label, NameInput } from "./SingUpForm.styled";
-import { TextError, TextErrorServer } from "./../GlobalForm.styled";
+import { TextError, TextErrorServer } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";
 
 export const SingUpForm: FC = () => {
   const {
     error,
+    errorMessage,
     form: { register, handleSubmit, errors },
     onSubmit,
   } = useAuth(typeSchema.SIGNUP);
@@ -16,7 +17,7 @@ export const SingUpForm: FC = () => {
   return (
     <>
       <Box>
-        {error && <TextErrorServer>{error}</TextErrorServer>}
+        {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Label>
             <NameInput>Nike name</NameInput>

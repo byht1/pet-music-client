@@ -1,5 +1,5 @@
 import React from "react";
-import { LogInForm } from "components/form/LogInForm/LogInForm";
+import { LogInForm } from "components/modules/form/LogInForm/LogInForm";
 import { Box } from "components/global/Box";
 
 export default function LogIn() {

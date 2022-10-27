@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "components/global/Box";
-import { SingUpForm } from "components/form/SingUpForm/SingUpForm";
+import { SingUpForm } from "components/modules/form/SingUpForm/SingUpForm";
 
 export default function SingUp() {
   return (

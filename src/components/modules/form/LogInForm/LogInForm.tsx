@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-import { Box } from "../../global/Box";
-import { Button } from "../../global/Button/Button";
+import { Box } from "../../../global/Box";
+import { Button } from "../../../global/Button/Button";
 import { Form, Label, NameInput } from "./LogInForm.styled";
 import { TextError, TextErrorServer } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";

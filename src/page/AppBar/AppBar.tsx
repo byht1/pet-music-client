@@ -1,4 +1,5 @@
 import { Box } from "components/global/Box";
+import { UserMenu } from "components/modules/UserMenu";
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Header, NavList, NLink } from "./AppBar.styled";
@@ -7,7 +8,12 @@ export default function AppBar() {
   return (
     <>
       <Header>
-        <Box p={4}>
+        <Box
+          display="grid"
+          gridTemplateColumns="1fr auto"
+          alignItems="center"
+          p={4}
+        >
           <nav>
             <NavList>
               <li>
@@ -35,6 +41,7 @@ export default function AppBar() {
               </li>
             </NavList>
           </nav>
+          {false && <UserMenu />}
         </Box>
       </Header>
       <Suspense fallback={"Loader..."}>

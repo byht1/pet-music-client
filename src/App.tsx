@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./page/Home/Home";
 import AppBar from "./page/AppBar/AppBar";
@@ -26,6 +28,7 @@ function App() {
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
