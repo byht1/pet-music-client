@@ -10,10 +10,24 @@ import TrackList from "./page/TrackList/TrackList";
 import NewTrack from "./page/NewTrack/NewTrack";
 import Profile from "./page/Profile/Profile";
 import Comment from "./page/Comment/Comment";
+import { useAppDispatch } from "redux/hook";
+import { current } from "redux/auth";
 
 const queryClient = new QueryClient();
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    dispatch(current(controller.signal));
+
+    return () => {
+      controller.abort();
+    };
+  }, [dispatch]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>

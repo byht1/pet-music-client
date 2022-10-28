@@ -3,8 +3,12 @@ import { UserMenu } from "components/modules/UserMenu";
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Header, NavList, NLink } from "./AppBar.styled";
+import { useSelector } from "react-redux";
+import { getIsAuth } from "redux/auth";
 
 export default function AppBar() {
+  const isAuth = useSelector(getIsAuth);
+
   return (
     <>
       <Header>
@@ -22,12 +26,6 @@ export default function AppBar() {
                 </NLink>
               </li>
               <li>
-                <NLink to={"/sing-up"}>Регистрація</NLink>
-              </li>
-              <li>
-                <NLink to={"/log-in"}>Авторизація</NLink>
-              </li>
-              <li>
                 <NLink to={"/track-list"}>Список треків користувача</NLink>
               </li>
               <li>
@@ -39,9 +37,19 @@ export default function AppBar() {
               <li>
                 <NLink to={"/comment"}>Коментарі</NLink>
               </li>
+              {!isAuth && (
+                <>
+                  <li>
+                    <NLink to={"/sing-up"}>Регистрація</NLink>
+                  </li>
+                  <li>
+                    <NLink to={"/log-in"}>Авторизація</NLink>
+                  </li>
+                </>
+              )}
             </NavList>
           </nav>
-          {false && <UserMenu />}
+          {isAuth && <UserMenu />}
         </Box>
       </Header>
       <Suspense fallback={"Loader..."}>

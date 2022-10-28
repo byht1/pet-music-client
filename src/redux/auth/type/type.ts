@@ -4,6 +4,7 @@ type TUser = {
 };
 
 export type TUserState = {
+  isAuth: boolean;
   user: TUser;
   token: string | null;
   isLoader: boolean;

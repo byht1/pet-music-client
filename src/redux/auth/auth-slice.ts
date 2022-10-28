@@ -4,6 +4,7 @@ import { TUserState } from "./type/type";
 import { ErrorStatusAndMessage } from "api/axiosErrorType";
 
 const initialState: TUserState = {
+  isAuth: false,
   user: { username: null, email: null },
   token: null,
   isLoader: false,
@@ -29,6 +30,7 @@ export const authSlice = createSlice({
       })
       // Регистрація і авторизація
       .addCase(authorization.fulfilled, (state, { payload }) => {
+        state.isAuth = true;
         state.user = { username: payload.username, email: payload.username };
         state.token = payload.token;
         state.isLoader = false;
@@ -44,15 +46,18 @@ export const authSlice = createSlice({
         state.user = { username: "", email: "" };
         state.token = "";
         state.isLoader = false;
+        state.isAuth = false;
       })
       // Автоматична авторизація початок загурзки
       .addCase(current.pending, (state) => {
         state.isLoader = true;
         state.error = false;
         state.errorMessage = "";
+        state.error = false;
       })
       // Автоматична авторизація
       .addCase(current.fulfilled, (state, { payload }) => {
+        state.isAuth = true;
         state.user = { username: payload.username, email: payload.username };
         state.token = payload.token;
         state.isLoader = false;
@@ -60,11 +65,16 @@ export const authSlice = createSlice({
       // Помилка
       .addMatcher(
         isError,
-        (state, { payload }: PayloadAction<ErrorStatusAndMessage>) => {
+        (state, { type, payload }: PayloadAction<ErrorStatusAndMessage>) => {
           if (!payload) return;
-          state.error = true;
+
           state.isLoader = false;
+          state.error = true;
           state.errorMessage = payload.message;
+
+          if (type === "auth/refresh/rejected") {
+            state.token = null;
+          }
         }
       );
   },

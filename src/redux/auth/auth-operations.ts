@@ -3,58 +3,62 @@ import {
   axiosError,
   serverCurrent,
   serverLogOut,
-  serverSingUp,
+  serverAuth,
   tokenAuto,
 } from "api/api";
 import { ErrorStatusAndMessage } from "api/axiosErrorType";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
 import { IUser, TUserState } from "./type/type";
+import axios from "axios";
 
 export const authorization = createAsyncThunk<
   IUser,
-  authSchema,
+  { type: string; body: authSchema },
   { rejectValue: ErrorStatusAndMessage }
->("auth/authorization", async (body, { rejectWithValue }) => {
+>("auth/authorization", async ({ type, body }, { rejectWithValue }) => {
   try {
-    const { data } = await serverSingUp(body);
+    const data = await serverAuth(type, body);
 
     tokenAuto.set(data.token);
+
     return data;
   } catch (error) {
     throw rejectWithValue(axiosError(error));
   }
 });
 
-export const logOut = createAsyncThunk(
-  "auth/logout",
-  async (_, { rejectWithValue }) => {
-    try {
-      await serverLogOut();
-      tokenAuto.unset();
-    } catch (error) {
-      return rejectWithValue(axiosError(error));
-    }
+export const logOut = createAsyncThunk<
+  void,
+  void,
+  { rejectValue: ErrorStatusAndMessage }
+>("auth/logout", async (_, { rejectWithValue }) => {
+  try {
+    await serverLogOut();
+    tokenAuto.unset();
+  } catch (error) {
+    throw rejectWithValue(axiosError(error));
   }
-);
+});
 
 export const current = createAsyncThunk<
   IUser,
-  void,
+  AbortSignal,
   { rejectValue: ErrorStatusAndMessage | string; state: { auth: TUserState } }
->("auth/refresh", async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
+>("auth/refresh", async (abort, { getState, rejectWithValue }) => {
+  const state = getState();
   const persistedToken = state.auth.token;
 
   if (persistedToken === null) {
-    return thunkAPI.rejectWithValue("Токена нет, уходим из fetchCurrentUser");
+    return rejectWithValue("Токена нет, уходим из fetchCurrentUser");
   }
 
   tokenAuto.set(persistedToken);
   try {
-    const { data } = await serverCurrent();
+    const data = await serverCurrent(abort);
+
     return data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(axiosError(error));
+    throw rejectWithValue(axiosError(error));
   }
 });
 

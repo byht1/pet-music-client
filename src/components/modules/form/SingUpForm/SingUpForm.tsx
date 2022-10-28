@@ -8,6 +8,7 @@ import { useAuth, typeSchema } from "../hook/useAuth";
 
 export const SingUpForm: FC = () => {
   const {
+    loader,
     error,
     errorMessage,
     form: { register, handleSubmit, errors },
@@ -17,6 +18,7 @@ export const SingUpForm: FC = () => {
   return (
     <>
       <Box>
+        {loader && <p>Loader...</p>}
         {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Label>

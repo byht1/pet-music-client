@@ -1,7 +1,4 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AxiosErrorResponse } from "api/axiosErrorType";
-import { AxiosError } from "axios";
 import { schemaLogIn } from "../LogInForm/schema";
 import { schemaSingUp } from "../SingUpForm/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -42,40 +39,22 @@ export const useAuth = (type: string) => {
 
   const onSubmit = async (data: authSchema) => {
     delete data.confirmPassword;
-    ч;
-
     try {
-      const res = dispatch(authorization(data));
-      if (res.payload) return;
+      const res = await dispatch(authorization({ type, body: data }));
+
+      if (res.type === "auth/authorization/rejected") return;
+
       navigate("/", { replace: true });
       reset();
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
-  console.log("🚀 ~ loader", loader);
   return {
     user,
+    loader,
     error,
     errorMessage,
     form: { register, handleSubmit, errors },
     onSubmit,
   };
 };
-
-// const { isLoading, mutateAsync } = useMutation(
-//   ["user"],
-//   (data: authSchema) => serverAuth(type, data),
-//   {
-//     onSuccess: (data: any) => {
-//       logIn(type, data);
-//       reset();
-//       navigate("/", { replace: true });
-//     },
-//     onError: (error) => {
-//       const e = error as AxiosError;
-//       setError((e.response?.data as AxiosErrorResponse).message);
-//     },
-//   }
-// );

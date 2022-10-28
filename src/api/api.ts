@@ -27,14 +27,25 @@ const postCtrlWrapper = async (type: string, body: any) => {
   }
 };
 
+const getCtrlWrapperAbort = async (type: string, controller: AbortSignal) => {
+  try {
+    const { data } = await server.get(type, {
+      signal: controller,
+    });
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const getCtrlWrapper = async (type: string) => {
-  console.log(1);
   try {
     const { data } = await server.get(type);
 
     return data;
   } catch (error) {
-    return error;
+    throw error;
   }
 };
 
@@ -45,8 +56,8 @@ export const axiosError = (error: any): ErrorStatusAndMessage => {
   return { message, status };
 };
 
-export const serverSingUp = async (body: authSchema) => {
-  return await postCtrlWrapper(`/user/login`, body);
+export const serverAuth = async (type: string, body: authSchema) => {
+  return await postCtrlWrapper(`/user/${type}`, body);
 };
 
 // export const serverLogIn = async (body: authSchema) => {
@@ -57,6 +68,6 @@ export const serverLogOut = async () => {
   return await getCtrlWrapper("/user/logout");
 };
 
-export const serverCurrent = async () => {
-  return await getCtrlWrapper("/user/login");
+export const serverCurrent = async (abort: AbortSignal) => {
+  return await getCtrlWrapperAbort("/user/login", abort);
 };

@@ -3,13 +3,12 @@ import React from "react";
 import { server } from "./../../api/api";
 
 export default function NewTrack() {
-  const a = useQuery(["track"], async () => {
-    const todoById = await server.get("/track");
+  // const a = useQuery(["track"], async () => {
+  //   const todoById = await server.get("/track");
 
-    return todoById;
-  });
+  //   return todoById;
+  // });
 
-  console.log(a);
   return (
     <div>
       <h2>NewTrack</h2>
