@@ -12,6 +12,8 @@ import Profile from "./page/Profile/Profile";
 import Comment from "./page/Comment/Comment";
 import { useAppDispatch } from "redux/hook";
 import { current } from "redux/auth";
+import { Track } from "page/NewTrack/Track/Track";
+import { Album } from "page/NewTrack/Album/Album";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +39,8 @@ function App() {
           <Route path="log-in" element={<LogIn />} />
           <Route path="track-list" element={<TrackList />} />
           <Route path="new-track" element={<NewTrack />} />
+          <Route path="new-track/track" element={<Track />} />
+          <Route path="new-track/album" element={<Album />} />
           <Route path="profile" element={<Profile />} />
           <Route path="comment" element={<Comment />} />
         </Route>
