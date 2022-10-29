@@ -2,55 +2,48 @@ import { FC } from "react";
 
 import { Box } from "../../../global/Box";
 import { Button } from "../../../global/Button/Button";
-import { Form, Label, NameInput } from "./SingUpForm.styled";
-import { TextError, TextErrorServer } from "../GlobalForm.styled";
+import { TextErrorServer } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";
+import { FormBox } from "../FormBox/FormBox";
+import { InputForm } from "../InputForm/InputForm";
 
 export const SingUpForm: FC = () => {
-  const {
-    loader,
-    error,
-    errorMessage,
-    form: { register, handleSubmit, errors },
-    onSubmit,
-  } = useAuth(typeSchema.SIGNUP);
+  const { loader, error, errorMessage, methods, onSubmit } = useAuth(
+    typeSchema.SIGNUP
+  );
+
+  const { handleSubmit } = methods;
 
   return (
     <>
       <Box>
         {loader && <p>Loader...</p>}
         {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Label>
-            <NameInput>Nike name</NameInput>
-            <input type="name" {...register("username")} placeholder="IHdPA" />
-            <TextError>{errors.username?.message}</TextError>
-          </Label>
+        <FormBox methods={methods} submit={handleSubmit(onSubmit)}>
+          <InputForm
+            title="Nike name"
+            inputType="name"
+            placeholder="IHdPA"
+            name="username"
+          />
 
-          <Label>
-            <NameInput>Email</NameInput>
-            <input
-              type="email"
-              {...register("email")}
-              placeholder="IHdPA@gmail.com"
-            />
-            <TextError>{errors.email?.message}</TextError>
-          </Label>
+          <InputForm
+            title="Email"
+            inputType="email"
+            placeholder="IHdPA@gmail.com"
+            name="email"
+          />
 
-          <Label>
-            <NameInput>Пароль</NameInput>
-            <input type="password" {...register("password")} />
-            <TextError>{errors.password?.message}</TextError>
-          </Label>
+          <InputForm title="Пароль" inputType="password" name="password" />
 
-          <Label>
-            <NameInput>Підтвердження пароля</NameInput>
-            <input type="password" {...register("confirmPassword")} />
-            <TextError>{errors.confirmPassword?.message}</TextError>
-          </Label>
+          <InputForm
+            title="Підтвердження пароля"
+            inputType="password"
+            name="confirmPassword"
+          />
 
           <Button>Створити акаунт</Button>
-        </Form>
+        </FormBox>
       </Box>
     </>
   );

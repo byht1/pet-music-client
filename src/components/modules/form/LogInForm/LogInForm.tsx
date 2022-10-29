@@ -2,35 +2,31 @@ import { FC } from "react";
 
 import { Box } from "../../../global/Box";
 import { Button } from "../../../global/Button/Button";
-import { Form, Label, NameInput } from "./LogInForm.styled";
-import { TextError, TextErrorServer } from "../GlobalForm.styled";
+import { TextErrorServer } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";
+import { FormBox } from "../FormBox/FormBox";
+import { InputForm } from "../InputForm/InputForm";
 
 export const LogInForm: FC = () => {
-  const {
-    error,
-    form: { register, handleSubmit, errors },
-    onSubmit,
-  } = useAuth(typeSchema.LOGIN);
+  const { error, errorMessage, methods, onSubmit } = useAuth(typeSchema.LOGIN);
+
+  const { handleSubmit } = methods;
 
   return (
     <Box>
-      {error && <TextErrorServer>{error}</TextErrorServer>}
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Label>
-          <NameInput>Nike name</NameInput>
-          <input type="name" {...register("username")} placeholder="IHdPA" />
-          <TextError>{errors.username?.message}</TextError>
-        </Label>
+      {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
+      <FormBox methods={methods} submit={handleSubmit(onSubmit)}>
+        <InputForm
+          title="Nike name"
+          inputType="name"
+          placeholder="IHdPA"
+          name="username"
+        />
 
-        <Label>
-          <NameInput>Пароль</NameInput>
-          <input type="password" {...register("password")} />
-          <TextError>{errors.password?.message}</TextError>
-        </Label>
+        <InputForm title="Пароль" inputType="password" name="password" />
 
         <Button>Увійти</Button>
-      </Form>
+      </FormBox>
     </Box>
   );
 };

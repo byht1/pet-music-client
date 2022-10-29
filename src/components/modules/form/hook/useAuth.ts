@@ -11,7 +11,7 @@ import {
   getError,
   getErrorMessage,
   getIsLoggedIn,
-} from "./../../../../redux/auth/auth-selector";
+} from "redux/auth/auth-selector";
 import { useSelector } from "react-redux";
 
 export const typeSchema = {
@@ -24,16 +24,10 @@ export const useAuth = (type: string) => {
   const dispatch = useAppDispatch();
   const user = useSelector(getUser);
   const loader = useSelector(getIsLoggedIn);
-
   const error = useSelector(getError);
   const errorMessage = useSelector(getErrorMessage);
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<authSchema>({
+  const methods = useForm<authSchema>({
     resolver: yupResolver(schema),
   });
 
@@ -45,8 +39,10 @@ export const useAuth = (type: string) => {
       if (res.type === "auth/authorization/rejected") return;
 
       navigate("/", { replace: true });
-      reset();
-    } catch (error) {}
+      methods.reset();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return {
@@ -54,7 +50,47 @@ export const useAuth = (type: string) => {
     loader,
     error,
     errorMessage,
-    form: { register, handleSubmit, errors },
+    methods,
     onSubmit,
   };
 };
+
+// export const useAuth = (type: string) => {
+//   const schema = type === typeSchema.LOGIN ? schemaLogIn : schemaSingUp;
+//   const dispatch = useAppDispatch();
+//   const user = useSelector(getUser);
+//   const loader = useSelector(getIsLoggedIn);
+
+//   const error = useSelector(getError);
+//   const errorMessage = useSelector(getErrorMessage);
+//   const navigate = useNavigate();
+//   const {
+//     register,
+//     handleSubmit,
+//     formState: { errors },
+//     reset,
+//   } = useForm<authSchema>({
+//     resolver: yupResolver(schema),
+//   });
+
+//   const onSubmit = async (data: authSchema) => {
+//     delete data.confirmPassword;
+//     try {
+//       const res = await dispatch(authorization({ type, body: data }));
+
+//       if (res.type === "auth/authorization/rejected") return;
+
+//       navigate("/", { replace: true });
+//       reset();
+//     } catch (error) {}
+//   };
+
+//   return {
+//     user,
+//     loader,
+//     error,
+//     errorMessage,
+//     form: { register, handleSubmit, errors },
+//     onSubmit,
+//   };
+// };

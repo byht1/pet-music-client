@@ -66,9 +66,10 @@ export const authSlice = createSlice({
       .addMatcher(
         isError,
         (state, { type, payload }: PayloadAction<ErrorStatusAndMessage>) => {
+          state.isLoader = false;
+
           if (!payload) return;
 
-          state.isLoader = false;
           state.error = true;
           state.errorMessage = payload.message;
 
