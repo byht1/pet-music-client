@@ -14,7 +14,6 @@ export const CurrentStepItem: FC<Props2> = ({
   children,
   isLine,
 }) => {
-  console.log("🚀 ~ isLine", isLine);
   if (isLine) {
     return <CurrentStepNumber current={current}>{children}</CurrentStepNumber>;
   }

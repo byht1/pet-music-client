@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import styled from "styled-components";
 
 export const BoxStepNumber = styled.div<any>`

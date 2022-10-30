@@ -71,3 +71,7 @@ export const serverLogOut = async () => {
 export const serverCurrent = async (abort: AbortSignal) => {
   return await getCtrlWrapperAbort("/user/login", abort);
 };
+
+export const serverNewAlbum = async (body: any) => {
+  return await postCtrlWrapper(`/album`, body);
+};

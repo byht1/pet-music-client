@@ -3,12 +3,20 @@ import styled from "styled-components";
 export const Label = styled.label`
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
 export const NameInput = styled.span`
   display: block;
   margin-right: ${(p) => p.theme.space[4]}px;
+  text-align: right;
+  width: auto;
+  width: 200px;
+`;
+
+export const Input = styled.input`
+  /* width: 100%;
+  max-width: 300px; */
 `;
 
 export const TextError = styled.span`

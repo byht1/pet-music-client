@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Box } from "components/global/Box";
 import { BoxStepNumber } from "./CurrentStep.styled";
 import { MdDone } from "react-icons/md";
 import { CurrentStepItem } from "./CurrentStepItem";
 import { v4 as uuidv4 } from "uuid";
+import { Button } from "components/global/Button";
 
-type Props = {};
+type Props = {
+  current: number;
+  max: number;
+  set: React.Dispatch<React.SetStateAction<number>>;
+};
 
-export const CurrentStep = (props: Props) => {
-  const [current, setCurrent] = useState(3);
-  const [max] = useState(4);
-  const [arr] = useState(Array.from(Array(4).keys()));
+export const CurrentStep: FC<Props> = ({ current, max, set }) => {
+  const [arr] = useState(Array.from(Array(max).keys()));
 
   return (
     <Box>
@@ -31,9 +34,13 @@ export const CurrentStep = (props: Props) => {
         })}
       </BoxStepNumber>
 
-      <Box mt={5}>
-        <button onClick={() => setCurrent((p) => p + 1)}>Плюс</button>
-        <button onClick={() => setCurrent((p) => p - 1)}>Мінус</button>
+      <Box mt={4} display="flex" justifyContent="space-between">
+        <Button click={() => set((p) => p - 1)} disabled={current <= 1}>
+          Назад
+        </Button>
+        <Button click={() => set((p) => p + 1)} disabled={current === max}>
+          Далі
+        </Button>
       </Box>
     </Box>
   );
