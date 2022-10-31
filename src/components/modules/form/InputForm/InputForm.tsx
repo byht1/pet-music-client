@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useFormContext } from "react-hook-form";
 import { Input, Label, NameInput, TextError } from "./InputForm.styled";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
-import { IAlbumForm } from "../AlbumForm/AlbumForm";
+import { IAlbumForm } from "../AlbumForm/type";
 
 type Props = {
   inputType: string;

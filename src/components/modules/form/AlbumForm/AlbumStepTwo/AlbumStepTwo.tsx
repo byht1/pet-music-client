@@ -1,4 +1,6 @@
+import { FC } from "react";
 import { InputForm } from "../../InputForm/InputForm";
+import { TextError2 } from "./../../GlobalForm.styled";
 
 const genres = [
   {
@@ -24,9 +26,15 @@ const genres = [
   },
 ];
 
-export const AlbumStepTwo = () => {
+type Props = {
+  error: boolean;
+};
+
+export const AlbumStepTwo: FC<Props> = ({ error }) => {
+  console.log("🚀 ~ error", error);
   return (
     <>
+      {error && <TextError2>⚠ Виберіть одне із полів</TextError2>}
       {genres.map(({ name, id }) => {
         return (
           <InputForm

@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
 import { AxiosErrorResponse, ErrorStatusAndMessage } from "./axiosErrorType";
 // import { type } from "./../redux/store";
+// https://firebasestorage.googleapis.com/v0/b/music-db-11801.appspot.com/o/image%2F0578a360-8d44-4c6a-be73-d5b5e85d9b38.jpg?alt=media&token=8383efd5-a7ba-4c40-9ac0-2e726968743e
 
 export const server = axios.create({
   baseURL: "http://localhost:5000",
@@ -74,4 +75,8 @@ export const serverCurrent = async (abort: AbortSignal) => {
 
 export const serverNewAlbum = async (body: any) => {
   return await postCtrlWrapper(`/album`, body);
+};
+
+export const serverAlbum = async () => {
+  return await getCtrlWrapper("/album");
 };
