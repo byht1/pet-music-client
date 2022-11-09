@@ -66,6 +66,7 @@ export const serverAuth = async (type: string, body: authSchema) => {
 // };
 
 export const serverLogOut = async () => {
+  console.log("🚀 ~ serverLogOut");
   return await getCtrlWrapper("/user/logout");
 };
 
@@ -79,4 +80,8 @@ export const serverNewAlbum = async (body: any) => {
 
 export const serverAlbum = async () => {
   return await getCtrlWrapper("/album");
+};
+
+export const serverAlbumUser = async () => {
+  return await getCtrlWrapper("/user/album");
 };

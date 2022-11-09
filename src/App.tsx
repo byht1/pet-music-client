@@ -14,6 +14,7 @@ import { useAppDispatch } from "redux/hook";
 import { current } from "redux/auth";
 import { Track } from "page/NewTrack/Track/Track";
 import { Album } from "page/NewTrack/Album/Album";
+import { PrivateRouter } from "components/modules/PrivateRouter";
 
 const queryClient = new QueryClient();
 
@@ -38,9 +39,30 @@ function App() {
           <Route path="sing-up" element={<SingUp />} />
           <Route path="log-in" element={<LogIn />} />
           <Route path="track-list" element={<TrackList />} />
-          <Route path="new-track" element={<NewTrack />} />
-          <Route path="new-track/track" element={<Track />} />
-          <Route path="new-track/album" element={<Album />} />
+          <Route
+            path="new-track"
+            element={
+              <PrivateRouter>
+                <NewTrack />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="new-track/track"
+            element={
+              <PrivateRouter>
+                <Track />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="new-track/album"
+            element={
+              <PrivateRouter>
+                <Album />
+              </PrivateRouter>
+            }
+          />
           <Route path="profile" element={<Profile />} />
           <Route path="comment" element={<Comment />} />
         </Route>

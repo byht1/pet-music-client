@@ -28,9 +28,12 @@ export default function AppBar() {
               <li>
                 <NLink to={"/track-list"}>Список треків користувача</NLink>
               </li>
-              <li>
-                <NLink to={"/new-track"}>Додати нові трекі</NLink>
-              </li>
+              {isAuth && (
+                <li>
+                  <NLink to={"/new-track"}>Додати нові трекі</NLink>
+                </li>
+              )}
+
               <li>
                 <NLink to={"/profile"}>Мій профіль</NLink>
               </li>

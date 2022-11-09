@@ -3,6 +3,7 @@ import { useFormContext } from "react-hook-form";
 import { Input, Label, NameInput, TextError } from "./InputForm.styled";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
 import { IAlbumForm } from "../AlbumForm/type";
+import { ITrackForm } from "../TrackForm/type";
 
 type Props = {
   inputType: string;
@@ -15,7 +16,13 @@ type Props = {
     | "group_name"
     | "release_date"
     | "genre"
-    | "picture";
+    | "picture"
+    | "name"
+    | "author_track"
+    | "date_implementation"
+    | "album"
+    | "text_track"
+    | "audio";
   title?: string;
   placeholder?: string;
   value?: string;
@@ -31,7 +38,7 @@ export const InputForm: FC<Props> = ({
   const {
     register,
     formState: { errors },
-  } = useFormContext<authSchema & IAlbumForm>();
+  } = useFormContext<authSchema & IAlbumForm & ITrackForm>();
 
   return (
     <Label>

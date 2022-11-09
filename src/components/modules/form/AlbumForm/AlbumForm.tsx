@@ -1,12 +1,13 @@
 import React, { FC } from "react";
-import { FormBox } from "./../FormBox/FormBox";
+
 import { AlbumStepOne } from "./AlbumStepOne/AlbumStepOne";
-import { AlbumStepTwo } from "./AlbumStepTwo/AlbumStepTwo";
 import { Button } from "components/global/Button";
 import { AlbumStepThree } from "./AlbumStepThree/AlbumStepThree";
 import { Box } from "components/global/Box";
 import { TitleH2 } from "./AlbumForm.styled";
 import { useAlbumForm } from "../hook/useAlbumForm";
+import { FormBox } from "../FormBox";
+import { AlbumStepTwo } from "./AlbumStepTwo";
 
 type Props = {
   current: number;
@@ -32,6 +33,11 @@ export const AlbumForm: FC<Props> = ({ current, max, set }) => {
           {current === 2 && <AlbumStepTwo error={errorFormTwo} />}
           {current === 3 && <AlbumStepThree />}
 
+          {current !== 1 && (
+            <Button click={() => set((p) => p - 1)} type="button">
+              Назад
+            </Button>
+          )}
           {current !== max && (
             <Button click={formIsValid} type="button">
               Далі

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { CurrentStep } from "components/modules/CurrentStep/CurrentStep";
+import { useState } from "react";
+
 import { Box } from "components/global/Box";
-import { AlbumForm } from "components/modules/form/AlbumForm/AlbumForm";
+import { AlbumForm } from "components/modules/form/AlbumForm";
+import { CurrentStep } from "components/modules/CurrentStep";
 
 type Props = {};
 

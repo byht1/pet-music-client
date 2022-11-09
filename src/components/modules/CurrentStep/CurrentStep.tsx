@@ -34,14 +34,14 @@ export const CurrentStep: FC<Props> = ({ current, max, set }) => {
         })}
       </BoxStepNumber>
 
-      <Box mt={4} display="flex" justifyContent="space-between">
+      {/* <Box mt={4} display="flex" justifyContent="space-between">
         <Button click={() => set((p) => p - 1)} disabled={current <= 1}>
           Назад
         </Button>
         <Button click={() => set((p) => p + 1)} disabled={current === max}>
           Далі
         </Button>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
