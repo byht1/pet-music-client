@@ -1,11 +1,29 @@
 @import-normalize; /* bring in normalize.css styles */
+@import url("https://fonts.googleapis.com/css2?family=Blinker:wght@400;600&display=swap");
+
+html {
+  --background-shade: #1c1c1c;
+  --pink: #de3ef8;
+  --background: #232426;
+  --violet: #8e60db;
+  --violet-shade: #724eb0;
+  --violet-additional: #a37df0;
+  --white: #edf0f3;
+  --gradient: #37383a;
+}
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: teal;
+  font-family: "Blinker", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+
+  background-color: var(--background);
+  color: var(--white);
 }
 
 a {
