@@ -7,18 +7,22 @@ export const theme = {
     vs: "var(--violet-shade)",
     va: "var(--violet-additional)",
     g: "var(--gradient)",
+    fb: "var(--form-background)",
+    w: "var(--white)",
+    border: "var(--border)",
   },
-  space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
+  space: [0, 2, 4, 8, 16, 32, 60, 64, 110, 128, 256],
   fonts: {
     blinker: "'Blinker', sans-serif",
+    roboto: "'Roboto', sans-serif",
   },
   fontSizes: {
-    f12: "12px",
-    f14: "14px",
-    f16: "16px",
-    f20: "20px",
-    f32: "32px",
-    f64: "64px",
+    min: "12px",
+    normalMin: "14px",
+    normal: "16px",
+    normalBig: "20px",
+    normalMax: "32px",
+    max: "64px",
   },
   fontWeights: {
     normal: 400,
@@ -26,7 +30,9 @@ export const theme = {
     bold: 700,
   },
   lineHeights: {
+    big: 2,
     body: 1.5,
+    normal: 1.25,
     heading: 1.125,
   },
   borders: {
@@ -36,6 +42,8 @@ export const theme = {
   radii: {
     none: "0",
     normal: "4px",
+    inputAuthForm: "24px",
+    authForm: "32px",
     round: "50%",
   },
   size: {
@@ -44,6 +52,8 @@ export const theme = {
     half: "50%",
     quarter: "25%",
     bar: "268px",
+    authFormWidth: "636px",
+    authFormHeight: "704px",
   },
   shadows: {},
 };

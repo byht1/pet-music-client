@@ -5,7 +5,8 @@ import { Button } from "../../../global/Button/Button";
 import { TextErrorServer } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";
 import { FormBox } from "../FormBox/FormBox";
-import { InputForm } from "../InputForm/InputForm";
+import { InputCheckboxForm, InputForm } from "../InputForm";
+import { AuthTitleForm } from "../AuthTitleForm";
 
 export const SingUpForm: FC = () => {
   const { loader, error, errorMessage, methods, onSubmit } = useAuth(
@@ -20,27 +21,24 @@ export const SingUpForm: FC = () => {
         {loader && <p>Loader...</p>}
         {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
         <FormBox methods={methods} submit={handleSubmit(onSubmit)}>
-          <InputForm
-            title="Nike name"
-            inputType="name"
-            placeholder="IHdPA"
-            name="username"
-          />
+          <AuthTitleForm header="Новий користувач" />
 
-          <InputForm
-            title="Email"
-            inputType="email"
-            placeholder="IHdPA@gmail.com"
-            name="email"
-          />
+          <InputForm title="Email" inputType="email" name="email" />
+
+          <InputForm title="Ім’я" inputType="name" name="username" />
 
           <InputForm title="Пароль" inputType="password" name="password" />
 
-          <InputForm
+          <InputCheckboxForm
+            text="Погоджуюсь з правилами конфідеційності"
+            name="roles"
+          />
+
+          {/* <InputForm
             title="Підтвердження пароля"
             inputType="password"
             name="confirmPassword"
-          />
+          /> */}
 
           <Button>Створити акаунт</Button>
         </FormBox>

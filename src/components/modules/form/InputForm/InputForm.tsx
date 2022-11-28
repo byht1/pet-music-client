@@ -36,13 +36,16 @@ export const InputForm: FC<Props> = ({
   value,
 }) => {
   const {
+    watch,
     register,
     formState: { errors },
   } = useFormContext<authSchema & IAlbumForm & ITrackForm>();
 
+  const isName = watch(name);
+
   return (
     <Label>
-      {title && <NameInput>{title}</NameInput>}
+      {title && !isName?.length && <NameInput>{title}</NameInput>}
       <Input
         type={inputType}
         {...register(name)}

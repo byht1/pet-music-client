@@ -1,5 +1,5 @@
 @import-normalize; /* bring in normalize.css styles */
-@import url("https://fonts.googleapis.com/css2?family=Blinker:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Blinker:wght@400;600&family=Roboto:wght@400;600&display=swap");
 
 html {
   --background-shade: #1c1c1c;
@@ -10,6 +10,8 @@ html {
   --violet-additional: #a37df0;
   --white: #edf0f3;
   --gradient: #37383a;
+  --form-background: rgba(28, 28, 28, 0.8);
+  --border: #8a8d92;
 }
 
 * {
