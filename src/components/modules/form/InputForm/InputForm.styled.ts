@@ -38,11 +38,11 @@ export const Input = styled.input`
 
 export const TextError = styled.span`
   position: absolute;
-  top: 100%;
+  top: calc(100% + 7px);
 
   width: ${(p) => p.theme.size.max};
   text-align: center;
-  color: #bf1650;
+  color: red;
 
   /* &::before {
     display: inline;
@@ -54,11 +54,18 @@ export const InputCheckbox = styled.input`
   display: none;
 `;
 
-export const Checkbox = styled.span`
-  display: block;
+export const Checkbox = styled.span<any>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  border: 2px solid ${(p) => p.theme.colors.border};
+  border: 2px solid
+    ${(p) => (p.check ? p.theme.colors.v : p.theme.colors.border)};
+
+  border-radius: 3px;
+
+  background-color: ${(p) => (p.check ? p.theme.colors.v : "transparent")};
 `;
 
 export const Text = styled.span`

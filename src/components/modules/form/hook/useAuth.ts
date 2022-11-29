@@ -32,8 +32,6 @@ export const useAuth = (type: string) => {
   });
 
   const onSubmit = async (data: authSchema) => {
-    console.log("🚀 ~ data", data);
-    delete data.confirmPassword;
     try {
       const res = await dispatch(authorization({ type, body: data }));
 

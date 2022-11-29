@@ -1,42 +1,46 @@
-import React, { FC, useState, useEffect } from "react";
-import throttle from "lodash.throttle";
-import { useFormContext, Controller } from "react-hook-form";
-import { Checkbox, InputCheckbox, Label, Text } from "./InputForm.styled";
+import { FC, useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { BsCheckLg } from "react-icons/bs";
+
+import {
+  Checkbox,
+  InputCheckbox,
+  Label,
+  Text,
+  TextError,
+} from "./InputForm.styled";
 import { Box } from "components/global/Box";
+import { authSchema } from "../typeSchema/authSchema";
 
 type Props = {
-  name: string;
+  name: "roles";
   text: string;
 };
 
 export const InputCheckboxForm: FC<Props> = ({ name, text }) => {
-  const [isChecked, setIsChecked] = useState(false);
   const {
     watch,
     register,
     formState: { errors },
-    setValue,
-  } = useFormContext();
+  } = useFormContext<authSchema>();
+  const [isChecked, setIsChecked] = useState(false);
+  const obs = watch(name);
 
-  //   useEffect(() => {
-  //     setValue(name, isChecked);
-  //     console.log(isChecked);
-  //   }, [isChecked, name, setValue]);
-
-  const click = (value: boolean) => {
-    console.log("🚀 ~ value", value);
-    setValue(name, value);
-    setIsChecked(value);
-  };
+  useEffect(() => {
+    setIsChecked(() => (obs ? true : false));
+  }, [obs]);
 
   return (
     <>
-      <Label ml onClick={() => throttle(() => click(!isChecked), 500)}>
+      <Label ml>
         <Box p="3px" width="24px" height="24px">
-          <Checkbox />
+          <Checkbox check={isChecked}>
+            {isChecked && <BsCheckLg color="var(--background)" />}
+          </Checkbox>
         </Box>
         <InputCheckbox type="checkbox" {...register(name)} />
         <Text>{text}</Text>
+        <TextError>{errors[name]?.message}</TextError>
       </Label>
     </>
   );

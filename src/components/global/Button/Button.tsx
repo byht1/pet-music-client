@@ -1,10 +1,16 @@
 import React, { FC } from "react";
+import { ButtonBox } from "./Button.styled";
 
 type Props = {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   children: JSX.Element | string;
   click?: () => any;
+
+  w?: string;
+  h?: string;
+  bg?: string;
+  color?: string;
 };
 
 export const Button: FC<Props> = ({
@@ -12,10 +18,22 @@ export const Button: FC<Props> = ({
   disabled = false,
   children,
   click,
+  w,
+  h,
+  bg,
+  color,
 }) => {
   return (
-    <button onClick={click} type={type} disabled={disabled}>
+    <ButtonBox
+      onClick={click}
+      type={type}
+      disabled={disabled}
+      w={w}
+      h={h}
+      bg={bg}
+      color={color}
+    >
       {children}
-    </button>
+    </ButtonBox>
   );
 };

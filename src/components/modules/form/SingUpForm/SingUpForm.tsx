@@ -34,13 +34,7 @@ export const SingUpForm: FC = () => {
             name="roles"
           />
 
-          {/* <InputForm
-            title="Підтвердження пароля"
-            inputType="password"
-            name="confirmPassword"
-          /> */}
-
-          <Button>Створити акаунт</Button>
+          <Button bg="--violet">Зареєструватися</Button>
         </FormBox>
       </Box>
     </>

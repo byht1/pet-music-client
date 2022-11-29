@@ -5,6 +5,9 @@ export const schemaSingUp = yup
     username: yup.string().required("⚠ Поле обов'язкове для заповнення"),
     email: yup.string().required("⚠ Поле обов'язкове для заповнення"),
     password: yup.string().required("⚠ Поле обов'язкове для заповнення"),
+    roles: yup
+      .boolean()
+      .oneOf([true], "⚠ Ви не погодилися з правилами конфідеційності"),
     // confirmPassword: yup
     //   .string()
     //   .required("⚠ Поле обов'язкове для заповнення")

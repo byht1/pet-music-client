@@ -11,7 +11,6 @@ type Props = {
     | "email"
     | "username"
     | "password"
-    | "confirmPassword"
     | "name_album"
     | "group_name"
     | "release_date"
