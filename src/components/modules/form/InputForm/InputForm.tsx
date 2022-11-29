@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { Input, Label, NameInput, TextError } from "./InputForm.styled";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
@@ -39,13 +39,19 @@ export const InputForm: FC<Props> = ({
     register,
     formState: { errors },
   } = useFormContext<authSchema & IAlbumForm & ITrackForm>();
+  const [isFocus, setIsFocus] = useState(true);
 
-  const isName = watch(name);
+  const notFocus = () => {
+    const isName = watch(name);
+
+    setIsFocus(isName?.length === 0);
+  };
 
   return (
-    <Label>
-      {title && !isName?.length && <NameInput>{title}</NameInput>}
+    <Label onBlur={notFocus}>
+      {title && isFocus && <NameInput>{title}</NameInput>}
       <Input
+        onFocus={() => setIsFocus(false)}
         type={inputType}
         {...register(name)}
         placeholder={placeholder}
