@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.a0a4addd.css",
-    "main.js": "/static/js/main.f1355d77.js",
-    "static/media/registration@3x.jpg": "/static/media/registration@3x.a0e46f5b2545e80d0a56.jpg",
-    "static/media/registration@3x.webp": "/static/media/registration@3x.858114877c0daac3c79e.webp",
-    "static/media/registration@2x.jpg": "/static/media/registration@2x.b7a6a6a2d2479081207b.jpg",
-    "static/media/logIn@3x.jpg": "/static/media/logIn@3x.c8ab7f88064a4e0be06b.jpg",
-    "static/media/registration@2x.webp": "/static/media/registration@2x.4fa14b4d799ddee75055.webp",
-    "static/media/logIn@3x.webp": "/static/media/logIn@3x.5e18e58fc1c4f8ce0938.webp",
-    "static/media/logIn@2x.jpg": "/static/media/logIn@2x.60748da19ff83c66c493.jpg",
-    "static/media/registration@1x.jpg": "/static/media/registration@1x.8efa011033635b464281.jpg",
-    "static/media/logIn@2x.webp": "/static/media/logIn@2x.e36cb6b20d86a8596786.webp",
-    "static/media/registration@1x.webp": "/static/media/registration@1x.f7b108e4704f4a70bca0.webp",
-    "static/media/user-icon.png": "/static/media/user-icon.c8bf6832346df9bbfc3d.png",
-    "static/media/logIn@1x.jpg": "/static/media/logIn@1x.ce3c11590d412a608b57.jpg",
-    "static/media/logIn@1x.webp": "/static/media/logIn@1x.ce77caeb77beec01f307.webp",
-    "index.html": "/index.html",
-    "main.a0a4addd.css.map": "/static/css/main.a0a4addd.css.map",
-    "main.f1355d77.js.map": "/static/js/main.f1355d77.js.map"
+    "main.css": "/pet-music-client/static/css/main.a0a4addd.css",
+    "main.js": "/pet-music-client/static/js/main.444ce0dc.js",
+    "static/media/registration@3x.jpg": "/pet-music-client/static/media/registration@3x.a0e46f5b2545e80d0a56.jpg",
+    "static/media/registration@3x.webp": "/pet-music-client/static/media/registration@3x.858114877c0daac3c79e.webp",
+    "static/media/registration@2x.jpg": "/pet-music-client/static/media/registration@2x.b7a6a6a2d2479081207b.jpg",
+    "static/media/logIn@3x.jpg": "/pet-music-client/static/media/logIn@3x.c8ab7f88064a4e0be06b.jpg",
+    "static/media/registration@2x.webp": "/pet-music-client/static/media/registration@2x.4fa14b4d799ddee75055.webp",
+    "static/media/logIn@3x.webp": "/pet-music-client/static/media/logIn@3x.5e18e58fc1c4f8ce0938.webp",
+    "static/media/logIn@2x.jpg": "/pet-music-client/static/media/logIn@2x.60748da19ff83c66c493.jpg",
+    "static/media/registration@1x.jpg": "/pet-music-client/static/media/registration@1x.8efa011033635b464281.jpg",
+    "static/media/logIn@2x.webp": "/pet-music-client/static/media/logIn@2x.e36cb6b20d86a8596786.webp",
+    "static/media/registration@1x.webp": "/pet-music-client/static/media/registration@1x.f7b108e4704f4a70bca0.webp",
+    "static/media/user-icon.png": "/pet-music-client/static/media/user-icon.c8bf6832346df9bbfc3d.png",
+    "static/media/logIn@1x.jpg": "/pet-music-client/static/media/logIn@1x.ce3c11590d412a608b57.jpg",
+    "static/media/logIn@1x.webp": "/pet-music-client/static/media/logIn@1x.ce77caeb77beec01f307.webp",
+    "index.html": "/pet-music-client/index.html",
+    "main.a0a4addd.css.map": "/pet-music-client/static/css/main.a0a4addd.css.map",
+    "main.444ce0dc.js.map": "/pet-music-client/static/js/main.444ce0dc.js.map"
   },
   "entrypoints": [
     "static/css/main.a0a4addd.css",
-    "static/js/main.f1355d77.js"
+    "static/js/main.444ce0dc.js"
   ]
 }
