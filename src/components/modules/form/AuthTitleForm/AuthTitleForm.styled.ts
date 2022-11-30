@@ -6,3 +6,10 @@ export const Title = styled.h2`
   line-height: ${(p) => p.theme.lineHeights.normal};
   text-align: center;
 `;
+
+export const ListAuth = styled.ul`
+  display: flex;
+  gap: 24px;
+
+  margin: 0 auto;
+`;

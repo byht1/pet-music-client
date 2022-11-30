@@ -10,4 +10,13 @@ export const ArrowLink = styled(Link)`
 
   width: 24px;
   height: 24px;
+
+  color: ${(p) => p.theme.colors.border};
+
+  transition: var(--hover-e-color);
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.v};
+  }
 `;

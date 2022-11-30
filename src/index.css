@@ -12,6 +12,9 @@ html {
   --gradient: #37383a;
   --form-background: rgba(28, 28, 28, 0.8);
   --border: #8a8d92;
+  --button-hover: #6b4e9b;
+  --hover-e-color: color 250ms linear;
+  --hover-e-bg: background-color 250ms linear;
 }
 
 * {

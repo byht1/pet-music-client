@@ -17,4 +17,11 @@ export const TextBox = styled.div`
 
 export const TextDecorate = styled(Link)`
   color: ${(p) => p.theme.colors.w};
+
+  transition: var(--hover-e-color);
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.v};
+  }
 `;

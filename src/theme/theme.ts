@@ -10,6 +10,7 @@ export const theme = {
     fb: "var(--form-background)",
     w: "var(--white)",
     border: "var(--border)",
+    buttonHover: "var(--button-hover)",
   },
   space: [0, 2, 4, 8, 16, 32, 60, 64, 110, 128, 256],
   fonts: {

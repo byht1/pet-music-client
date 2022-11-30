@@ -8,14 +8,10 @@ type Props = {
   color?: string;
 };
 
-export const ArrowBack: FC<Props> = ({
-  path,
-  size = 24,
-  color = "var(--border)",
-}) => {
+export const ArrowBack: FC<Props> = ({ path, size = 24, color }) => {
   return (
     <ArrowLink to={path ?? "/"}>
-      <MdKeyboardArrowLeft size={size} color={color} />
+      <MdKeyboardArrowLeft size={size} color={color ?? "currentColor"} />
     </ArrowLink>
   );
 };
