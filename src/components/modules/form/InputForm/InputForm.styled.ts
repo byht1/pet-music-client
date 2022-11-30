@@ -9,6 +9,8 @@ export const Label = styled.label<any>`
 
   font-family: ${(p) => p.theme.fonts.roboto};
   line-height: ${(p) => p.theme.lineHeights.body};
+
+  cursor: pointer;
 `;
 
 export const NameInput = styled.span`
