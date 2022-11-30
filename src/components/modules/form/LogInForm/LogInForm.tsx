@@ -9,7 +9,7 @@ import { FormBox } from "../FormBox/FormBox";
 import { InputForm } from "../InputForm/InputForm";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { ArrowBack } from "components/modules/ArrowBack";
-import { AuthText } from "components/modules/AuthText";
+import { AuthText } from "components/modules/form/AuthText";
 import { InputCheckboxForm } from "../InputForm";
 
 export const LogInForm: FC = () => {
@@ -34,8 +34,10 @@ export const LogInForm: FC = () => {
 
           <Button>Увійти</Button>
 
+          <AuthText path="/user/forgotten" urlText="Я забув свій пароль" />
+
           <AuthText
-            path="/sing-up"
+            path="/user/sing-up"
             text="Не маю реєстрації."
             urlText="Зареєструватися"
           />

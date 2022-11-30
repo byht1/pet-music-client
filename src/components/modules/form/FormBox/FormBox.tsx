@@ -1,4 +1,3 @@
-import { Box } from "components/global/Box";
 import { FC, ReactFragment, ReactNode } from "react";
 import { FormProvider } from "react-hook-form";
 import { BoxForm, Form } from "./FormBox.styled";

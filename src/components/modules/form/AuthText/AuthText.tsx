@@ -3,8 +3,9 @@ import { TextBox, TextDecorate } from "./AuthText.styled";
 
 type Props = {
   path: string;
-  text: string;
+
   urlText: string;
+  text?: string;
 };
 
 export const AuthText: FC<Props> = ({ path = "/", text, urlText }) => {

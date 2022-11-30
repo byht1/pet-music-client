@@ -9,7 +9,7 @@ import { InputCheckboxForm, InputForm } from "../InputForm";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { useLocation } from "react-router-dom";
 import { ArrowBack } from "components/modules/ArrowBack";
-import { AuthText } from "components/modules/AuthText";
+import { AuthText } from "components/modules/form/AuthText";
 
 export const SingUpForm: FC = () => {
   const { loader, error, errorMessage, methods, onSubmit } = useAuth(
@@ -46,7 +46,11 @@ export const SingUpForm: FC = () => {
 
             <Button>Зареєструватися</Button>
 
-            <AuthText path="/log-in" text="Вже маю аккаунт." urlText="Увійти" />
+            <AuthText
+              path="/user/log-in"
+              text="Вже маю аккаунт."
+              urlText="Увійти"
+            />
           </FormBox>
         </WrapperAuthForm>
       </Box>

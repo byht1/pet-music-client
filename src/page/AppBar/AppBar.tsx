@@ -49,7 +49,7 @@ export default function AppBar() {
                 )}
 
                 <li>
-                  <NLink to={"/profile"} state={{ from: location.pathname }}>
+                  <NLink to={"/user"} state={{ from: location.pathname }}>
                     Мій профіль
                   </NLink>
                 </li>
@@ -62,14 +62,17 @@ export default function AppBar() {
                   <>
                     <li>
                       <NLink
-                        to={"/sing-up"}
+                        to={"/user/sing-up"}
                         state={{ from: location.pathname }}
                       >
                         Регистрація
                       </NLink>
                     </li>
                     <li>
-                      <NLink to={"/log-in"} state={{ from: location.pathname }}>
+                      <NLink
+                        to={"/user/log-in"}
+                        state={{ from: location.pathname }}
+                      >
                         Авторизація
                       </NLink>
                     </li>
