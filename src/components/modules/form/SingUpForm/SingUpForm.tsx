@@ -2,18 +2,14 @@ import { FC } from "react";
 
 import { Box } from "../../../global/Box";
 import { Button } from "../../../global/Button/Button";
-import {
-  ArrowLink,
-  TextBox,
-  TextDecorate,
-  TextErrorServer,
-} from "../GlobalForm.styled";
+import { TextErrorServer } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";
 import { FormBox } from "../FormBox/FormBox";
 import { InputCheckboxForm, InputForm } from "../InputForm";
 import { AuthTitleForm } from "../AuthTitleForm";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import { ArrowBack } from "components/modules/ArrowBack";
+import { AuthText } from "components/modules/AuthText";
 
 export const SingUpForm: FC = () => {
   const { loader, error, errorMessage, methods, onSubmit } = useAuth(
@@ -30,9 +26,7 @@ export const SingUpForm: FC = () => {
         {loader && <p>Loader...</p>}
         {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
         <FormBox methods={methods} submit={handleSubmit(onSubmit)}>
-          <ArrowLink to={state?.from ?? "/"}>
-            <MdKeyboardArrowLeft size={24} color="var(--border)" />
-          </ArrowLink>
+          <ArrowBack path={state?.from} />
 
           <AuthTitleForm header="Новий користувач" />
 
@@ -49,10 +43,7 @@ export const SingUpForm: FC = () => {
 
           <Button>Зареєструватися</Button>
 
-          <TextBox>
-            <p>Вже маю аккаунт.</p>
-            <TextDecorate to="/log-in">Увійти</TextDecorate>
-          </TextBox>
+          <AuthText path="/log-in" text="Вже маю аккаунт." urlText="Увійти" />
         </FormBox>
       </Box>
     </>

@@ -10,9 +10,14 @@ export default function AppBar() {
   const isAuth = useSelector(getIsAuth);
   const location = useLocation();
 
+  const rule =
+    location.pathname !== "/sing-up" && location.pathname !== "/log-in";
+
+  // log-in
+
   return (
     <>
-      {location.pathname !== "/sing-up" && (
+      {rule && (
         <Header>
           <Box
             display="grid"

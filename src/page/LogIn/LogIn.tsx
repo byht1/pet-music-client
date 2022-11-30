@@ -1,18 +1,12 @@
 import React from "react";
 import { LogInForm } from "components/modules/form/LogInForm/LogInForm";
-import { Box } from "components/global/Box";
+
+import { ImgBackground } from "./Login.styled";
 
 export default function LogIn() {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      pt={5}
-      pb={5}
-    >
-      <h2>Авторизація</h2>
+    <ImgBackground>
       <LogInForm />
-    </Box>
+    </ImgBackground>
   );
 }

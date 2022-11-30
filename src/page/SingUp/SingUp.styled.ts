@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { img } from "img/auth";
+import { imgSingUp } from "img/auth";
 
 const { ImgBgX1Webp, ImgBgX2Webp, ImgBgX3Webp, ImgBgX1, ImgBgX2, ImgBgX3 } =
-  img;
+  imgSingUp;
 
 export const ImgBackground = styled.div<any>`
   height: 100vh;
