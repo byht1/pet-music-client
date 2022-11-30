@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="">
+      <BrowserRouter basename="pet-music-client">
         <App />
       </BrowserRouter>
     </ThemeProvider>
