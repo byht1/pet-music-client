@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdArrowBackIosNew } from "react-icons/md";
 import { ArrowLink } from "./ArrowBack.styled";
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 export const ArrowBack: FC<Props> = ({ path, size = 24, color }) => {
   return (
     <ArrowLink to={path ?? "/"}>
-      <MdKeyboardArrowLeft size={size} color={color ?? "currentColor"} />
+      <MdArrowBackIosNew size={size} color={color ?? "currentColor"} />
     </ArrowLink>
   );
 };

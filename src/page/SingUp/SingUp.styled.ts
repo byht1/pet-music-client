@@ -15,7 +15,7 @@ export const ImgBackground = styled.div<any>`
   background-image: ${bg()};
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
+  background-size: cover;
 `;
 
 function bg() {

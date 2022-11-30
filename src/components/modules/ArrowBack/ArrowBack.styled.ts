@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 export const ArrowLink = styled(Link)`
   position: absolute;
-  top: 81px;
+  top: 86px;
   left: 78px;
-
-  transform: translateY(-50%);
 
   width: 24px;
   height: 24px;

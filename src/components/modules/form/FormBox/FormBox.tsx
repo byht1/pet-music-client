@@ -1,17 +1,23 @@
-import React, { FC, ReactFragment } from "react";
+import { Box } from "components/global/Box";
+import { FC, ReactFragment, ReactNode } from "react";
 import { FormProvider } from "react-hook-form";
-import { Form } from "./FormBox.styled";
+import { BoxForm, Form } from "./FormBox.styled";
 
 type Props = {
   methods: any;
   submit: () => void;
-  children: ReactFragment;
+  children: ReactFragment | ReactNode;
+
+  box?: boolean;
 };
 
-export const FormBox: FC<Props> = ({ submit, methods, children }) => {
+export const FormBox: FC<Props> = ({ submit, methods, children, box }) => {
   return (
     <FormProvider {...methods}>
-      <Form onSubmit={submit}>{children}</Form>
+      <Form onSubmit={submit}>
+        {box && <BoxForm>{children}</BoxForm>}
+        {!box && children}
+      </Form>
     </FormProvider>
   );
 };

@@ -1,9 +1,8 @@
-import { theme } from "theme/theme";
 import styled from "styled-components";
 
 export const ButtonBox = styled.button<any>`
   width: ${(p) => (p.w ? p.w : "100%")};
-  height: ${(p) => (p.h ? p.h : "48px")};
+  height: ${(p) => (p.h ? p.h : "40px")};
 
   border: none;
   outline: none;

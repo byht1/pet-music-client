@@ -16,17 +16,32 @@ export const AuthTitleForm: FC<Props> = ({ header }) => {
       <Title>{header}</Title>
       <ListAuth>
         <li>
-          <Button bg="transparent" hoverBg="transparent" hoverC="var(--violet)">
+          <Button
+            disabled
+            bg="transparent"
+            hoverBg="transparent"
+            hoverC="var(--violet)"
+          >
             <BsGoogle size={40} />
           </Button>
         </li>
         <li>
-          <Button bg="transparent" hoverBg="transparent" hoverC="var(--violet)">
+          <Button
+            disabled
+            bg="transparent"
+            hoverBg="transparent"
+            hoverC="var(--violet)"
+          >
             <BsApple size={40} />
           </Button>
         </li>
         <li>
-          <Button bg="transparent" hoverBg="transparent" hoverC="var(--violet)">
+          <Button
+            disabled
+            bg="transparent"
+            hoverBg="transparent"
+            hoverC="var(--violet)"
+          >
             <FaFacebookF size={40} />
           </Button>
         </li>

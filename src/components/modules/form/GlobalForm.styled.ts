@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const WrapperAuthForm = styled.div`
+  position: relative;
+
+  width: ${(p) => p.theme.size.authFormWidth};
+  /* height: ${(p) => p.theme.size.authFormHeight}; */
+
+  padding-top: 78px;
+  padding-left: ${(p) => p.theme.space[8]}px;
+  padding-right: ${(p) => p.theme.space[8]}px;
+  padding-bottom: 42px;
+
+  border-radius: ${(p) => p.theme.radii.authForm};
+
+  background-color: ${(p) => p.theme.colors.fb};
+`;
+
 export const TextErrorServer = styled.p`
   text-align: center;
   color: #bf1650;

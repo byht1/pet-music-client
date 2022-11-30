@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { Box } from "../../../global/Box";
 import { Button } from "../../../global/Button/Button";
-import { TextErrorServer } from "../GlobalForm.styled";
+import { TextErrorServer, WrapperAuthForm } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";
 import { FormBox } from "../FormBox/FormBox";
 import { InputForm } from "../InputForm/InputForm";
@@ -20,25 +20,27 @@ export const LogInForm: FC = () => {
   return (
     <Box>
       {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
-      <FormBox methods={methods} submit={handleSubmit(onSubmit)}>
-        <ArrowBack path={state?.from} />
+      <WrapperAuthForm>
+        <FormBox methods={methods} submit={handleSubmit(onSubmit)} box>
+          <ArrowBack path={state?.from} />
 
-        <AuthTitleForm header="Увійти в кабінет" />
+          <AuthTitleForm header="Увійти в кабінет" />
 
-        <InputForm title="Email" inputType="email" name="email" />
+          <InputForm title="Email" inputType="email" name="email" />
 
-        <InputForm title="Пароль" inputType="password" name="password" />
+          <InputForm title="Пароль" inputType="password" name="password" />
 
-        <InputCheckboxForm text="Залишитася в мережі" name="roles" />
+          <InputCheckboxForm text="Залишитася в мережі" name="roles" />
 
-        <Button>Увійти</Button>
+          <Button>Увійти</Button>
 
-        <AuthText
-          path="/sing-up"
-          text="Не маю реєстрації."
-          urlText="Зареєструватися"
-        />
-      </FormBox>
+          <AuthText
+            path="/sing-up"
+            text="Не маю реєстрації."
+            urlText="Зареєструватися"
+          />
+        </FormBox>
+      </WrapperAuthForm>
     </Box>
   );
 };
