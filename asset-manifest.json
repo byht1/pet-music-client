@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pet-music-client/static/css/main.a0a4addd.css",
-    "main.js": "/pet-music-client/static/js/main.444ce0dc.js",
+    "main.css": "/pet-music-client/static/css/main.362149ec.css",
+    "main.js": "/pet-music-client/static/js/main.d922388b.js",
     "static/media/registration@3x.jpg": "/pet-music-client/static/media/registration@3x.a0e46f5b2545e80d0a56.jpg",
     "static/media/registration@3x.webp": "/pet-music-client/static/media/registration@3x.858114877c0daac3c79e.webp",
     "static/media/registration@2x.jpg": "/pet-music-client/static/media/registration@2x.b7a6a6a2d2479081207b.jpg",
@@ -16,11 +16,11 @@
     "static/media/logIn@1x.jpg": "/pet-music-client/static/media/logIn@1x.ce3c11590d412a608b57.jpg",
     "static/media/logIn@1x.webp": "/pet-music-client/static/media/logIn@1x.ce77caeb77beec01f307.webp",
     "index.html": "/pet-music-client/index.html",
-    "main.a0a4addd.css.map": "/pet-music-client/static/css/main.a0a4addd.css.map",
-    "main.444ce0dc.js.map": "/pet-music-client/static/js/main.444ce0dc.js.map"
+    "main.362149ec.css.map": "/pet-music-client/static/css/main.362149ec.css.map",
+    "main.d922388b.js.map": "/pet-music-client/static/js/main.d922388b.js.map"
   },
   "entrypoints": [
-    "static/css/main.a0a4addd.css",
-    "static/js/main.444ce0dc.js"
+    "static/css/main.362149ec.css",
+    "static/js/main.d922388b.js"
   ]
 }
