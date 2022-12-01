@@ -23,8 +23,8 @@ export const NameInput = styled.span`
   width: 200px;
 `;
 
-export const Input = styled.input`
-  border: none;
+export const Input = styled.input<any>`
+  border: ${(p) => (p.error ? `2px solid ${p.theme.colors.e}` : "none")};
   outline: none;
 
   width: 100%;
@@ -34,17 +34,17 @@ export const Input = styled.input`
 
   border-radius: ${(p) => p.theme.radii.inputAuthForm};
 
-  background-color: ${(p) => p.theme.colors.bs};
-  color: ${(p) => p.theme.colors.w};
+  background-color: ${(p) =>
+    p.length || p.error ? p.theme.colors.w : p.theme.colors.bs};
+  color: ${(p) => (p.length ? p.theme.colors.bs : p.theme.colors.w)};
 `;
 
 export const TextError = styled.span`
-  position: absolute;
-  top: calc(100% + 7px);
+  /* position: absolute;
+  top: calc(100% + 7px); */
 
   width: ${(p) => p.theme.size.max};
-  text-align: center;
-  color: red;
+  color: ${(p) => p.theme.colors.e};
 
   /* &::before {
     display: inline;
@@ -76,4 +76,10 @@ export const Text = styled.span`
   font-family: ${(p) => p.theme.fonts.roboto};
   font-size: ${(p) => p.theme.fontSizes.min};
   line-height: ${(p) => p.theme.lineHeights.big};
+`;
+
+export const ShowBox = styled.div`
+  position: absolute;
+  top: 12px;
+  right: 24px;
 `;

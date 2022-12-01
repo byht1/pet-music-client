@@ -10,7 +10,7 @@ const {
   ImgBgLogInX3,
 } = imgLohIn;
 
-export const ImgBackground = styled.div<any>`
+export const LogUserImgBackground = styled.div<any>`
   height: 100vh;
   padding: 0 ${(p) => p.theme.space[5]}px;
   display: flex;

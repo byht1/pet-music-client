@@ -11,6 +11,7 @@ export const theme = {
     w: "var(--white)",
     border: "var(--border)",
     buttonHover: "var(--button-hover)",
+    e: "var(--error)",
   },
   space: [0, 2, 4, 8, 16, 32, 60, 64, 110, 128, 256],
   fonts: {

@@ -13,14 +13,27 @@ import {
   getIsLoggedIn,
 } from "redux/auth/auth-selector";
 import { useSelector } from "react-redux";
+import { schemaForgotten } from "../ForgottenPasswordForm";
+import { schemaNewPassword } from "../NewPasswordForm";
 
-export const typeSchema = {
+export const typeSchema = Object.freeze({
   SIGNUP: "signup",
   LOGIN: "login",
+  FORGOT: "forgot",
+  PASSWORD: "password",
+});
+// schemaForgotten;
+const schemes = {
+  signup: schemaSingUp,
+  login: schemaLogIn,
+  forgot: schemaForgotten,
+  password: schemaNewPassword,
 };
 
-export const useAuth = (type: string) => {
-  const schema = type === typeSchema.LOGIN ? schemaLogIn : schemaSingUp;
+type TFormType = "signup" | "login" | "forgot" | "password";
+
+export const useAuth = (type: TFormType) => {
+  const schema = schemes[type];
   const dispatch = useAppDispatch();
   const user = useSelector(getUser);
   const loader = useSelector(getIsLoggedIn);

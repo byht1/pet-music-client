@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-export const ArrowLink = styled(Link)`
+export const ArrowButton = styled.button`
   position: absolute;
   top: 86px;
   left: 78px;
 
+  outline: none;
+  border: none;
+
   width: 24px;
   height: 24px;
 
+  background-color: transparent;
   color: ${(p) => p.theme.colors.border};
 
   transition: var(--hover-e-color);

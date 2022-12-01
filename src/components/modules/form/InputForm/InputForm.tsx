@@ -1,9 +1,12 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { Input, Label, NameInput, TextError } from "./InputForm.styled";
+import { IoMdEyeOff, IoMdEye } from "react-icons/io";
+
+import { Input, Label, NameInput, ShowBox } from "./InputForm.styled";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
 import { IAlbumForm } from "../AlbumForm/type";
 import { ITrackForm } from "../TrackForm/type";
+import { InputError } from "./InputError";
 
 type Props = {
   inputType: string;
@@ -40,11 +43,19 @@ export const InputForm: FC<Props> = ({
     formState: { errors },
   } = useFormContext<authSchema & IAlbumForm & ITrackForm>();
   const [isFocus, setIsFocus] = useState(true);
+  const [show, setShow] = useState(false);
+  const [type, setType] = useState(inputType);
+  const isName = watch(name);
+  const error = errors[name];
 
   const notFocus = () => {
-    const isName = watch(name);
-
     setIsFocus(isName?.length === 0);
+  };
+
+  const passwordShow = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    setType(show ? inputType : "text");
+    setShow(() => !show);
   };
 
   return (
@@ -52,12 +63,23 @@ export const InputForm: FC<Props> = ({
       {title && isFocus && <NameInput>{title}</NameInput>}
       <Input
         onFocus={() => setIsFocus(false)}
-        type={inputType}
+        type={type}
         {...register(name)}
         placeholder={placeholder}
         value={value}
+        length={isName}
+        error={error}
       />
-      <TextError>{errors[name]?.message}</TextError>
+      {inputType === "password" && (
+        <ShowBox onClick={passwordShow}>
+          {show ? (
+            <IoMdEye color="var(--border)" size={24} />
+          ) : (
+            <IoMdEyeOff color="var(--border)" size={24} />
+          )}
+        </ShowBox>
+      )}
+      {error && <InputError text={error?.message} />}
     </Label>
   );
 };

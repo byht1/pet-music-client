@@ -8,44 +8,47 @@ import { Button } from "components/global/Button";
 
 type Props = {
   header: string;
+  message?: boolean;
 };
 
-export const AuthTitleForm: FC<Props> = ({ header }) => {
+export const AuthTitleForm: FC<Props> = ({ header, message }) => {
   return (
     <Box display="grid" gridGap="40px">
       <Title>{header}</Title>
-      <ListAuth>
-        <li>
-          <Button
-            disabled
-            bg="transparent"
-            hoverBg="transparent"
-            hoverC="var(--violet)"
-          >
-            <BsGoogle size={40} />
-          </Button>
-        </li>
-        <li>
-          <Button
-            disabled
-            bg="transparent"
-            hoverBg="transparent"
-            hoverC="var(--violet)"
-          >
-            <BsApple size={40} />
-          </Button>
-        </li>
-        <li>
-          <Button
-            disabled
-            bg="transparent"
-            hoverBg="transparent"
-            hoverC="var(--violet)"
-          >
-            <FaFacebookF size={40} />
-          </Button>
-        </li>
-      </ListAuth>
+      {!message && (
+        <ListAuth>
+          <li>
+            <Button
+              disabled
+              bg="transparent"
+              hoverBg="transparent"
+              hoverC="var(--violet)"
+            >
+              <BsGoogle size={40} />
+            </Button>
+          </li>
+          <li>
+            <Button
+              disabled
+              bg="transparent"
+              hoverBg="transparent"
+              hoverC="var(--violet)"
+            >
+              <BsApple size={40} />
+            </Button>
+          </li>
+          <li>
+            <Button
+              disabled
+              bg="transparent"
+              hoverBg="transparent"
+              hoverC="var(--violet)"
+            >
+              <FaFacebookF size={40} />
+            </Button>
+          </li>
+        </ListAuth>
+      )}
     </Box>
   );
 };

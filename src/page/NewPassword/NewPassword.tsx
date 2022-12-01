@@ -1,7 +1,11 @@
+import { NewPasswordForm } from "components/modules/form/NewPasswordForm";
+import { LogUserImgBackground } from "page/LogIn/Login.styled";
 import React from "react";
 
-type Props = {};
-
 export default function NewPassword() {
-  return <div>NewPassword</div>;
+  return (
+    <LogUserImgBackground>
+      <NewPasswordForm />
+    </LogUserImgBackground>
+  );
 }

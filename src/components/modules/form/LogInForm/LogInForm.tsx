@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { useLocation } from "react-router-dom";
 
 import { Box } from "../../../global/Box";
 import { Button } from "../../../global/Button/Button";
@@ -14,7 +13,6 @@ import { InputCheckboxForm } from "../InputForm";
 
 export const LogInForm: FC = () => {
   const { error, errorMessage, methods, onSubmit } = useAuth(typeSchema.LOGIN);
-  const { state } = useLocation();
 
   const { handleSubmit } = methods;
   return (
@@ -22,7 +20,7 @@ export const LogInForm: FC = () => {
       {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
       <WrapperAuthForm>
         <FormBox methods={methods} submit={handleSubmit(onSubmit)} box>
-          <ArrowBack path={state?.from} />
+          <ArrowBack />
 
           <AuthTitleForm header="Увійти в кабінет" />
 

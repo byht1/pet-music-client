@@ -6,18 +6,19 @@ import { Header, NavList, NLink } from "./AppBar.styled";
 import { useSelector } from "react-redux";
 import { getIsAuth } from "redux/auth";
 
+const exception = ["sing-up", "log-in", "forgotten"];
+
 export default function AppBar() {
   const isAuth = useSelector(getIsAuth);
   const location = useLocation();
 
-  const rule =
-    location.pathname !== "/sing-up" && location.pathname !== "/log-in";
+  const rule = location.pathname.split("/").find((x) => exception.includes(x));
 
   // log-in
 
   return (
     <>
-      {rule && (
+      {!rule && (
         <Header>
           <Box
             display="grid"

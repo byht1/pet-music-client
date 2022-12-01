@@ -7,7 +7,6 @@ import { useAuth, typeSchema } from "../hook/useAuth";
 import { FormBox } from "../FormBox/FormBox";
 import { InputCheckboxForm, InputForm } from "../InputForm";
 import { AuthTitleForm } from "../AuthTitleForm";
-import { useLocation } from "react-router-dom";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { AuthText } from "components/modules/form/AuthText";
 
@@ -15,8 +14,6 @@ export const SingUpForm: FC = () => {
   const { loader, error, errorMessage, methods, onSubmit } = useAuth(
     typeSchema.SIGNUP
   );
-
-  const { state } = useLocation();
 
   const { handleSubmit } = methods;
 
@@ -27,7 +24,7 @@ export const SingUpForm: FC = () => {
         {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
         <WrapperAuthForm>
           <FormBox methods={methods} submit={handleSubmit(onSubmit)} box>
-            <ArrowBack path={state?.from} />
+            <ArrowBack />
 
             <AuthTitleForm header="Новий користувач" />
 

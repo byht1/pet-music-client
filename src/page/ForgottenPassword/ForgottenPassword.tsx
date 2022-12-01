@@ -1,7 +1,10 @@
-import React from "react";
-
-type Props = {};
+import { ForgottenPasswordForm } from "components/modules/form/ForgottenPasswordForm";
+import { LogUserImgBackground } from "page/LogIn/Login.styled";
 
 export default function ForgottenPassword() {
-  return <div>ForgottenPassword</div>;
+  return (
+    <LogUserImgBackground>
+      <ForgottenPasswordForm />
+    </LogUserImgBackground>
+  );
 }

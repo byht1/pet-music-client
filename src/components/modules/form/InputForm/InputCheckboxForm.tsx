@@ -11,6 +11,7 @@ import {
 } from "./InputForm.styled";
 import { Box } from "components/global/Box";
 import { authSchema } from "../typeSchema/authSchema";
+import { InputError } from "./InputError";
 
 type Props = {
   name: "roles";
@@ -25,6 +26,7 @@ export const InputCheckboxForm: FC<Props> = ({ name, text }) => {
   } = useFormContext<authSchema>();
   const [isChecked, setIsChecked] = useState(false);
   const obs = watch(name);
+  const error = errors[name];
 
   useEffect(() => {
     setIsChecked(() => (obs ? true : false));
@@ -40,7 +42,7 @@ export const InputCheckboxForm: FC<Props> = ({ name, text }) => {
         </Box>
         <InputCheckbox type="checkbox" {...register(name)} />
         <Text>{text}</Text>
-        <TextError>{errors[name]?.message}</TextError>
+        {error && <InputError text={error?.message} />}
       </Label>
     </>
   );

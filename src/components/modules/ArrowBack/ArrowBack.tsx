@@ -1,17 +1,18 @@
 import { FC } from "react";
 import { MdArrowBackIosNew } from "react-icons/md";
-import { ArrowLink } from "./ArrowBack.styled";
+import { useNavigate } from "react-router-dom";
+import { ArrowButton } from "./ArrowBack.styled";
 
 type Props = {
-  path: string | undefined;
   size?: number;
   color?: string;
 };
 
-export const ArrowBack: FC<Props> = ({ path, size = 24, color }) => {
+export const ArrowBack: FC<Props> = ({ size = 24, color }) => {
+  const navigate = useNavigate();
   return (
-    <ArrowLink to={path ?? "/"}>
+    <ArrowButton onClick={() => navigate(-1)}>
       <MdArrowBackIosNew size={size} color={color ?? "currentColor"} />
-    </ArrowLink>
+    </ArrowButton>
   );
 };
