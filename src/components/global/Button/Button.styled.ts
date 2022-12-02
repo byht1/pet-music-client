@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const ButtonBox = styled.button<any>`
   width: ${(p) => (p.w ? p.w : "100%")};
-  height: ${(p) => (p.h ? p.h : "40px")};
+  /* height: ${(p) => (p.h ? p.h : "40px")}; */
+  padding: 12px 36px;
 
   border: none;
   outline: none;
@@ -10,6 +11,7 @@ export const ButtonBox = styled.button<any>`
   border-radius: ${(p) => p.theme.radii.authForm};
 
   font-family: ${(p) => p.theme.fonts.roboto};
+  font-size: 16px;
   font-weight: 700;
   line-height: ${(p) => p.theme.lineHeights.body};
 

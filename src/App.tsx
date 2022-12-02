@@ -41,7 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AppBar />}>
           <Route index element={<Home />} />
-          <Route path="/user">
+          {/* <Route path="/user">
             <Route
               index
               element={
@@ -54,7 +54,7 @@ function App() {
             <Route path="log-in" element={<LogIn />} />
             <Route path="forgotten" element={<ForgottenPassword />} />
             <Route path="new-password" element={<NewPassword />} />
-          </Route>
+          </Route> */}
 
           <Route path="track-list" element={<TrackList />} />
 

@@ -1,90 +1,17 @@
-import { Box } from "components/global/Box";
-import { UserMenu } from "components/modules/UserMenu";
 import React, { Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { Header, NavList, NLink } from "./AppBar.styled";
-import { useSelector } from "react-redux";
-import { getIsAuth } from "redux/auth";
+import { Header } from "components/modules/Header";
 
 const exception = ["sing-up", "log-in", "forgotten"];
 
 export default function AppBar() {
-  const isAuth = useSelector(getIsAuth);
-  const location = useLocation();
+  const { pathname } = useLocation();
 
-  const rule = location.pathname.split("/").find((x) => exception.includes(x));
-
-  // log-in
+  const rule = pathname.split("/").find((x) => exception.includes(x));
 
   return (
     <>
-      {!rule && (
-        <Header>
-          <Box
-            display="grid"
-            gridTemplateColumns="1fr auto"
-            alignItems="center"
-            p={4}
-          >
-            <nav>
-              <NavList>
-                <li>
-                  <NLink to={"/"} state={{ from: location.pathname }} end>
-                    Home
-                  </NLink>
-                </li>
-                <li>
-                  <NLink to={"/track-list"} state={{ from: location.pathname }}>
-                    Список треків користувача
-                  </NLink>
-                </li>
-                {isAuth && (
-                  <li>
-                    <NLink
-                      to={"/new-track"}
-                      state={{ from: location.pathname }}
-                    >
-                      Додати нові трекі
-                    </NLink>
-                  </li>
-                )}
-
-                <li>
-                  <NLink to={"/user"} state={{ from: location.pathname }}>
-                    Мій профіль
-                  </NLink>
-                </li>
-                <li>
-                  <NLink to={"/comment"} state={{ from: location.pathname }}>
-                    Коментарі
-                  </NLink>
-                </li>
-                {!isAuth && (
-                  <>
-                    <li>
-                      <NLink
-                        to={"/user/sing-up"}
-                        state={{ from: location.pathname }}
-                      >
-                        Регистрація
-                      </NLink>
-                    </li>
-                    <li>
-                      <NLink
-                        to={"/user/log-in"}
-                        state={{ from: location.pathname }}
-                      >
-                        Авторизація
-                      </NLink>
-                    </li>
-                  </>
-                )}
-              </NavList>
-            </nav>
-            {isAuth && <UserMenu />}
-          </Box>
-        </Header>
-      )}
+      {!rule && <Header path={pathname} />}
       <Suspense fallback={"Loader..."}>
         <Outlet />
       </Suspense>

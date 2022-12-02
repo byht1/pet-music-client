@@ -4,6 +4,7 @@ export const theme = {
     p: "var(--pink)",
     b: "var(--background)",
     v: "var(--violet)",
+    vt: "var(--violet-text)",
     vs: "var(--violet-shade)",
     va: "var(--violet-additional)",
     g: "var(--gradient)",
@@ -36,6 +37,7 @@ export const theme = {
     body: 1.5,
     normal: 1.25,
     heading: 1.125,
+    min: 0.8,
   },
   borders: {
     none: "none",

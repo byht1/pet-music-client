@@ -7,10 +7,10 @@ import Hero2X from "./home-hero@2x.jpg";
 import Hero3X from "./home-hero@3x.jpg";
 
 export const heroImg = {
-  HeroWebp1X,
-  HeroWebp2X,
-  HeroWebp3X,
-  Hero1X,
-  Hero2X,
-  Hero3X,
+  web1x: HeroWebp1X,
+  web2x: HeroWebp2X,
+  web3x: HeroWebp3X,
+  jpg1x: Hero1X,
+  jpg2x: Hero2X,
+  jpg3x: Hero3X,
 };

@@ -13,19 +13,19 @@ import ImgBgLogInX2 from "./logIn@2x.jpg";
 import ImgBgLogInX3 from "./logIn@3x.jpg";
 
 export const imgSingUp = {
-  ImgBgX1Webp,
-  ImgBgX2Webp,
-  ImgBgX3Webp,
-  ImgBgX1,
-  ImgBgX2,
-  ImgBgX3,
+  web1x: ImgBgX1Webp,
+  web2x: ImgBgX2Webp,
+  web3x: ImgBgX3Webp,
+  jpg1x: ImgBgX1,
+  jpg2x: ImgBgX2,
+  jpg3x: ImgBgX3,
 };
 
 export const imgLohIn = {
-  ImgBgLogInX1Webp,
-  ImgBgLogInX2Webp,
-  ImgBgLogInX3Webp,
-  ImgBgLogInX1,
-  ImgBgLogInX2,
-  ImgBgLogInX3,
+  web1x: ImgBgLogInX1Webp,
+  web2x: ImgBgLogInX2Webp,
+  web3x: ImgBgLogInX3Webp,
+  jpg1x: ImgBgLogInX1,
+  jpg2x: ImgBgLogInX2,
+  jpg3x: ImgBgLogInX3,
 };
