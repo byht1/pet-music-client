@@ -2,12 +2,20 @@ import { FC, useState } from "react";
 import { Box } from "components/global/Box";
 import { getIsAuth } from "redux/auth";
 import { useAppSelector } from "redux/hook";
-import { HeaderBox, LinkLogo, Nav, NavList } from "./Header.styled";
+import {
+  ButtonLink,
+  HeaderBox,
+  LinkLogo,
+  Nav,
+  NavList,
+  Plus,
+} from "./Header.styled";
 import { UserMenu } from "components/modules/UserMenu";
-import { ReactComponent as Logo } from "img/logo.svg";
+import { ReactComponent as Logo } from "img/svg/logo.svg";
 import { InputSearch } from "../form/InputForm";
 import { NavItem } from "./NavItem/NavItem";
 import { useLocation } from "react-router-dom";
+import { Language } from "./Language/Language";
 
 type Props = {
   path: string;
@@ -38,10 +46,6 @@ export const Header: FC<Props> = ({ path }) => {
   const [search, setSearch] = useState("");
   const [hover, setHover] = useState<TTabs>(tabs[0]);
   const { pathname } = useLocation();
-
-  // const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setSearch(e.target.value);
-  // };
 
   const blur = () => {
     const current: TTabs | undefined = tabs.find((x) => x.path === pathname);
@@ -74,24 +78,15 @@ export const Header: FC<Props> = ({ path }) => {
                 />
               );
             })}
-
-            {/* <li>
-              <NLink to={"/"} state={{ from: path }} end>
-                Головна
-              </NLink>
-            </li>
-            <li>
-              <NLink to={"/nav"} state={{ from: path }}>
-                Навігація
-              </NLink>
-            </li>
-            <li>
-              <NLink to={"/track-list"} state={{ from: path }}>
-                Бібліотека
-              </NLink>
-            </li> */}
           </NavList>
         </Nav>
+
+        <ButtonLink to={"/new"}>
+          Додати пісню
+          <Plus size={24} />
+        </ButtonLink>
+
+        <Language />
 
         {/* <AnimatePresence exitBeforeEnter>
           <motion.div

@@ -59,7 +59,7 @@ function App() {
           <Route path="track-list" element={<TrackList />} />
 
           <Route
-            path="new-track"
+            path="new"
             element={
               <PrivateRouter>
                 <NewTrack />

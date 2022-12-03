@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FC } from "react";
 import { TTabs } from "../Header";
-import { Current, NLink } from "../Header.styled";
+import { NLink, Current } from "./NavItem.styled";
 
 type Props = {
   item: TTabs;
