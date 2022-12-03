@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { FaSearch } from "react-icons/fa";
+import { MdOutlineClear } from "react-icons/md";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export const Label = styled.label<any>`
   position: relative;
@@ -82,4 +85,58 @@ export const ShowBox = styled.div`
   position: absolute;
   top: 12px;
   right: 24px;
+`;
+
+export const LabelSearch = styled.label`
+  position: relative;
+`;
+
+export const Search = styled.input<any>`
+  outline: none;
+  border: none;
+
+  padding: 12px 60px;
+
+  border-radius: 30px;
+
+  font-family: ${(p) => p.theme.fonts.roboto};
+  font-size: ${(p) => p.theme.fontSizes.normal};
+  line-height: ${(p) => p.theme.lineHeights.body};
+
+  background-color: ${(p) => (p.l ? p.theme.colors.w : p.theme.colors.g)};
+  color: ${(p) => (p.l ? p.theme.colors.bs : p.theme.colors.border)};
+
+  &:placeholder-shown {
+    color: ${(p) => p.theme.colors.border};
+  }
+`;
+
+export const Lens = styled(FaSearch)`
+  position: absolute;
+  top: 50%;
+  left: 24px;
+
+  transform: translateY(-50%);
+
+  color: ${(p) => p.theme.colors.w};
+`;
+
+export const ArrowBack = styled(AiOutlineArrowLeft)`
+  position: absolute;
+  top: 50%;
+  left: 24px;
+
+  transform: translateY(-50%);
+
+  color: ${(p) => p.theme.colors.border};
+`;
+
+export const Clear = styled(MdOutlineClear)`
+  position: absolute;
+  top: 50%;
+  right: 24px;
+
+  transform: translateY(-50%);
+
+  color: ${(p) => p.theme.colors.border};
 `;

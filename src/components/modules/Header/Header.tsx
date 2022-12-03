@@ -1,27 +1,110 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Box } from "components/global/Box";
 import { getIsAuth } from "redux/auth";
 import { useAppSelector } from "redux/hook";
-import { HeaderBox, NavList, NLink } from "./Header.styled";
+import { HeaderBox, LinkLogo, Nav, NavList } from "./Header.styled";
 import { UserMenu } from "components/modules/UserMenu";
-import Logo from "img/logo.svg";
+import { ReactComponent as Logo } from "img/logo.svg";
+import { InputSearch } from "../form/InputForm";
+import { NavItem } from "./NavItem/NavItem";
+import { useLocation } from "react-router-dom";
 
 type Props = {
   path: string;
 };
 
+export type TTabs = {
+  path: string;
+  label: string;
+};
+
+const tabs: TTabs[] = [
+  {
+    path: "/",
+    label: "Головна",
+  },
+  {
+    path: "/nav",
+    label: "Навігація",
+  },
+  {
+    path: "/track-list",
+    label: "Бібліотека",
+  },
+];
+
 export const Header: FC<Props> = ({ path }) => {
   const isAuth = useAppSelector(getIsAuth);
+  const [search, setSearch] = useState("");
+  const [hover, setHover] = useState<TTabs>(tabs[0]);
+  const { pathname } = useLocation();
+
+  // const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setSearch(e.target.value);
+  // };
+
+  const blur = () => {
+    const current: TTabs | undefined = tabs.find((x) => x.path === pathname);
+
+    if (!current) return;
+
+    setHover(current);
+  };
 
   return (
     <HeaderBox>
-      <Box
-        display="grid"
-        gridTemplateColumns="1fr auto"
-        alignItems="center"
-        p={4}
-      >
-        <nav>
+      <Box display="flex" alignItems="center" p={3} width="1566px" m="0 auto">
+        <LinkLogo to="/">
+          <Logo />
+        </LinkLogo>
+
+        <InputSearch set={setSearch} value={search} />
+
+        <Nav>
+          <NavList>
+            {tabs.map((item) => {
+              return (
+                <NavItem
+                  key={item.label}
+                  set={setHover}
+                  blur={blur}
+                  item={item}
+                  path={path}
+                  hover={hover}
+                />
+              );
+            })}
+
+            {/* <li>
+              <NLink to={"/"} state={{ from: path }} end>
+                Головна
+              </NLink>
+            </li>
+            <li>
+              <NLink to={"/nav"} state={{ from: path }}>
+                Навігація
+              </NLink>
+            </li>
+            <li>
+              <NLink to={"/track-list"} state={{ from: path }}>
+                Бібліотека
+              </NLink>
+            </li> */}
+          </NavList>
+        </Nav>
+
+        {/* <AnimatePresence exitBeforeEnter>
+          <motion.div
+            key={selectedTab ? selectedTab.label : "empty"}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {selectedTab ? "" : "😋"}
+          </motion.div>
+        </AnimatePresence> */}
+        {/* <nav>
           <NavList>
             <li>
               <NLink to={"/"} state={{ from: path }} end>
@@ -66,7 +149,7 @@ export const Header: FC<Props> = ({ path }) => {
               </>
             )}
           </NavList>
-        </nav>
+        </nav> */}
         {isAuth && <UserMenu />}
       </Box>
     </HeaderBox>
