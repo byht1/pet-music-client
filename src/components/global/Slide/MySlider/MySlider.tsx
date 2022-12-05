@@ -2,13 +2,13 @@ import { Box } from "components/global/Box";
 import { Container } from "components/global/Container";
 import { Title2 } from "components/global/Title";
 import { useDisabledSwiper } from "hook/useDisabledSwiper";
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { NavButtonSlider } from "../NavButtonSlider";
 import { SliderBox } from "../SliderBox";
 
 type Props = {
   titleText: string;
-  children: any;
+  children: ReactNode;
   dataLength: number;
   show?: number;
 };

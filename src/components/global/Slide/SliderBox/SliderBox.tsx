@@ -1,15 +1,14 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { Virtual } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import { TSwiper } from "../type/swiper";
-import { v4 as uuidv4 } from "uuid";
 
 import "swiper/css";
 
 type Props = {
   show: number;
   set: React.Dispatch<React.SetStateAction<TSwiper | null>>;
-  children: any;
+  children: ReactNode;
 };
 
 export const SliderBox: FC<Props> = ({ set, show, children }) => {
@@ -26,11 +25,6 @@ export const SliderBox: FC<Props> = ({ set, show, children }) => {
       className="mySwiper"
     >
       {children}
-      {/* {slider.map((el, i) => (
-        <SwiperSlide key={uuidv4()} virtualIndex={i}>
-          <SwiperItem item={el} />
-        </SwiperSlide>
-      ))} */}
     </Swiper>
   );
 };
