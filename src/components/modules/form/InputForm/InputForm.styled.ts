@@ -89,11 +89,14 @@ export const ShowBox = styled.div`
 
 export const LabelSearch = styled.label`
   position: relative;
+  width: 416px;
 `;
 
 export const Search = styled.input<any>`
   outline: none;
   border: none;
+
+  width: 100%;
 
   padding: 12px 60px;
 

@@ -1,28 +1,54 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { Box } from "components/global/Box";
-import { Globe, LanguageMenu, Text } from "./Language.style";
 import { ReactComponent as Ua } from "img/svg/flag_ua.svg";
 import { ReactComponent as Us } from "img/svg/flag_us.svg";
+import {
+  Globe,
+  LanguageBox,
+  LanguageMenu,
+  MenuText,
+  Text,
+} from "./Language.styled";
 
-const lang = [
-  { lang: "UA", icon: Ua },
-  { lang: "EN", icon: Us },
+const languages = [
+  { lang: "UA", icon: <Ua /> },
+  { lang: "EN", icon: <Us /> },
 ];
 
+const LANGUAGES_KEY = "language";
+
 export const Language = () => {
-  const [language, setLanguage] = useState(lang[0]);
-  const [show, setShow] = useState(true);
+  const [language, setLanguage] = useState(() => {
+    const storage = window.localStorage.getItem(LANGUAGES_KEY);
+
+    if (!storage) return languages[0].lang;
+
+    return JSON.parse(storage);
+  });
+  const [show, setShow] = useState(false);
+
+  useLayoutEffect(() => {
+    localStorage.setItem(LANGUAGES_KEY, JSON.stringify(language));
+  }, [language]);
 
   return (
     <Box position="relative" ml="32px">
-      <Box display="flex" alignItems="center">
+      <LanguageBox onClick={() => setShow(!show)}>
         <Globe size={24} />
-        <Text>{language.lang}</Text>
+        <Text>{language}</Text>
         <MdArrowDropDown size={24} />
-      </Box>
+      </LanguageBox>
 
-      {show && <LanguageMenu></LanguageMenu>}
+      {show &&
+        languages.map((x) =>
+          x.lang === language ? null : (
+            <LanguageMenu onClick={() => setLanguage(x.lang)}>
+              {x.icon}
+              <MenuText>{x.lang}</MenuText>
+            </LanguageMenu>
+          )
+        )}
     </Box>
   );
 };

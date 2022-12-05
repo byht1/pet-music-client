@@ -10,12 +10,13 @@ import {
   NavList,
   Plus,
 } from "./Header.styled";
-import { UserMenu } from "components/modules/UserMenu";
+import { UserMenu } from "components/modules/Header/UserMenu";
 import { ReactComponent as Logo } from "img/svg/logo.svg";
 import { InputSearch } from "../form/InputForm";
 import { NavItem } from "./NavItem/NavItem";
 import { useLocation } from "react-router-dom";
 import { Language } from "./Language/Language";
+import { UserMenuAuth } from "./UserMenuAuth/UserMenuAuth";
 
 type Props = {
   path: string;
@@ -88,64 +89,7 @@ export const Header: FC<Props> = ({ path }) => {
 
         <Language />
 
-        {/* <AnimatePresence exitBeforeEnter>
-          <motion.div
-            key={selectedTab ? selectedTab.label : "empty"}
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {selectedTab ? "" : "😋"}
-          </motion.div>
-        </AnimatePresence> */}
-        {/* <nav>
-          <NavList>
-            <li>
-              <NLink to={"/"} state={{ from: path }} end>
-                Home
-              </NLink>
-            </li>
-            <li>
-              <NLink to={"/track-list"} state={{ from: path }}>
-                Список треків користувача
-              </NLink>
-            </li>
-            {isAuth && (
-              <li>
-                <NLink to={"/new-track"} state={{ from: path }}>
-                  Додати нові трекі
-                </NLink>
-              </li>
-            )}
-
-            <li>
-              <NLink to={"/user"} state={{ from: path }}>
-                Мій профіль
-              </NLink>
-            </li>
-            <li>
-              <NLink to={"/comment"} state={{ from: path }}>
-                Коментарі
-              </NLink>
-            </li>
-            {!isAuth && (
-              <>
-                <li>
-                  <NLink to={"/user/sing-up"} state={{ from: path }}>
-                    Регистрація
-                  </NLink>
-                </li>
-                <li>
-                  <NLink to={"/user/log-in"} state={{ from: path }}>
-                    Авторизація
-                  </NLink>
-                </li>
-              </>
-            )}
-          </NavList>
-        </nav> */}
-        {isAuth && <UserMenu />}
+        {isAuth ? <UserMenu /> : <UserMenuAuth />}
       </Box>
     </HeaderBox>
   );

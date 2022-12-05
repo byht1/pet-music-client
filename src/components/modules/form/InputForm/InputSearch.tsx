@@ -11,7 +11,6 @@ import {
 
 type Props = {
   value: string;
-  // changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   set: React.Dispatch<React.SetStateAction<string>>;
 };
 
@@ -19,10 +18,6 @@ type Props = {
 
 export const InputSearch: FC<Props> = ({ value, set }) => {
   const length = value.length;
-  // const changeHandler = (event: any) => {
-  //   console.log(event);
-  // };
-  // const debouncedChangeHandler = useCallback(throttle(changeHandler, 500), []);
 
   return (
     <LabelSearch>

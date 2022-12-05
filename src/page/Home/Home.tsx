@@ -1,10 +1,15 @@
+import { Again } from "components/modules/home/Again";
 import { Hero } from "components/modules/home/Hero";
-import React from "react";
+import { TheyAreListeningNow } from "components/modules/home/TheyAreListeningNow";
+import { YouWillLike } from "components/modules/home/YouWillLike";
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <YouWillLike />
+      <TheyAreListeningNow />
+      <Again />
     </main>
   );
 }
