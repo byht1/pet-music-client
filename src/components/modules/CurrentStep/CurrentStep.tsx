@@ -4,7 +4,7 @@ import { BoxStepNumber } from "./CurrentStep.styled";
 import { MdDone } from "react-icons/md";
 import { CurrentStepItem } from "./CurrentStepItem";
 import { v4 as uuidv4 } from "uuid";
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 
 type Props = {
   current: number;

@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { Box } from "../../../global/Box";
-import { Button } from "../../../global/Button/Button";
+import { Button } from "../../../global/button/Button/Button";
 import { TextErrorServer, WrapperAuthForm } from "../GlobalForm.styled";
 import { useAuth, typeSchema } from "../hook/useAuth";
 import { FormBox } from "../FormBox/FormBox";

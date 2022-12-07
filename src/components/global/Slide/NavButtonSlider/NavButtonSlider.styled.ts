@@ -14,8 +14,7 @@ export const ButtonSwiperArrow = styled.button`
   background-color: transparent;
   color: ${(p) => p.theme.colors.border};
 
-  translate: background-color 250ms line, border-color 250ms line,
-    color 250ms line;
+  transition: var(--hover-e-bg), var(--hover-e-color), border-color 250ms linear;
   &:last-child {
     margin-left: 12px;
   }

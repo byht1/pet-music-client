@@ -1,5 +1,5 @@
 import { Box } from "components/global/Box";
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
 import React from "react";
 import { AuthTitleForm } from "../AuthTitleForm";

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import { AlbumStepOne } from "./AlbumStepOne/AlbumStepOne";
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 import { AlbumStepThree } from "./AlbumStepThree/AlbumStepThree";
 import { Box } from "components/global/Box";
 import { TitleH2 } from "./AlbumForm.styled";

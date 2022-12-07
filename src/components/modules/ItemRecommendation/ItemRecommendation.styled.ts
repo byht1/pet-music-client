@@ -18,4 +18,5 @@ export const NameTrack = styled.p`
   font-family: ${(p) => p.theme.fonts.roboto};
   font-size: ${(p) => p.theme.fontSizes.normal};
   line-height: ${(p) => p.theme.lineHeights.body};
+  
 `;

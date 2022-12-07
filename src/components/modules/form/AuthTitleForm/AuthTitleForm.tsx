@@ -4,7 +4,7 @@ import { FaFacebookF } from "react-icons/fa";
 
 import { ListAuth, Title } from "./AuthTitleForm.styled";
 import { Box } from "components/global/Box";
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 
 type Props = {
   header: string;

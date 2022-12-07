@@ -6,7 +6,7 @@ import { Box } from "components/global/Box";
 import { FormBox } from "../FormBox";
 import { ITrackForm } from "./type";
 import { schemaTrackNew } from "./schema";
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 import { TrackStepOne } from "./TrackStepOne";
 import { TrackStepTwo } from "./TrackStepTwo";
 import { TrackStepThree } from "./TrackStepThree";

@@ -1,5 +1,5 @@
 import { Box } from "components/global/Box";
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 import { Container } from "components/global/Container";
 import { Number, Section, Span, Text, Title } from "./Hero.styled";
 

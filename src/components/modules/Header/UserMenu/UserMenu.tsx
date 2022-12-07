@@ -1,7 +1,7 @@
 import { FC } from "react";
 import UserIcon from "img/user-icon.png";
 import { Icon } from "./UserMenu.styled";
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 import { Box } from "components/global/Box";
 import { useSelector } from "react-redux";
 import { getUser, logOut } from "redux/auth";

@@ -1,4 +1,4 @@
-import { Button } from "components/global/Button";
+import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { FormBox } from "../FormBox";

@@ -14,15 +14,14 @@ type Props = {
 export const SliderBox: FC<Props> = ({ set, show, children }) => {
   return (
     <Swiper
-      navigation={true}
       modules={[Virtual]}
       virtual
       slidesPerView={show}
       spaceBetween={24}
       slidesPerGroup={1}
-      loopFillGroupWithBlank={true}
       onSwiper={(s) => set(s)}
       className="mySwiper"
+      allowTouchMove={false}
     >
       {children}
     </Swiper>
