@@ -1,4 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { ErrorStatusAndMessage } from "api/axiosErrorType";
+import { authSchema } from "components/modules/form/typeSchema/authSchema";
+import { IUser, TUserState } from "./type/type";
 import {
   axiosError,
   serverCurrent,
@@ -6,10 +9,6 @@ import {
   serverAuth,
   tokenAuto,
 } from "api/api";
-import { ErrorStatusAndMessage } from "api/axiosErrorType";
-import { authSchema } from "components/modules/form/typeSchema/authSchema";
-import { IUser, TUserState } from "./type/type";
-import axios from "axios";
 
 export const authorization = createAsyncThunk<
   IUser,

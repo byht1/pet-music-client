@@ -17,39 +17,40 @@ import { NavItem } from "./NavItem/NavItem";
 import { useLocation } from "react-router-dom";
 import { Language } from "./Language/Language";
 import { UserMenuAuth } from "./UserMenuAuth/UserMenuAuth";
+import { nav, TNav } from "helper";
 
 type Props = {
   path: string;
 };
 
-export type TTabs = {
-  path: string;
-  label: string;
-};
+// export type TTabs = {
+//   path: string;
+//   label: string;
+// };
 
-const tabs: TTabs[] = [
-  {
-    path: "/",
-    label: "Головна",
-  },
-  {
-    path: "/nav",
-    label: "Навігація",
-  },
-  {
-    path: "/track-list",
-    label: "Бібліотека",
-  },
-];
+// const tabs: TTabs[] = [
+//   {
+//     path: "/",
+//     label: "Головна",
+//   },
+//   {
+//     path: "/nav",
+//     label: "Навігація",
+//   },
+//   {
+//     path: "/track-list",
+//     label: "Бібліотека",
+//   },
+// ];
 
 export const Header: FC<Props> = ({ path }) => {
   const isAuth = useAppSelector(getIsAuth);
   const [search, setSearch] = useState("");
-  const [hover, setHover] = useState<TTabs>(tabs[0]);
+  const [hover, setHover] = useState<TNav>(nav[0]);
   const { pathname } = useLocation();
 
   const blur = () => {
-    const current: TTabs | undefined = tabs.find((x) => x.path === pathname);
+    const current: TNav | undefined = nav.find((x) => x.path === pathname);
 
     if (!current) return;
 
@@ -67,7 +68,7 @@ export const Header: FC<Props> = ({ path }) => {
 
         <Nav>
           <NavList>
-            {tabs.map((item) => {
+            {nav.map((item) => {
               return (
                 <NavItem
                   key={item.label}

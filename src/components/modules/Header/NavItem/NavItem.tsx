@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
+import { TNav } from "helper";
 import { FC } from "react";
-import { TTabs } from "../Header";
 import { NLink, Current } from "./NavItem.styled";
 
 type Props = {
-  item: TTabs;
+  item: TNav;
   path: string;
-  hover: TTabs;
-  set: React.Dispatch<React.SetStateAction<TTabs>>;
+  hover: TNav;
+  set: React.Dispatch<React.SetStateAction<TNav>>;
   blur: () => void;
 };
 

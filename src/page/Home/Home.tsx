@@ -1,3 +1,4 @@
+import { Footer } from "components/modules/Footer";
 import { Again } from "components/modules/home/Again";
 import { Hero } from "components/modules/home/Hero";
 import { TheyAreListeningNow } from "components/modules/home/TheyAreListeningNow";
@@ -10,6 +11,7 @@ export default function Home() {
       <YouWillLike />
       <TheyAreListeningNow />
       <Again />
+      <Footer />
     </main>
   );
 }
