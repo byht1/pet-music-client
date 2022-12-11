@@ -21,6 +21,7 @@ import { PrivateRouter } from "components/modules/PrivateRouter";
 import NewPassword from "page/NewPassword/NewPassword";
 import PersonalOffice from "page/PersonalOffice/PersonalOffice";
 import { CardAudioPlayer } from "components/global/audio/CardAudioPlayer";
+import { Nav } from "page/Nav/Nav";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ function App() {
             <Route path="new-password" element={<NewPassword />} />
           </Route>
 
+          <Route path="nav" element={<Nav />} />
           <Route path="track-list" element={<TrackList />} />
 
           <Route
