@@ -3,6 +3,7 @@ import { Button } from "./ButtonPlay.styled";
 import { BsPlayCircleFill, BsPauseCircleFill } from "react-icons/bs";
 import { useAppDispatch, useAppSelector } from "redux/hook";
 import {
+  changeCurrentTime,
   getTrackLink,
   newActionTrack,
   pauseTrack,
@@ -28,6 +29,7 @@ export const ButtonPlay: FC<Props> = ({ link }) => {
 
   const play = () => {
     if (trackLink !== link) {
+      // dispatch(changeCurrentTime(0));
       dispatch(newActionTrack(link));
       return;
     }
@@ -39,7 +41,14 @@ export const ButtonPlay: FC<Props> = ({ link }) => {
   };
 
   const managementAudio = () => {
+    if (trackLink !== link) {
+      console.log(11111111);
+      play();
+      setAction(true);
+      return;
+    }
     if (action) {
+      console.log(11111);
       pause();
       setAction(false);
       return;

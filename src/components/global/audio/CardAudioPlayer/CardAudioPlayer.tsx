@@ -7,11 +7,9 @@ import {
 } from "redux/activeTrack";
 import { useAppDispatch, useAppSelector } from "redux/hook";
 
-type Props = {};
-
 let audio: HTMLAudioElement;
 
-export const CardAudioPlayer = (props: Props) => {
+export const CardAudioPlayer = () => {
   const trackLink = useAppSelector(getTrackLink);
   const rewind = useAppSelector(getRewind);
   const action = useAppSelector(getActive);

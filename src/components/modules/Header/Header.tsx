@@ -23,26 +23,6 @@ type Props = {
   path: string;
 };
 
-// export type TTabs = {
-//   path: string;
-//   label: string;
-// };
-
-// const tabs: TTabs[] = [
-//   {
-//     path: "/",
-//     label: "Головна",
-//   },
-//   {
-//     path: "/nav",
-//     label: "Навігація",
-//   },
-//   {
-//     path: "/track-list",
-//     label: "Бібліотека",
-//   },
-// ];
-
 export const Header: FC<Props> = ({ path }) => {
   const isAuth = useAppSelector(getIsAuth);
   const [search, setSearch] = useState("");
