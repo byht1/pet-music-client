@@ -20,6 +20,7 @@ import { Album } from "page/NewTrack/Album/Album";
 import { PrivateRouter } from "components/modules/PrivateRouter";
 import NewPassword from "page/NewPassword/NewPassword";
 import PersonalOffice from "page/PersonalOffice/PersonalOffice";
+import { CardAudioPlayer } from "components/global/audio/CardAudioPlayer";
 
 const queryClient = new QueryClient();
 
@@ -90,6 +91,7 @@ function App() {
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <CardAudioPlayer />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

@@ -20,6 +20,7 @@ export const TheyAreListeningNow = () => {
           </SwiperSlide>
         ))}
       </MySlider>
+      {/* <CardAudioPlayer /> */}
     </Box>
   );
 };

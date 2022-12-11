@@ -65,43 +65,43 @@ export const Circle = styled.div<any>`
   border-radius: 50%;
 `;
 
-export const InputRange = styled.input<any>`
-  width: 100%;
+// export const InputRange = styled.input<any>`
+//   width: 100%;
 
-  -webkit-appearance: none;
-  margin-right: 15px;
-  width: 100%;
-  height: 7px;
+//   -webkit-appearance: none;
+//   margin-right: 15px;
+//   width: 100%;
+//   height: 7px;
 
-  cursor: pointer;
+//   cursor: pointer;
 
-  background: ${(p) => p.theme.colors.border};
-  border-radius: 5px;
-  background-image: linear-gradient(
-    ${(p) => p.theme.colors.w},
-    ${(p) => p.theme.colors.w}
-  );
-  background-size: ${(p) => p.progress}% 100%;
-  background-repeat: no-repeat;
+//   background: ${(p) => p.theme.colors.border};
+//   border-radius: 5px;
+//   background-image: linear-gradient(
+//     ${(p) => p.theme.colors.w},
+//     ${(p) => p.theme.colors.w}
+//   );
+//   background-size: ${(p) => p.progress}% 100%;
+//   background-repeat: no-repeat;
 
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: ${(p) => p.theme.colors.w};
-    cursor: pointer;
-    box-shadow: 0 0 2px 0 #555;
-    transition: background 0.3s ease-in-out;
-  }
+//   &::-webkit-slider-thumb {
+//     -webkit-appearance: none;
+//     height: 16px;
+//     width: 16px;
+//     border-radius: 50%;
+//     background: ${(p) => p.theme.colors.w};
+//     cursor: pointer;
+//     box-shadow: 0 0 2px 0 #555;
+//     transition: background 0.3s ease-in-out;
+//   }
 
-  &::-webkit-slider-runnable-track {
-    -webkit-appearance: none;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-  }
-`;
+//   &::-webkit-slider-runnable-track {
+//     -webkit-appearance: none;
+//     box-shadow: none;
+//     border: none;
+//     background: transparent;
+//   }
+// `;
 
 export const StatisticsList = styled.ul`
   margin-top: 24px;
