@@ -2,14 +2,7 @@ import { FC, useState } from "react";
 import { Box } from "components/global/Box";
 import { getIsAuth } from "redux/auth";
 import { useAppSelector } from "redux/hook";
-import {
-  ButtonLink,
-  HeaderBox,
-  LinkLogo,
-  Nav,
-  NavList,
-  Plus,
-} from "./Header.styled";
+import { HeaderBox, LinkLogo, Nav, NavList, Plus } from "./Header.styled";
 import { UserMenu } from "components/modules/Header/UserMenu";
 import { ReactComponent as Logo } from "img/svg/logo.svg";
 import { InputSearch } from "../form/InputForm";
@@ -18,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import { Language } from "./Language/Language";
 import { UserMenuAuth } from "./UserMenuAuth/UserMenuAuth";
 import { nav, TNav } from "helper";
+import { ButtonLink } from "components/global/button/ButtonLink";
 
 type Props = {
   path: string;
@@ -63,9 +57,12 @@ export const Header: FC<Props> = ({ path }) => {
           </NavList>
         </Nav>
 
-        <ButtonLink to={"/new"}>
-          Додати пісню
-          <Plus size={24} />
+        <ButtonLink link={"/new"} ml={98}>
+          <>
+            {" "}
+            Додати пісню
+            <Plus size={24} />
+          </>
         </ButtonLink>
 
         <Language />

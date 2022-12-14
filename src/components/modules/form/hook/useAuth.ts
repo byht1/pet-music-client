@@ -1,6 +1,4 @@
 import { useForm } from "react-hook-form";
-import { schemaLogIn } from "../LogInForm/schema";
-import { schemaSingUp } from "../SingUpForm/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { authSchema } from "../typeSchema/authSchema";
 import { useNavigate } from "react-router-dom";
@@ -13,8 +11,10 @@ import {
   getIsLoggedIn,
 } from "redux/auth/auth-selector";
 import { useSelector } from "react-redux";
-import { schemaForgotten } from "../ForgottenPasswordForm";
-import { schemaNewPassword } from "../NewPasswordForm";
+import { schemaForgotten } from "../auth/ForgottenPasswordForm";
+import { schemaLogIn } from "../auth/LogInForm/schema";
+import { schemaNewPassword } from "../auth/NewPasswordForm";
+import { schemaSingUp } from "../auth/SingUpForm/schema";
 
 export const typeSchema = Object.freeze({
   SIGNUP: "signup",

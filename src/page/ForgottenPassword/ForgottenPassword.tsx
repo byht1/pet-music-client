@@ -1,4 +1,4 @@
-import { ForgottenPasswordForm } from "components/modules/form/ForgottenPasswordForm";
+import { ForgottenPasswordForm } from "components/modules/form/auth/ForgottenPasswordForm";
 import { LogUserImgBackground } from "page/LogIn/Login.styled";
 
 export default function ForgottenPassword() {

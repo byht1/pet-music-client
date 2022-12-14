@@ -2,6 +2,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { server } from "./../../api/api";
 import { NavLink, Outlet } from "react-router-dom";
+import { Footer } from "components/modules/Footer";
+import { NewPushTrack } from "components/modules/NewPushTrack";
 
 export default function NewTrack() {
   // const a = useQuery(["track"], async () => {
@@ -11,18 +13,23 @@ export default function NewTrack() {
   // });
 
   return (
-    <div>
-      <h2>NewTrack</h2>
-      <ul>
+    <>
+      <NewPushTrack />
+      {/* <Section> */}
+      {/* <h2>NewTrack</h2> */}
+      {/* <ul>
         <li>
           <NavLink to={"/new-track/album"}>Створити новий альбом</NavLink>
         </li>
         <li>
           <NavLink to={"/new-track/track"}>Додати трек</NavLink>
         </li>
-      </ul>
+      </ul> */}
 
       {/* <Outlet /> */}
-    </div>
+      {/* </Section> */}
+
+      <Footer />
+    </>
   );
 }

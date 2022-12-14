@@ -1,6 +1,5 @@
-import { NewPasswordForm } from "components/modules/form/NewPasswordForm";
+import { NewPasswordForm } from "components/modules/form/auth/NewPasswordForm";
 import { LogUserImgBackground } from "page/LogIn/Login.styled";
-import React from "react";
 
 export default function NewPassword() {
   return (

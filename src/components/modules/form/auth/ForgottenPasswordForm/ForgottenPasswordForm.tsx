@@ -1,11 +1,11 @@
 import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { AuthTitleForm } from "../AuthTitleForm";
-import { FormBox } from "../FormBox";
-import { WrapperAuthForm } from "../GlobalForm.styled";
-import { typeSchema, useAuth } from "../hook/useAuth";
-import { InputForm } from "../InputForm";
-import { TextForm } from "../TextForm";
+import { FormBox } from "../../FormBox";
+import { WrapperAuthForm } from "../../GlobalForm.styled";
+import { typeSchema, useAuth } from "../../hook/useAuth";
+import { InputForm } from "../../InputForm";
+import { TextForm } from "../../TextForm";
 
 type Props = {};
 

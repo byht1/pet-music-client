@@ -47,9 +47,9 @@ function App() {
             <Route
               index
               element={
-                <PrivateRouter>
-                  <PersonalOffice />
-                </PrivateRouter>
+                // <PrivateRouter>
+                <PersonalOffice />
+                // </PrivateRouter>
               }
             />
             <Route path="sing-up" element={<SingUp />} />
@@ -64,27 +64,27 @@ function App() {
           <Route
             path="new"
             element={
-              <PrivateRouter>
-                <NewTrack />
-              </PrivateRouter>
+              // <PrivateRouter>
+              <NewTrack />
+              // </PrivateRouter>
             }
           />
 
           <Route
             path="new-track/track"
             element={
-              <PrivateRouter>
-                <Track />
-              </PrivateRouter>
+              // <PrivateRouter>
+              <Track />
+              // </PrivateRouter>
             }
           />
 
           <Route
             path="new-track/album"
             element={
-              <PrivateRouter>
-                <Album />
-              </PrivateRouter>
+              // <PrivateRouter>
+              <Album />
+              // </PrivateRouter>
             }
           />
 

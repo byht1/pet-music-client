@@ -1,5 +1,4 @@
-import React from "react";
-import { LogInForm } from "components/modules/form/LogInForm/LogInForm";
+import { LogInForm } from "components/modules/form/auth/LogInForm/LogInForm";
 
 import { LogUserImgBackground } from "./Login.styled";
 

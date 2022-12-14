@@ -1,13 +1,12 @@
 import { Box } from "components/global/Box";
 import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
-import React from "react";
+import { FormBox } from "../../FormBox";
+import { WrapperAuthForm } from "../../GlobalForm.styled";
+import { typeSchema, useAuth } from "../../hook/useAuth";
+import { InputForm } from "../../InputForm";
+import { TextForm } from "../../TextForm";
 import { AuthTitleForm } from "../AuthTitleForm";
-import { FormBox } from "../FormBox";
-import { WrapperAuthForm } from "../GlobalForm.styled";
-import { typeSchema, useAuth } from "../hook/useAuth";
-import { InputForm } from "../InputForm";
-import { TextForm } from "../TextForm";
 import { ListRequirements, Title } from "./NewPasswordForm.styled";
 
 export const NewPasswordForm = () => {
