@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pet-music-client/static/css/main.00cf269a.css",
-    "main.js": "/pet-music-client/static/js/main.34394d1c.js",
+    "main.js": "/pet-music-client/static/js/main.91353b65.js",
     "static/media/registration@3x.jpg": "/pet-music-client/static/media/registration@3x.a0e46f5b2545e80d0a56.jpg",
     "static/media/flag_us.svg": "/pet-music-client/static/media/flag_us.553535e24e5163d27ba7a763c0f3330c.svg",
     "static/media/registration@3x.webp": "/pet-music-client/static/media/registration@3x.858114877c0daac3c79e.webp",
@@ -19,17 +19,23 @@
     "static/media/user-icon.png": "/pet-music-client/static/media/user-icon.c8bf6832346df9bbfc3d.png",
     "static/media/logIn@1x.jpg": "/pet-music-client/static/media/logIn@1x.ce3c11590d412a608b57.jpg",
     "static/media/logIn@1x.webp": "/pet-music-client/static/media/logIn@1x.ce77caeb77beec01f307.webp",
+    "static/media/newTrackForm@3x.jpg": "/pet-music-client/static/media/newTrackForm@3x.00e7d668014fc13fa83f.jpg",
     "static/media/home-hero@2x.webp": "/pet-music-client/static/media/home-hero@2x.d4d24ef7fbe51b48be43.webp",
+    "static/media/newTrackForm@2x.jpg": "/pet-music-client/static/media/newTrackForm@2x.dfa175198a2a3b96bbca.jpg",
+    "static/media/newTrackForm@3x.webp": "/pet-music-client/static/media/newTrackForm@3x.d31364de8ce5af0b91e7.webp",
     "static/media/home-hero@1x.jpg": "/pet-music-client/static/media/home-hero@1x.783f4e754eead8f11002.jpg",
     "static/media/home-hero@1x.webp": "/pet-music-client/static/media/home-hero@1x.f9e5ea6bd88f346e21ca.webp",
+    "static/media/newTrackForm@2x.webp": "/pet-music-client/static/media/newTrackForm@2x.c1a78efbf1fe2dcef5a1.webp",
     "static/media/logo.svg": "/pet-music-client/static/media/logo.a1a265192dc3f4937f339fc227f2230d.svg",
+    "static/media/newTrackForm@1x.jpg": "/pet-music-client/static/media/newTrackForm@1x.a8f0a14137167fec86b3.jpg",
+    "static/media/newTrackForm@1x.webp": "/pet-music-client/static/media/newTrackForm@1x.39a5a877f08c38ae22c9.webp",
     "index.html": "/pet-music-client/index.html",
     "static/media/flag_ua.svg": "/pet-music-client/static/media/flag_ua.7165a8064540e636ad4208751125b99c.svg",
     "main.00cf269a.css.map": "/pet-music-client/static/css/main.00cf269a.css.map",
-    "main.34394d1c.js.map": "/pet-music-client/static/js/main.34394d1c.js.map"
+    "main.91353b65.js.map": "/pet-music-client/static/js/main.91353b65.js.map"
   },
   "entrypoints": [
     "static/css/main.00cf269a.css",
-    "static/js/main.34394d1c.js"
+    "static/js/main.91353b65.js"
   ]
 }
