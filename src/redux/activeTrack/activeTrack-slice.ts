@@ -1,14 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// type Test = {
-//   audio: HTMLAudioElement;
-//   trackLink: string;
-//   active: boolean;
-//   duration: null | number;
-//   currentTime: number;
-//   volume: number;
-// };
-
 const initialState = {
   trackLink: "",
   active: false,

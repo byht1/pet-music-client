@@ -1,17 +1,19 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 import { server } from "./../../api/api";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { Footer } from "components/modules/Footer";
 import { NewPushTrack } from "components/modules/NewPushTrack";
+import { FormBox } from "components/global/form/FormBox";
+import { useForm } from "react-hook-form";
 
 export default function NewTrack() {
-  // const a = useQuery(["track"], async () => {
-  //   const todoById = await server.get("/track");
+  const methods = useForm();
+  const { handleSubmit } = methods;
 
-  //   return todoById;
-  // });
-
+  const submit = (data: any) => {
+    console.log("🚀  data", data);
+  };
   return (
     <>
       <NewPushTrack />
@@ -26,10 +28,18 @@ export default function NewTrack() {
         </li>
       </ul> */}
 
-      {/* <Outlet /> */}
+      <FormBox methods={methods} submit={handleSubmit(submit)}>
+        <Suspense fallback={<div>...Loader</div>}>
+          <Outlet />
+        </Suspense>
+        <div>
+          <button>submit</button>
+        </div>
+      </FormBox>
+
       {/* </Section> */}
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

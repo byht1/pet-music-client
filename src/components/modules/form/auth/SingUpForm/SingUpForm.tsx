@@ -12,9 +12,9 @@ import { AuthText } from "components/modules/form/auth/AuthText";
 import { Box } from "components/global/Box";
 import { typeSchema, useAuth } from "../../hook/useAuth";
 import { TextErrorServer, WrapperAuthForm } from "../../GlobalForm.styled";
-import { FormBox } from "../../FormBox";
+import { FormBox } from "../../../../global/form/FormBox";
 import { AuthTitleForm } from "../AuthTitleForm";
-import { InputCheckboxForm, InputForm } from "../../InputForm";
+import { InputCheckboxForm, InputForm } from "components/global/form/InputForm";
 import { Button } from "components/global/button/Button";
 
 export const SingUpForm: FC = () => {

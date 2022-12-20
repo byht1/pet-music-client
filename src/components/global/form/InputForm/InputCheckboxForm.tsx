@@ -10,8 +10,8 @@ import {
   TextError,
 } from "./InputForm.styled";
 import { Box } from "components/global/Box";
-import { authSchema } from "../typeSchema/authSchema";
 import { InputError } from "./InputError";
+import { authSchema } from "components/modules/form/typeSchema/authSchema";
 
 type Props = {
   name: "roles";

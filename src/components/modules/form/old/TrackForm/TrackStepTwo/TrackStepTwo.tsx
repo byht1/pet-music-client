@@ -1,7 +1,7 @@
 import Select from "react-select";
 
 import { AlbumStepTwo } from "../../AlbumForm/AlbumStepTwo";
-import { InputForm } from "../../InputForm";
+import { InputForm } from "components/global/form/InputForm";
 import { useQuery } from "@tanstack/react-query";
 import { serverAlbumUser } from "api/api";
 

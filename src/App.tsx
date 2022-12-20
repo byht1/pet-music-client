@@ -11,7 +11,6 @@ import AppBar from "./page/AppBar/AppBar";
 import SingUp from "./page/SingUp/SingUp";
 import LogIn from "./page/LogIn/LogIn";
 import TrackList from "./page/TrackList/TrackList";
-import NewTrack from "./page/NewTrack/NewTrack";
 import Profile from "./page/Profile/Profile";
 import Comment from "./page/Comment/Comment";
 import ForgottenPassword from "page/ForgottenPassword/ForgottenPassword";
@@ -22,6 +21,9 @@ import NewPassword from "page/NewPassword/NewPassword";
 import PersonalOffice from "page/PersonalOffice/PersonalOffice";
 import { CardAudioPlayer } from "components/global/audio/CardAudioPlayer";
 import { Nav } from "page/Nav/Nav";
+import { StepOne, StepThree, StepTwo } from "page/NewTrack";
+import NewTrack from "page/NewTrack/NewTrack";
+import { Footer } from "components/modules/Footer";
 
 const queryClient = new QueryClient();
 
@@ -61,14 +63,11 @@ function App() {
           <Route path="nav" element={<Nav />} />
           <Route path="track-list" element={<TrackList />} />
 
-          <Route
-            path="new"
-            element={
-              // <PrivateRouter>
-              <NewTrack />
-              // </PrivateRouter>
-            }
-          />
+          <Route path="new" element={<NewTrack />}>
+            <Route index element={<StepOne />} />
+            <Route path="step2" element={<StepTwo />} />
+            <Route path="step3" element={<StepThree />} />
+          </Route>
 
           <Route
             path="new-track/track"
@@ -93,6 +92,7 @@ function App() {
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <Footer />
       <CardAudioPlayer />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

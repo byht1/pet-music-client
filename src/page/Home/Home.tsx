@@ -11,7 +11,6 @@ export default function Home() {
       <YouWillLike />
       <TheyAreListeningNow />
       <Again />
-      <Footer />
     </main>
   );
 }

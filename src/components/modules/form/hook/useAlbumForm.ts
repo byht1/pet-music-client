@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { serverNewAlbum } from "api/api";
 import { useForm } from "react-hook-form";
-import { IAlbumForm } from "../AlbumForm/type";
+import { IAlbumForm } from "../old/AlbumForm/type";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schemaAlbumNew } from "../AlbumForm/schema";
+import { schemaAlbumNew } from "../old/AlbumForm/schema";
 import { useState } from "react";
 
 export const useAlbumForm = (
@@ -27,6 +27,7 @@ export const useAlbumForm = (
   const { handleSubmit, trigger, clearErrors } = methods;
 
   const submit = async (data: any) => {
+    console.log("🚀  data", data);
     const formData = new FormData();
 
     for (const key in data) {

@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/es/storage";
 import { authSlice } from "./auth/auth-slice";
 import { activeTrackReducers } from "redux/activeTrack";
+import { newTrackReducers } from "./newTrack";
 
 const authPersistConfig = {
   key: "auth",
@@ -19,9 +20,15 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
+const newTrackPersistConfig = {
+  key: "newTrack",
+  storage,
+};
+
 const reducer = {
   activeTrack: activeTrackReducers,
   auth: persistReducer(authPersistConfig, authSlice.reducer),
+  newTrack: persistReducer(newTrackPersistConfig, newTrackReducers),
 };
 
 export const store = configureStore({

@@ -7,7 +7,7 @@ import { Progress } from "../Progress";
 import { Links, Section } from "./NewPushTrack.style";
 
 export const NewPushTrack = () => {
-  const [progress, setProgress] = useState(50);
+  const [progress] = useState(50);
   return (
     <Section>
       <Container>

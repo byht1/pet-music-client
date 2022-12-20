@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { InputForm } from "../../InputForm";
-import { TextError2 } from "./../../GlobalForm.styled";
+import { InputForm } from "components/global/form/InputForm";
+import { TextError2 } from "components/modules/form/GlobalForm.styled";
 
 const genres = [
   {

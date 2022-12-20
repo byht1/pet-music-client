@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Box } from "components/global/Box";
-import { FormBox } from "../FormBox";
+import { FormBox } from "../../../../global/form/FormBox";
 import { ITrackForm } from "./type";
 import { schemaTrackNew } from "./schema";
 import { Button } from "components/global/button/Button";
@@ -21,7 +21,7 @@ export const TrackForm: FC<Props> = ({ current, max, set }) => {
   const methods = useForm<ITrackForm>({
     resolver: yupResolver(schemaTrackNew),
   });
-  const { handleSubmit, trigger } = methods;
+  const { handleSubmit } = methods;
 
   const submit = (data: any) => {
     console.log(data);

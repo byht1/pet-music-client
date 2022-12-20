@@ -4,9 +4,9 @@ import { IoMdEyeOff, IoMdEye } from "react-icons/io";
 
 import { Input, Label, NameInput, ShowBox } from "./InputForm.styled";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
-import { IAlbumForm } from "../AlbumForm/type";
-import { ITrackForm } from "../TrackForm/type";
 import { InputError } from "./InputError";
+import { IAlbumForm } from "components/modules/form/old/AlbumForm/type";
+import { ITrackForm } from "components/modules/form/old/TrackForm/type";
 
 type Props = {
   inputType: string;

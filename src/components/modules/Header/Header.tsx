@@ -5,7 +5,7 @@ import { useAppSelector } from "redux/hook";
 import { HeaderBox, LinkLogo, Nav, NavList, Plus } from "./Header.styled";
 import { UserMenu } from "components/modules/Header/UserMenu";
 import { ReactComponent as Logo } from "img/svg/logo.svg";
-import { InputSearch } from "../form/InputForm";
+import { InputSearch } from "components/global/form/InputForm";
 import { NavItem } from "./NavItem/NavItem";
 import { useLocation } from "react-router-dom";
 import { Language } from "./Language/Language";

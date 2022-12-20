@@ -1,5 +1,5 @@
 import React from "react";
-import { InputForm } from "../../InputForm";
+import { InputForm } from "components/global/form/InputForm";
 
 type Props = {};
 

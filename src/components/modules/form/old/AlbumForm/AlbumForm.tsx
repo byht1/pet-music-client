@@ -5,8 +5,8 @@ import { Button } from "components/global/button/Button";
 import { AlbumStepThree } from "./AlbumStepThree/AlbumStepThree";
 import { Box } from "components/global/Box";
 import { TitleH2 } from "./AlbumForm.styled";
-import { useAlbumForm } from "../hook/useAlbumForm";
-import { FormBox } from "../FormBox";
+import { useAlbumForm } from "../../hook/useAlbumForm";
+import { FormBox } from "../../../../global/form/FormBox";
 import { AlbumStepTwo } from "./AlbumStepTwo";
 
 type Props = {

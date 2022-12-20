@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { InputForm } from "../../InputForm/InputForm";
+import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { TextError } from "../../InputForm/InputForm.styled";
 import { IAlbumForm } from "../type";
+import { TextError } from "components/global/form/InputForm/InputForm.styled";
 export const AlbumStepThree = () => {
   const [file, setFile] = useState<any>("");
   const {

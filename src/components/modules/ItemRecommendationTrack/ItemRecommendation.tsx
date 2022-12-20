@@ -1,7 +1,7 @@
 import { Box } from "components/global/Box";
 import { ButtonPlay } from "components/global/button/ButtonPlay";
 import React, { FC } from "react";
-import { InputRangeProgress } from "../form/InputForm";
+import { InputRangeProgress } from "components/global/form/InputForm";
 import {
   Author,
   Box2,
