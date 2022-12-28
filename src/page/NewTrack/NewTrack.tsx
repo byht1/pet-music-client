@@ -1,14 +1,19 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { Suspense } from "react";
-import { server } from "./../../api/api";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { Footer } from "components/modules/Footer";
 import { NewPushTrack } from "components/modules/NewPushTrack";
 import { FormBox } from "components/global/form/FormBox";
 import { useForm } from "react-hook-form";
+import { Container } from "components/global/Container";
+import { BoxForm } from "./NewTrack.styled";
+import { InfoPlatform } from "components/modules/InfoPlatform";
 
 export default function NewTrack() {
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      toAllTrack: true,
+    },
+  });
   const { handleSubmit } = methods;
 
   const submit = (data: any) => {
@@ -28,14 +33,21 @@ export default function NewTrack() {
         </li>
       </ul> */}
 
-      <FormBox methods={methods} submit={handleSubmit(submit)}>
-        <Suspense fallback={<div>...Loader</div>}>
-          <Outlet />
-        </Suspense>
-        <div>
-          <button>submit</button>
-        </div>
-      </FormBox>
+      <Container>
+        {/* <BoxForm> */}
+        <FormBox methods={methods} submit={handleSubmit(submit)}>
+          <Suspense fallback={<div>...Loader</div>}>
+            <Outlet />
+          </Suspense>
+          <div>
+            <button>submit</button>
+          </div>
+        </FormBox>
+
+        {/* </BoxForm> */}
+      </Container>
+
+      <InfoPlatform />
 
       {/* </Section> */}
 

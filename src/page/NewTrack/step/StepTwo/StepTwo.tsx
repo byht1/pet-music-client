@@ -1,17 +1,27 @@
-import React from "react";
-import { useFormContext } from "react-hook-form";
+import { Box } from "components/global/Box";
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+
+import { FormZone, List, NLink } from "./StepTwo.styled";
 
 export const StepTwo = () => {
-  const { register } = useFormContext();
-
   return (
-    <>
-      <label>
-        <input type="text" {...register("track__link3")} />
-      </label>
-      <label>
-        <input type="text" {...register("track__link4")} />
-      </label>
-    </>
+    <FormZone>
+      <Box>
+        <List>
+          <li>
+            <NLink to="/new/step2" end>
+              Інформація про пісню{" "}
+            </NLink>
+          </li>
+          <li>
+            <NLink to="/new/step2/album">Альбом</NLink>
+          </li>
+        </List>
+      </Box>
+      <Suspense fallback={<div>...Loader</div>}>
+        <Outlet />
+      </Suspense>
+    </FormZone>
   );
 };

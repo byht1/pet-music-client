@@ -5,7 +5,8 @@ import { bgImg } from "helper/bgImg";
 import { newTrackImg } from "img/newTrackForm";
 
 export const Section = styled.section`
-  padding: 120px 0;
+  padding-top: 120px;
+  margin-bottom: 24px;
   /* display: flex;
   align-items: center; */
 

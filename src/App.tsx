@@ -14,14 +14,14 @@ import TrackList from "./page/TrackList/TrackList";
 import Profile from "./page/Profile/Profile";
 import Comment from "./page/Comment/Comment";
 import ForgottenPassword from "page/ForgottenPassword/ForgottenPassword";
-import { Track } from "page/NewTrack/Track/Track";
-import { Album } from "page/NewTrack/Album/Album";
-import { PrivateRouter } from "components/modules/PrivateRouter";
+// import { Track } from "page/NewTrack/Track/Track";
+// import { Album } from "page/NewTrack/Album/Album";
+// import { PrivateRouter } from "components/modules/PrivateRouter";
 import NewPassword from "page/NewPassword/NewPassword";
 import PersonalOffice from "page/PersonalOffice/PersonalOffice";
 import { CardAudioPlayer } from "components/global/audio/CardAudioPlayer";
 import { Nav } from "page/Nav/Nav";
-import { StepOne, StepThree, StepTwo } from "page/NewTrack";
+import { Track, Album, StepOne, StepTwo } from "page/NewTrack";
 import NewTrack from "page/NewTrack/NewTrack";
 import { Footer } from "components/modules/Footer";
 
@@ -65,11 +65,13 @@ function App() {
 
           <Route path="new" element={<NewTrack />}>
             <Route index element={<StepOne />} />
-            <Route path="step2" element={<StepTwo />} />
-            <Route path="step3" element={<StepThree />} />
+            <Route path="step2" element={<StepTwo />}>
+              <Route index element={<Track />} />
+              <Route path="album" element={<Album />} />
+            </Route>
           </Route>
 
-          <Route
+          {/* <Route
             path="new-track/track"
             element={
               // <PrivateRouter>
@@ -85,7 +87,7 @@ function App() {
               <Album />
               // </PrivateRouter>
             }
-          />
+          /> */}
 
           <Route path="profile" element={<Profile />} />
           <Route path="comment" element={<Comment />} />

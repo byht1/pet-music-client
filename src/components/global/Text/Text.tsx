@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { TextBox } from "./Text.styled";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   mb?: number;
   color?: string;
 
-  children: string | JSX.Element;
+  children: string | JSX.Element | ReactNode;
 };
 
 export const Text: FC<Props> = ({

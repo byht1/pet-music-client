@@ -6,22 +6,14 @@ export const ButtonBox = styled.button<any>`
   ${(p) => p.mr && `margin-right: ${p.mr}px;`}
   ${(p) => p.ml && `margin-left: ${p.ml}px;`}
 
-
-  width: ${(p) => (p.w ? p.w : "100%")};
-  /* height: ${(p) => (p.h ? p.h : "40px")}; */
-  padding: 12px 36px;
-
   border: none;
   outline: none;
 
-  border-radius: ${(p) => p.theme.radii.authForm};
+  display: ${(p) => (p.display ? p.display : "inline-block")};
 
-  font-family: ${(p) => p.theme.fonts.roboto};
-  font-size: 16px;
-  font-weight: 700;
-  line-height: ${(p) => p.theme.lineHeights.body};
+  background-color: transparent;
 
-  background-color: ${(p) => (p.bg ? p.bg : p.theme.colors.v)};
+  /* background-color: ${(p) => (p.bg ? p.bg : p.theme.colors.v)};
   color: ${(p) => (p.color ? p.color : p.theme.colors.w)};
 
   transition: var(--hover-e-bg), var(--hover-e-color);
@@ -29,7 +21,7 @@ export const ButtonBox = styled.button<any>`
   &:hover,
   &:focus {
     background-color: ${(p) =>
-      p.hoverBg ? p.hoverBg : p.theme.colors.buttonHover};
+    p.hoverBg ? p.hoverBg : p.theme.colors.buttonHover};
     ${(p) => (p.hoverC ? `color: ${p.hoverC}` : "")}
-  }
+  } */
 `;

@@ -13,6 +13,10 @@ type Props = {
   color?: string;
   hoverBg?: string;
   hoverC?: string;
+  mb?: number;
+  ml?: number;
+  mr?: number;
+  mt?: number;
 };
 
 export const Button: FC<Props> = ({
@@ -26,6 +30,7 @@ export const Button: FC<Props> = ({
   color,
   hoverBg,
   hoverC,
+  ...props
 }) => {
   return (
     <ButtonBox
@@ -38,6 +43,7 @@ export const Button: FC<Props> = ({
       color={color}
       hoverBg={hoverBg}
       hoverC={hoverC}
+      {...props}
     >
       {children}
     </ButtonBox>
