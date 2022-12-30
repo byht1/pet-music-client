@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { TNav } from "helper";
 import { FC } from "react";
+import { useLocation } from "react-router-dom";
 import { NLink, Current } from "./NavItem.styled";
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export const NavItem: FC<Props> = ({ item, path, set, blur, hover }) => {
+  const { pathname } = useLocation();
+  const show = !pathname.includes("new") && item === hover;
   return (
     <li>
       {item.path === "/" ? (
@@ -24,9 +27,7 @@ export const NavItem: FC<Props> = ({ item, path, set, blur, hover }) => {
           end
         >
           {`${item.label}`}
-          {item === hover ? (
-            <Current as={motion.div} layoutId="underline" />
-          ) : null}
+          {show && <Current as={motion.div} layoutId="underline" />}
         </NLink>
       ) : (
         <NLink
@@ -37,9 +38,7 @@ export const NavItem: FC<Props> = ({ item, path, set, blur, hover }) => {
           onMouseLeave={blur}
         >
           {`${item.label}`}
-          {item === hover ? (
-            <Current as={motion.div} layoutId="underline" />
-          ) : null}
+          {show && <Current as={motion.div} layoutId="underline" />}
         </NLink>
       )}
     </li>

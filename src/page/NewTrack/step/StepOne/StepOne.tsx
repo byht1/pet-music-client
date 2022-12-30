@@ -10,6 +10,7 @@ import { Button } from "components/global/button/Button";
 import { ButtonClose } from "components/global/button/ButtonClose/ButtonClose";
 import { SoundQuality } from "components/modules/SoundQuality";
 import { IsTrackToAll } from "components/modules/IsTrackToAll";
+import { formName } from "helper";
 
 export const schemaAlbumNew = yup
   .object({
@@ -21,7 +22,7 @@ export const schemaAlbumNew = yup
 
 export const StepOne = () => {
   const { register, setValue, getValues, reset } = useFormContext();
-  const value = getValues("track__link");
+  const value = getValues(formName.TRACK);
   const [isDisabled, setIsDisabled] = useState(false || !!value);
 
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
@@ -32,18 +33,21 @@ export const StepOne = () => {
   const navigate = useNavigate();
 
   function change<T extends File>(files: T[]) {
-    setValue("track__link", files[0]);
+    setValue(formName.TRACK, files[0]);
     setIsDisabled(true);
   }
 
   const click = () => {
+    if (!isDisabled) {
+      return;
+    }
     navigate("step2");
   };
 
   const closeFile = () => {
     reset((formValues) => ({
       ...formValues,
-      file: null,
+      [formName.TRACK]: undefined,
     }));
     setIsDisabled(false);
   };
@@ -67,7 +71,7 @@ export const StepOne = () => {
         w="212px"
         mt={isDisabled ? 48 : 120}
         type="button"
-        disabled={!isDisabled}
+        // disabled={!isDisabled}
         click={click}
       >
         {isDisabled ? "Далі" : "Завантажити з ПК"}
@@ -76,9 +80,8 @@ export const StepOne = () => {
       <LabelFile>
         <InputFile
           type="file"
-          {...register("track__link")}
+          {...register(formName.TRACK)}
           {...getInputProps()}
-          accept="image/png, image/jpeg"
         />
       </LabelFile>
       <SoundQuality />

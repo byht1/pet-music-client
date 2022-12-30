@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 import { MdOutlineClear } from "react-icons/md";
+import { RClick } from "type";
 
 import { ButtonBox } from "./ButtonClose.styled";
 
 type Props = {
   disabled?: boolean;
-  click: () => any;
+  click: (e: RClick) => any;
 
   mb?: number;
   ml?: number;
@@ -19,7 +20,12 @@ export const ButtonClose: FC<Props> = ({
   ...props
 }) => {
   return (
-    <ButtonBox type="button" disabled={disabled} onClick={click} {...props}>
+    <ButtonBox
+      type="button"
+      disabled={disabled}
+      onClick={(e: RClick) => click(e)}
+      {...props}
+    >
       <MdOutlineClear size={18} color="var(--white)" />
     </ButtonBox>
   );

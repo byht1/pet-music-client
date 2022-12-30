@@ -1,22 +1,44 @@
 import { Box } from "components/global/Box";
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
+import { formNav, TNav } from "helper";
+import { Suspense, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 
-import { FormZone, List, NLink } from "./StepTwo.styled";
+import { Current, FormZone, List, NLink } from "./StepTwo.styled";
 
 export const StepTwo = () => {
+  const [hover, setHover] = useState<TNav>(formNav[0]);
+  const { pathname } = useLocation();
+
+  const blur = () => {
+    const current: TNav | undefined = formNav.find((x) => x.path === pathname);
+
+    if (!current) return;
+
+    setHover(current);
+  };
+
   return (
     <FormZone>
-      <Box>
+      <Box borderBottom="1px solid #37383A">
         <List>
-          <li>
-            <NLink to="/new/step2" end>
-              Інформація про пісню{" "}
-            </NLink>
-          </li>
-          <li>
-            <NLink to="/new/step2/album">Альбом</NLink>
-          </li>
+          {formNav.map((x, i) => {
+            return (
+              <li key={x.id}>
+                <NLink
+                  to={x.path}
+                  state={{ from: x.path }}
+                  onMouseEnter={() => setHover(x)}
+                  onMouseLeave={blur}
+                >
+                  {x.label}
+                </NLink>
+                {x === hover && (
+                  <Current as={motion.div} layoutId="underline" />
+                )}
+              </li>
+            );
+          })}
         </List>
       </Box>
       <Suspense fallback={<div>...Loader</div>}>

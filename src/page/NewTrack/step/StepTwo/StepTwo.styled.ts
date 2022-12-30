@@ -28,15 +28,14 @@ export const NLink = styled(NavLink)`
 
   &.active {
     color: ${(p) => p.theme.colors.w};
-
-    &::after {
-      content: "";
-      margin-top: 12px;
-      display: block;
-      width: 100%;
-      height: 2px;
-
-      background-color: ${(p) => p.theme.colors.v};
-    }
   }
+`;
+
+export const Current = styled.div`
+  margin-top: 12px;
+  display: block;
+  width: 100%;
+  height: 2px;
+
+  background-color: ${(p) => p.theme.colors.v};
 `;

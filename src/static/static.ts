@@ -1,5 +1,3 @@
-import Photo from "./staticPhoto.png";
-
 export const audioLink =
   "https://firebasestorage.googleapis.com/v0/b/music-db-11801.appspot.com/o/audio%2Fbbbe5fbe-3b7f-450b-9259-277f2f745a01.mp3?alt=media&token=21cc8aea-eb91-4fa9-8e6f-8535b23ac54d";
 

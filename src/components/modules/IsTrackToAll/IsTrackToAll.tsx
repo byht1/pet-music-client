@@ -2,6 +2,7 @@ import { Box } from "components/global/Box";
 import svgForm from "img/form";
 import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { RClick } from "type";
 import { ButtonCheck } from "./IsTrackToAll.styled";
 
 const { Headphone, Microphone } = svgForm;
@@ -10,7 +11,7 @@ type Props = {
   // setToAll: () => void;
 };
 
-type RClick = React.MouseEvent<HTMLElement>;
+// type RClick = React.MouseEvent<HTMLElement>;
 
 export const IsTrackToAll: FC<Props> = () => {
   const { setValue, getValues } = useFormContext();
