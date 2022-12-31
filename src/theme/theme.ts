@@ -13,6 +13,7 @@ export const theme = {
     border: "var(--border)",
     buttonHover: "var(--button-hover)",
     e: "var(--error)",
+    bgs: "var(--bg-selector)",
   },
   space: [0, 2, 4, 8, 16, 32, 60, 64, 110, 128, 256],
   fonts: {
@@ -46,7 +47,7 @@ export const theme = {
   radii: {
     none: "0",
     normal: "4px",
-    eight: '8px',
+    eight: "8px",
     normalMax: "20px",
     inputAuthForm: "24px",
     authForm: "32px",

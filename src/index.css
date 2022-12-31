@@ -17,6 +17,7 @@ html {
   --hover-e-color: color 250ms linear;
   --hover-e-bg: background-color 250ms linear;
   --error: #e26733;
+  --bg-selector: #ceccd1;
 }
 
 * {

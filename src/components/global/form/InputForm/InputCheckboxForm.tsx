@@ -2,13 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { BsCheckLg } from "react-icons/bs";
 
-import {
-  Checkbox,
-  InputCheckbox,
-  Label,
-  Text,
-  TextError,
-} from "./InputForm.styled";
+import { Checkbox, InputCheckbox, Label, Text } from "./InputForm.styled";
 import { Box } from "components/global/Box";
 import { InputError } from "./InputError";
 import { authSchema } from "components/modules/form/typeSchema/authSchema";
@@ -16,9 +10,14 @@ import { authSchema } from "components/modules/form/typeSchema/authSchema";
 type Props = {
   name: "roles";
   text: string;
+  isError?: boolean;
 };
 
-export const InputCheckboxForm: FC<Props> = ({ name, text }) => {
+export const InputCheckboxForm: FC<Props> = ({
+  name,
+  text,
+  isError = true,
+}) => {
   const {
     watch,
     register,
@@ -42,7 +41,7 @@ export const InputCheckboxForm: FC<Props> = ({ name, text }) => {
         </Box>
         <InputCheckbox type="checkbox" {...register(name)} />
         <Text>{text}</Text>
-        {error && <InputError text={error?.message} />}
+        {isError && error && <InputError text={error?.message} />}
       </Label>
     </>
   );

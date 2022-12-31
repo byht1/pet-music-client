@@ -24,10 +24,16 @@ type Props = {
     | "date_implementation"
     | "album"
     | "text_track"
-    | "audio";
+    | "audio"
+    | "tags";
   title?: string;
   placeholder?: string;
   value?: string;
+
+  mb?: number;
+  ml?: number;
+  mr?: number;
+  mt?: number;
 };
 
 export const InputForm: FC<Props> = ({
@@ -36,6 +42,7 @@ export const InputForm: FC<Props> = ({
   placeholder = "",
   title,
   value,
+  ...props
 }) => {
   const {
     watch,
@@ -59,7 +66,7 @@ export const InputForm: FC<Props> = ({
   };
 
   return (
-    <Label onBlur={notFocus}>
+    <Label onBlur={notFocus} {...props}>
       {title && isFocus && <NameInput>{title}</NameInput>}
       <Input
         onFocus={() => setIsFocus(false)}

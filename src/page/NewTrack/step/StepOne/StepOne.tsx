@@ -76,7 +76,7 @@ export const StepOne = () => {
       >
         {isDisabled ? "Далі" : "Завантажити з ПК"}
       </Button>
-      <IsTrackToAll />
+      <IsTrackToAll position="center" />
       <LabelFile>
         <InputFile
           type="file"

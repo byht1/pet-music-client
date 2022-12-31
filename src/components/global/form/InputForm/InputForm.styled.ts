@@ -4,6 +4,11 @@ import { MdOutlineClear } from "react-icons/md";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export const Label = styled.label<any>`
+  ${(p) => p.mt && `margin-top: ${p.mt}px;`}
+  ${(p) => p.mb && `margin-bottom: ${p.mb}px;`}
+  ${(p) => p.mr && `margin-right: ${p.mr}px;`}
+  ${(p) => p.ml && `margin-left: ${p.ml}px;`};
+
   position: relative;
   display: flex;
   align-items: center;
@@ -180,4 +185,21 @@ export const InputRange = styled.input<any>`
     border: none;
     background: transparent;
   }
+`;
+
+export const Textarea = styled.textarea<any>`
+  border: ${(p) => (p.error ? `2px solid ${p.theme.colors.e}` : "none")};
+  outline: none;
+  resize: none;
+
+  height: 120px;
+  width: 100%;
+
+  padding: 12px 24px;
+
+  border-radius: ${(p) => p.theme.radii.inputAuthForm};
+
+  background-color: ${(p) =>
+    p.length || p.error ? p.theme.colors.w : p.theme.colors.bs};
+  color: ${(p) => (p.length ? p.theme.colors.bs : p.theme.colors.w)};
 `;

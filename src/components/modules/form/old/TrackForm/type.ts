@@ -9,4 +9,5 @@ export interface ITrackForm {
 
   audio: string;
   picture: string;
+  tags: string;
 }

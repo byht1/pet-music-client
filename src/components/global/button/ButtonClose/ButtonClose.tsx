@@ -8,6 +8,8 @@ type Props = {
   disabled?: boolean;
   click: (e: RClick) => any;
 
+  position?: boolean
+
   mb?: number;
   ml?: number;
   mr?: number;

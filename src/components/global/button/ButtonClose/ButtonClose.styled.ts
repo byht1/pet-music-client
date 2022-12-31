@@ -6,10 +6,9 @@ export const ButtonBox = styled.button<any>`
   ${(p) => p.mr && `margin-right: ${p.mr}px;`}
   ${(p) => p.ml && `margin-left: ${p.ml}px;`};
 
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  transform: translate(-50%, -50%);
+  ${(p) =>
+    p.position &&
+    "position: absolute; top: 7px; right: 7px; transform: translate(-50%, -50%);"}
 
   border: none;
   outline: none;

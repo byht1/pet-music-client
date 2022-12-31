@@ -8,12 +8,12 @@ import { ButtonCheck } from "./IsTrackToAll.styled";
 const { Headphone, Microphone } = svgForm;
 
 type Props = {
-  // setToAll: () => void;
+  position: "center" | "start";
 };
 
 // type RClick = React.MouseEvent<HTMLElement>;
 
-export const IsTrackToAll: FC<Props> = () => {
+export const IsTrackToAll: FC<Props> = ({ position }) => {
   const { setValue, getValues } = useFormContext();
   const [value, setValueC] = useState<boolean>(getValues("toAllTrack"));
   // const value = ;
@@ -30,7 +30,7 @@ export const IsTrackToAll: FC<Props> = () => {
   };
 
   return (
-    <Box display="flex" gridGap="24px" justifyContent="center" mt="60px">
+    <Box display="flex" gridGap="24px" justifyContent={position} mt="60px">
       <ButtonCheck
         active={value}
         onClick={(e: RClick) => click(e, true)}

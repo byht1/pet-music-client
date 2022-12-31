@@ -3,4 +3,7 @@ export enum EFormName {
   PICTURE = "picture_link",
   NAME = "name",
   PERMALINK = "permalink",
+  GENRES = "genres",
+  TAGS = "tags",
+  DESCRIPTION = "description",
 }
