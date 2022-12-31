@@ -1,19 +1,35 @@
 import { Box } from "components/global/Box";
 import { ButtonClose } from "components/global/button/ButtonClose/ButtonClose";
+import { InputForm } from "components/global/form/InputForm";
 import { Text } from "components/global/Text";
-import { formName } from "helper";
+import { EFormName } from "helper";
 import { Camera, MusicPrivy } from "img/form";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useFormContext } from "react-hook-form";
 import { RClick } from "type";
 import { InputFile, LabelFile } from "../../StepOne/StepOne.styled.";
-import { CheatButton, DropZone, ImgPrivy } from "./Track.styled";
+import { HiPencil } from "react-icons/hi";
+import {
+  ButtonPen,
+  CheatButton,
+  DropZone,
+  ImgPrivy,
+  LabelBox,
+  PermalinkBox,
+  PermalinkInput,
+  PermalinkLink,
+  Placeholder,
+} from "./Track.styled";
+
+//
 
 type TPicturePrivy = string | ArrayBuffer | null | undefined;
 
 export const Track = () => {
-  const { register, setValue, getValues, reset } = useFormContext();
+  const [isFocus, setIsFocus] = useState(true);
+  const [permalinkDisabled, setPermalinkDisabled] = useState(true);
+  const { register, setValue, getValues, reset, setFocus } = useFormContext();
   const [picturePrivy, setPicturePrivy] = useState<TPicturePrivy>();
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
     accept: { "image/*": [".png", ".jpg", ".svg"] },
@@ -22,7 +38,7 @@ export const Track = () => {
   });
 
   useLayoutEffect(() => {
-    const file = getValues(formName.PICTURE);
+    const file = getValues(EFormName.PICTURE);
     if (!file) return;
     change(file);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,7 +49,7 @@ export const Track = () => {
 
     reset((formValues) => ({
       ...formValues,
-      [formName.PICTURE]: undefined,
+      [EFormName.PICTURE]: undefined,
     }));
     setPicturePrivy(undefined);
   };
@@ -48,8 +64,23 @@ export const Track = () => {
 
     reader.readAsDataURL(file);
 
-    setValue(formName.PICTURE, file);
+    setValue(EFormName.PICTURE, file);
   }
+
+  const notFocus = () => {
+    const value = getValues(EFormName.PERMALINK);
+    setIsFocus(value?.length === 0);
+    setPermalinkDisabled(true);
+  };
+
+  const focus = () => {
+    setPermalinkDisabled(false);
+
+    setTimeout(() => {
+      setFocus(EFormName.PERMALINK);
+      setIsFocus(false);
+    });
+  };
 
   return (
     <Box
@@ -78,12 +109,42 @@ export const Track = () => {
         <LabelFile>
           <InputFile
             type="file"
-            {...register(formName.PICTURE)}
+            {...register(EFormName.PICTURE)}
             {...getInputProps()}
           />
         </LabelFile>
       </Box>
-      <div>Two</div>
+      <div>
+        <InputForm title="Назва" inputType="text" name={EFormName.NAME} />
+        <PermalinkBox>
+          <Text family="roboto" weight={700} size={16} lh={24}>
+            Постійне посилання
+          </Text>
+          <Box
+            mt="12px"
+            display="grid"
+            gridTemplateColumns="auto 1fr auto"
+            gridGap="16px"
+            alignItems="center"
+          >
+            <PermalinkLink>
+              https://byht1.github.io/pet-music-client/track/
+            </PermalinkLink>
+
+            <LabelBox onBlur={notFocus}>
+              {isFocus && <Placeholder>11bf5b37-e0b8-42e0-8dcf</Placeholder>}
+              <PermalinkInput
+                type="text"
+                {...register(EFormName.PERMALINK)}
+                disabled={permalinkDisabled}
+              />
+            </LabelBox>
+            <ButtonPen onClick={focus} type="button">
+              <HiPencil size={18} />
+            </ButtonPen>
+          </Box>
+        </PermalinkBox>
+      </div>
     </Box>
   );
 };

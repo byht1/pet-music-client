@@ -10,7 +10,7 @@ import { Button } from "components/global/button/Button";
 import { ButtonClose } from "components/global/button/ButtonClose/ButtonClose";
 import { SoundQuality } from "components/modules/SoundQuality";
 import { IsTrackToAll } from "components/modules/IsTrackToAll";
-import { formName } from "helper";
+import { EFormName } from "helper";
 
 export const schemaAlbumNew = yup
   .object({
@@ -22,7 +22,7 @@ export const schemaAlbumNew = yup
 
 export const StepOne = () => {
   const { register, setValue, getValues, reset } = useFormContext();
-  const value = getValues(formName.TRACK);
+  const value = getValues(EFormName.TRACK);
   const [isDisabled, setIsDisabled] = useState(false || !!value);
 
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
@@ -33,7 +33,7 @@ export const StepOne = () => {
   const navigate = useNavigate();
 
   function change<T extends File>(files: T[]) {
-    setValue(formName.TRACK, files[0]);
+    setValue(EFormName.TRACK, files[0]);
     setIsDisabled(true);
   }
 
@@ -47,7 +47,7 @@ export const StepOne = () => {
   const closeFile = () => {
     reset((formValues) => ({
       ...formValues,
-      [formName.TRACK]: undefined,
+      [EFormName.TRACK]: undefined,
     }));
     setIsDisabled(false);
   };
@@ -80,7 +80,7 @@ export const StepOne = () => {
       <LabelFile>
         <InputFile
           type="file"
-          {...register(formName.TRACK)}
+          {...register(EFormName.TRACK)}
           {...getInputProps()}
         />
       </LabelFile>

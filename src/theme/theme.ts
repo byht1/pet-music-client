@@ -46,6 +46,7 @@ export const theme = {
   radii: {
     none: "0",
     normal: "4px",
+    eight: '8px',
     normalMax: "20px",
     inputAuthForm: "24px",
     authForm: "32px",
