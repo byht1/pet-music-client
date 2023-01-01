@@ -4,7 +4,7 @@ import { MdError } from "react-icons/md";
 import { TextError } from "./InputForm.styled";
 
 type Props = {
-  text?: string;
+  text?: string | any;
 };
 
 export const InputError: FC<Props> = ({ text }) => {

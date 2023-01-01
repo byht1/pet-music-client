@@ -2,13 +2,17 @@ import { Box } from "components/global/Box";
 import { motion } from "framer-motion";
 import { formNav, TNav } from "helper";
 import { Suspense, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { useFormContext } from "react-hook-form";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { RClick } from "type";
 
 import { Current, FormZone, List, NLink } from "./StepTwo.styled";
 
 export const StepTwo = () => {
+  const { trigger } = useFormContext();
   const [hover, setHover] = useState<TNav>(formNav[0]);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const blur = () => {
     const current: TNav | undefined = formNav.find((x) => x.path === pathname);
@@ -16,6 +20,16 @@ export const StepTwo = () => {
     if (!current) return;
 
     setHover(current);
+  };
+
+  const link = async (e: RClick) => {
+    e.preventDefault();
+
+    const error = await trigger();
+
+    if (!error) return;
+
+    navigate("/new/step2/album");
   };
 
   return (
@@ -30,6 +44,7 @@ export const StepTwo = () => {
                   state={{ from: x.path }}
                   onMouseEnter={() => setHover(x)}
                   onMouseLeave={blur}
+                  onClick={(e: RClick) => (i === 0 ? "" : link(e))}
                 >
                   {x.label}
                 </NLink>

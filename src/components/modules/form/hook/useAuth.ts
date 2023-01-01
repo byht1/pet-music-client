@@ -46,6 +46,7 @@ export const useAuth = (type: TFormType) => {
 
   const onSubmit = async (data: authSchema) => {
     try {
+      console.log(11111111);
       const res = await dispatch(authorization({ type, body: data }));
 
       if (res.type === "auth/authorization/rejected") return;

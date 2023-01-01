@@ -37,10 +37,11 @@ export const StepOne = () => {
     setIsDisabled(true);
   }
 
-  const click = () => {
+  const click = async () => {
     if (!isDisabled) {
       return;
     }
+
     navigate("step2");
   };
 

@@ -15,7 +15,3 @@ export const Track = (props: Props) => {
     </Box>
   );
 };
-
-{
-  /* <Icon src={UserIcon} alt="user-icon" />; */
-}

@@ -1,13 +1,11 @@
+import { EFormName } from "helper";
+
 export interface ITrackForm {
-  name: string;
-  author_track: string;
-  date_implementation: string;
-
-  album: string;
-  text_track: string;
-  genre: string;
-
-  audio: string;
-  picture: string;
-  tags: string;
+  [EFormName.TRACK]: string;
+  [EFormName.PICTURE]: string;
+  [EFormName.NAME]: string;
+  [EFormName.GENRES]: string[];
+  [EFormName.TAGS]: string;
+  [EFormName.DESCRIPTION]: string;
+  [EFormName.TOALL]: boolean;
 }

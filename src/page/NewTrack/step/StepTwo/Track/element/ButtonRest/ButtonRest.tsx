@@ -1,6 +1,6 @@
-import { EFormName } from "helper";
-import React from "react";
 import { useFormContext } from "react-hook-form";
+
+import { defaultFormTrack } from "helper";
 import { ResButton } from "./ButtonRest.styled";
 
 export const ButtonRest = () => {
@@ -8,17 +8,7 @@ export const ButtonRest = () => {
 
   return (
     <ResButton
-      onClick={() =>
-        reset((formValues) => ({
-          [EFormName.DESCRIPTION]: "",
-          [EFormName.GENRES]: "",
-          [EFormName.NAME]: "",
-          [EFormName.PERMALINK]: undefined,
-          [EFormName.PICTURE]: "",
-          [EFormName.TAGS]: "",
-          [EFormName.TRACK]: "",
-        }))
-      }
+      onClick={() => reset((formValues) => defaultFormTrack)}
       type="button"
     >
       Скасувати

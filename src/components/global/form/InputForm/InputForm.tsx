@@ -7,6 +7,7 @@ import { authSchema } from "components/modules/form/typeSchema/authSchema";
 import { InputError } from "./InputError";
 import { IAlbumForm } from "components/modules/form/old/AlbumForm/type";
 import { ITrackForm } from "components/modules/form/old/TrackForm/type";
+import { EFormName } from "helper";
 
 type Props = {
   inputType: string;
@@ -25,7 +26,8 @@ type Props = {
     | "album"
     | "text_track"
     | "audio"
-    | "tags";
+    | "tags"
+    | EFormName;
   title?: string;
   placeholder?: string;
   value?: string;
@@ -48,7 +50,7 @@ export const InputForm: FC<Props> = ({
     watch,
     register,
     formState: { errors },
-  } = useFormContext<authSchema & IAlbumForm & ITrackForm>();
+  } = useFormContext<authSchema & IAlbumForm & ITrackForm & any>();
   const [isFocus, setIsFocus] = useState(true);
   const [show, setShow] = useState(false);
   const [type, setType] = useState(inputType);

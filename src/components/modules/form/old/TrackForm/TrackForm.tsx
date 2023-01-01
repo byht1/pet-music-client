@@ -18,7 +18,7 @@ type Props = {
 };
 
 export const TrackForm: FC<Props> = ({ current, max, set }) => {
-  const methods = useForm<ITrackForm>({
+  const methods = useForm<any>({
     resolver: yupResolver(schemaTrackNew),
   });
   const { handleSubmit } = methods;

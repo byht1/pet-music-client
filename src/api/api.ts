@@ -58,7 +58,7 @@ export const axiosError = (error: any): ErrorStatusAndMessage => {
 };
 
 export const serverAuth = async (type: string, body: authSchema) => {
-  return await postCtrlWrapper(`/user/${type}`, body);
+  return await postCtrlWrapper(`/api/users/${type}`, body);
 };
 
 // export const serverLogIn = async (body: authSchema) => {
@@ -67,21 +67,21 @@ export const serverAuth = async (type: string, body: authSchema) => {
 
 export const serverLogOut = async () => {
   console.log("🚀 ~ serverLogOut");
-  return await getCtrlWrapper("/user/logout");
+  return await getCtrlWrapper("/api/users/logout");
 };
 
 export const serverCurrent = async (abort: AbortSignal) => {
-  return await getCtrlWrapperAbort("/user/login", abort);
+  return await getCtrlWrapperAbort("/api/users/login", abort);
 };
 
 export const serverNewAlbum = async (body: any) => {
-  return await postCtrlWrapper(`/album`, body);
+  return await postCtrlWrapper(`/api/album`, body);
 };
 
 export const serverAlbum = async () => {
-  return await getCtrlWrapper("/album");
+  return await getCtrlWrapper("/api/album");
 };
 
 export const serverAlbumUser = async () => {
-  return await getCtrlWrapper("/user/album");
+  return await getCtrlWrapper("/api/users/album");
 };

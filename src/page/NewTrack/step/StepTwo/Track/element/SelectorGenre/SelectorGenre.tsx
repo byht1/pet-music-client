@@ -12,6 +12,7 @@ import {
 import { CheckboxGenre } from "../CheckboxGenre";
 import { useFormContext } from "react-hook-form";
 import { RClick } from "type";
+import { InputError } from "components/global/form/InputForm/InputError";
 
 type Props = {
   show: boolean;
@@ -19,11 +20,18 @@ type Props = {
 };
 
 export const SelectorGenre: FC<Props> = ({ show, setShow }) => {
-  const { watch } = useFormContext();
+  const {
+    trigger,
+    watch,
+    formState: { errors },
+  } = useFormContext();
   const genreCheck: string[] | undefined = watch(EFormName.GENRES);
+  const error = errors[EFormName.GENRES];
 
-  const showSelector = (e: RClick) => {
+  const showSelector = async (e: RClick) => {
     e.stopPropagation();
+
+    await trigger(EFormName.GENRES);
 
     setShow((prev) => !prev);
   };
@@ -36,10 +44,12 @@ export const SelectorGenre: FC<Props> = ({ show, setShow }) => {
           defaultValue={genreCheck ? genreCheck?.join(", ") : ""}
           length={genreCheck?.length}
           disabled
+          error={error}
         />
         <ButtonShow onClick={(e: RClick) => showSelector(e)} type="button">
           {show ? <SelectorArrowUp /> : <SelectorArrowDown />}
         </ButtonShow>
+        {error && <InputError text={error?.message} />}
       </Label>
 
       {show && (

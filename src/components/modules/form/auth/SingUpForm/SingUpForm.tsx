@@ -16,6 +16,7 @@ import { FormBox } from "../../../../global/form/FormBox";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { InputCheckboxForm, InputForm } from "components/global/form/InputForm";
 import { Button } from "components/global/button/Button";
+import axios from "axios";
 
 export const SingUpForm: FC = () => {
   const { loader, error, errorMessage, methods, onSubmit } = useAuth(

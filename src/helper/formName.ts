@@ -6,4 +6,16 @@ export enum EFormName {
   GENRES = "genres",
   TAGS = "tags",
   DESCRIPTION = "description",
+  TOALL = "toAllTrack",
 }
+
+export const defaultFormTrack = {
+  [EFormName.TRACK]: "",
+  [EFormName.PICTURE]: "",
+  [EFormName.NAME]: "",
+  [EFormName.PERMALINK]: undefined,
+  [EFormName.GENRES]: "",
+  [EFormName.TAGS]: "",
+  [EFormName.DESCRIPTION]: "",
+  [EFormName.TOALL]: "",
+};

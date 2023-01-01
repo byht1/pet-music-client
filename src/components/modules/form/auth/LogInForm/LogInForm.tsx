@@ -22,6 +22,7 @@ export const LogInForm: FC = () => {
   const { error, errorMessage, methods, onSubmit } = useAuth(typeSchema.LOGIN);
 
   const { handleSubmit } = methods;
+
   return (
     <Box>
       {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
