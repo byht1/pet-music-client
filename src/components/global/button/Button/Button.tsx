@@ -17,11 +17,13 @@ type Props = {
   ml?: number;
   mr?: number;
   mt?: number;
+  p?: boolean;
 };
 
 export const Button: FC<Props> = ({
   type = "submit",
   disabled = false,
+  p = true,
   children,
   click,
   w,
@@ -37,6 +39,7 @@ export const Button: FC<Props> = ({
       onClick={click}
       type={type}
       disabled={disabled}
+      padding={p}
       w={w}
       h={h}
       bg={bg}

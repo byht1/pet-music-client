@@ -24,7 +24,6 @@ import { Nav } from "page/Nav/Nav";
 import { Track, Album, StepOne, StepTwo } from "page/NewTrack";
 import NewTrack from "page/NewTrack/NewTrack";
 import { Footer } from "components/modules/Footer";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const queryClient = new QueryClient();
 
@@ -43,37 +42,36 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GoogleOAuthProvider clientId="894802329259-ksrjdmuhasgtdhsbb14ng3vba8ji12l9.apps.googleusercontent.com">
-        <Routes>
-          <Route path="/" element={<AppBar />}>
-            <Route index element={<Home />} />
-            <Route path="/user">
-              <Route
-                index
-                element={
-                  // <PrivateRouter>
-                  <PersonalOffice />
-                  // </PrivateRouter>
-                }
-              />
-              <Route path="sing-up" element={<SingUp />} />
-              <Route path="log-in" element={<LogIn />} />
-              <Route path="forgotten" element={<ForgottenPassword />} />
-              <Route path="new-password" element={<NewPassword />} />
+      <Routes>
+        <Route path="/" element={<AppBar />}>
+          <Route index element={<Home />} />
+          <Route path="/user">
+            <Route
+              index
+              element={
+                // <PrivateRouter>
+                <PersonalOffice />
+                // </PrivateRouter>
+              }
+            />
+            <Route path="sing-up" element={<SingUp />} />
+            <Route path="log-in" element={<LogIn />} />
+            <Route path="forgotten" element={<ForgottenPassword />} />
+            <Route path="new-password" element={<NewPassword />} />
+          </Route>
+
+          <Route path="nav" element={<Nav />} />
+          <Route path="track-list" element={<TrackList />} />
+
+          <Route path="new" element={<NewTrack />}>
+            <Route index element={<StepOne />} />
+            <Route path="step2" element={<StepTwo />}>
+              <Route index element={<Track />} />
+              <Route path="album" element={<Album />} />
             </Route>
+          </Route>
 
-            <Route path="nav" element={<Nav />} />
-            <Route path="track-list" element={<TrackList />} />
-
-            <Route path="new" element={<NewTrack />}>
-              <Route index element={<StepOne />} />
-              <Route path="step2" element={<StepTwo />}>
-                <Route index element={<Track />} />
-                <Route path="album" element={<Album />} />
-              </Route>
-            </Route>
-
-            {/* <Route
+          {/* <Route
             path="new-track/track"
             element={
               // <PrivateRouter>
@@ -91,15 +89,14 @@ function App() {
             }
           /> */}
 
-            <Route path="profile" element={<Profile />} />
-            <Route path="comment" element={<Comment />} />
-          </Route>
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <Footer />
-        <CardAudioPlayer />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </GoogleOAuthProvider>
+          <Route path="profile" element={<Profile />} />
+          <Route path="comment" element={<Comment />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+      <Footer />
+      <CardAudioPlayer />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

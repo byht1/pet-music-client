@@ -1,17 +1,11 @@
 import { FC } from "react";
 import { BsGoogle, BsApple } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 
-import { ListAuth, Title } from "./AuthTitleForm.styled";
+import { CrutchBox, ListAuth, Title } from "./AuthTitleForm.styled";
 import { Box } from "components/global/Box";
 import { Button } from "components/global/button/Button";
-// import {
-//   GoogleLogin,
-//   GoogleOAuthProvider,
-//   useGoogleLogin,
-// } from "@react-oauth/google";
 import axios from "axios";
 
 type Props = {
@@ -23,64 +17,45 @@ type Props = {
 //"http://localhost:5000/api/users/google/login"
 
 export const AuthTitleForm: FC<Props> = ({ header, message }) => {
-  const login = useGoogleLogin({
-    flow: "implicit",
-    onSuccess: async (credentialResponse) => {
-      console.log("🚀  credentialResponse", credentialResponse);
-      const response = await axios.post(
-        "http://localhost:5000/api/users/google/auth",
-        {
-          token: credentialResponse,
-        }
-      );
-      const data = response.data;
-      console.log("🚀  data", data);
-    },
-    onError: () => console.log("error"),
-    scope: "email",
-  });
-
-  // const login = useGoogleLogin({
-  //   onSuccess: (codeResponse) => console.log(codeResponse),
-  //   // flow: "auth-code",0.
-
-  // });
-
   return (
     <Box display="grid" gridGap="40px">
       <Title>{header}</Title>
-      <GoogleLogin
-        onSuccess={async (credentialResponse) => {
-          console.log("🚀  credentialResponse", credentialResponse);
-          const response = await axios.post(
-            "http://localhost:5000/api/users/google/auth",
-            {
-              token: credentialResponse,
-            }
-          );
-          const data = response.data;
-          console.log("🚀  data", data);
-        }}
-        onError={() => {
-          console.log("Login Failed");
-        }}
-      />
 
-      <button type="button" onClick={() => login()}>
-        111111111111111
-      </button>
       {!message && (
         <ListAuth>
           <li>
-            <Button
-              click={() => login()}
-              // disabled
-              bg="transparent"
-              hoverBg="transparent"
-              hoverC="var(--violet)"
-            >
-              <BsGoogle size={40} />
-            </Button>
+            <Box position="relative">
+              <Button
+                disabled
+                bg="transparent"
+                hoverBg="transparent"
+                hoverC="var(--violet)"
+                p={false}
+              >
+                <BsGoogle size={40} />
+              </Button>
+              <CrutchBox>
+                <GoogleOAuthProvider clientId="894802329259-ksrjdmuhasgtdhsbb14ng3vba8ji12l9.apps.googleusercontent.com">
+                  <GoogleLogin
+                    onSuccess={async (credentialResponse) => {
+                      console.log("🚀  credentialResponse", credentialResponse);
+                      const response = await axios.post(
+                        "http://localhost:5000/api/users/google/auth",
+                        {
+                          token: credentialResponse,
+                        }
+                      );
+                      const data = response.data;
+                      console.log("🚀  data", data);
+                    }}
+                    onError={() => {
+                      console.log("Login Failed");
+                    }}
+                  />
+                </GoogleOAuthProvider>
+              </CrutchBox>
+            </Box>
+            {/* </GoogleOAuthProvider> */}
           </li>
           <li>
             <Button
@@ -88,6 +63,7 @@ export const AuthTitleForm: FC<Props> = ({ header, message }) => {
               bg="transparent"
               hoverBg="transparent"
               hoverC="var(--violet)"
+              p={false}
             >
               <BsApple size={40} />
             </Button>
@@ -98,6 +74,7 @@ export const AuthTitleForm: FC<Props> = ({ header, message }) => {
               bg="transparent"
               hoverBg="transparent"
               hoverC="var(--violet)"
+              p={false}
             >
               <FaFacebookF size={40} />
             </Button>

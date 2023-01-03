@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 export const ButtonBox = styled.button<any>`
-  ${(p) => p.mt && `margin-top: ${p.mt}px;`}
-  ${(p) => p.mb && `margin-bottom: ${p.mb}px;`}
-  ${(p) => p.mr && `margin-right: ${p.mr}px;`}
-  ${(p) => p.ml && `margin-left: ${p.ml}px;`}
-
+  ${(p) => p.mt && `margin-top: ${p.mt}px`};
+  ${(p) => p.mb && `margin-bottom: ${p.mb}px`};
+  ${(p) => p.mr && `margin-right: ${p.mr}px`};
+  ${(p) => p.ml && `margin-left: ${p.ml}px`};
 
   width: ${(p) => (p.w ? p.w : "100%")};
-  /* height: ${(p) => (p.h ? p.h : "40px")}; */
-  padding: 12px 36px;
+  ${(p) => p.padding && `padding: 12px 36px`};
 
   border: none;
   outline: none;
