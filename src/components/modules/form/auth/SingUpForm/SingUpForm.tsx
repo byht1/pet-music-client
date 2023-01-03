@@ -16,7 +16,7 @@ import { FormBox } from "../../../../global/form/FormBox";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { InputCheckboxForm, InputForm } from "components/global/form/InputForm";
 import { Button } from "components/global/button/Button";
-import axios from "axios";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export const SingUpForm: FC = () => {
   const { loader, error, errorMessage, methods, onSubmit } = useAuth(
@@ -33,9 +33,9 @@ export const SingUpForm: FC = () => {
         <WrapperAuthForm>
           <FormBox methods={methods} submit={handleSubmit(onSubmit)} box>
             <ArrowBack />
-
+            {/* <GoogleOAuthProvider clientId="894802329259-ksrjdmuhasgtdhsbb14ng3vba8ji12l9.apps.googleusercontent.com"> */}
             <AuthTitleForm header="Новий користувач" />
-
+            {/* </GoogleOAuthProvider> */}
             <Box display="grid" gridGap="32px">
               <InputForm title="Email" inputType="email" name="email" />
 

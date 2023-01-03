@@ -1,10 +1,17 @@
 import { FC } from "react";
 import { BsGoogle, BsApple } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
 
 import { ListAuth, Title } from "./AuthTitleForm.styled";
 import { Box } from "components/global/Box";
 import { Button } from "components/global/button/Button";
+// import {
+//   GoogleLogin,
+//   GoogleOAuthProvider,
+//   useGoogleLogin,
+// } from "@react-oauth/google";
 import axios from "axios";
 
 type Props = {
@@ -12,46 +19,61 @@ type Props = {
   message?: boolean;
 };
 
+//"http://localhost:5000/api/users/test"
+//"http://localhost:5000/api/users/google/login"
+
 export const AuthTitleForm: FC<Props> = ({ header, message }) => {
-  const onClick = async () => {
-    console.log("START");
-    const { data } = await axios.get("http://localhost:5000/api/users/test", {
-      withCredentials: true,
-    });
-    console.log("🚀  data", data);
-  };
-
-  const redirectToGoogleSSO = async () => {
-    let timer: NodeJS.Timeout | null = null;
-    const googleLoginURL = "http://localhost:5000/api/users/google/login";
-    const newWindow = window.open(
-      googleLoginURL,
-      "_blank",
-      "width=500,height=600"
-    );
-
-    if (newWindow) {
-      timer = setInterval(() => {
-        if (newWindow.closed) {
-          console.log("Yay we're authenticated");
-          onClick();
-          if (timer) clearInterval(timer);
+  const login = useGoogleLogin({
+    flow: "implicit",
+    onSuccess: async (credentialResponse) => {
+      console.log("🚀  credentialResponse", credentialResponse);
+      const response = await axios.post(
+        "http://localhost:5000/api/users/google/auth",
+        {
+          token: credentialResponse,
         }
-      }, 500);
-    }
-  };
+      );
+      const data = response.data;
+      console.log("🚀  data", data);
+    },
+    onError: () => console.log("error"),
+    scope: "email",
+  });
+
+  // const login = useGoogleLogin({
+  //   onSuccess: (codeResponse) => console.log(codeResponse),
+  //   // flow: "auth-code",0.
+
+  // });
 
   return (
     <Box display="grid" gridGap="40px">
-      {/* <a href="http://localhost:5000/api/users/google/login">
-        http://localhost:5000/api/users/google/login
-      </a> */}
       <Title>{header}</Title>
+      <GoogleLogin
+        onSuccess={async (credentialResponse) => {
+          console.log("🚀  credentialResponse", credentialResponse);
+          const response = await axios.post(
+            "http://localhost:5000/api/users/google/auth",
+            {
+              token: credentialResponse,
+            }
+          );
+          const data = response.data;
+          console.log("🚀  data", data);
+        }}
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
+
+      <button type="button" onClick={() => login()}>
+        111111111111111
+      </button>
       {!message && (
         <ListAuth>
           <li>
             <Button
-              click={redirectToGoogleSSO}
+              click={() => login()}
               // disabled
               bg="transparent"
               hoverBg="transparent"
