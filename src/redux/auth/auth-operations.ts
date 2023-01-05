@@ -26,7 +26,7 @@ export const authorization = createAsyncThunk<
   }
 });
 
-export const logOut = createAsyncThunk<
+export const logOut2 = createAsyncThunk<
   void,
   void,
   { rejectValue: ErrorStatusAndMessage }

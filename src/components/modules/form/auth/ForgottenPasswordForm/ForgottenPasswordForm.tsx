@@ -3,14 +3,14 @@ import { ArrowBack } from "components/modules/ArrowBack";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { FormBox } from "../../../../global/form/FormBox";
 import { WrapperAuthForm } from "../../GlobalForm.styled";
-import { typeSchema, useAuth } from "../../hook/useAuth";
+import { ETypeUseAuth, useAuth } from "../../hook/useAuth";
 import { InputForm } from "components/global/form/InputForm";
 import { TextForm } from "../../../../global/form/TextForm";
 
 type Props = {};
 
 export const ForgottenPasswordForm = (props: Props) => {
-  const { methods, onSubmit } = useAuth(typeSchema.FORGOT);
+  const { methods, onSubmit } = useAuth(ETypeUseAuth.LOGIN); // Переробить
 
   const { handleSubmit } = methods;
 

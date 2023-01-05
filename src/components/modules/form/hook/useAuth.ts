@@ -3,41 +3,73 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { authSchema } from "../typeSchema/authSchema";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux/hook";
-import { authorization } from "redux/auth";
-import {
-  getUser,
-  getError,
-  getErrorMessage,
-  getIsLoggedIn,
-} from "redux/auth/auth-selector";
+import { errorReducer, logInReducer } from "redux/auth";
+import { getErrorMessage, getIsError, getUser } from "redux/auth/auth-selector";
 import { useSelector } from "react-redux";
 import { schemaForgotten } from "../auth/ForgottenPasswordForm";
 import { schemaLogIn } from "../auth/LogInForm/schema";
 import { schemaNewPassword } from "../auth/NewPasswordForm";
 import { schemaSingUp } from "../auth/SingUpForm/schema";
+import { useMutation } from "@tanstack/react-query";
+import { googleAuth, logIn, singUp } from "api";
+import { AxiosError } from "axios";
+import { IUser } from "redux/auth/type/type";
 
-export const typeSchema = Object.freeze({
-  SIGNUP: "signup",
-  LOGIN: "login",
-  FORGOT: "forgot",
-  PASSWORD: "password",
-});
 // schemaForgotten;
-const schemes = {
-  signup: schemaSingUp,
-  login: schemaLogIn,
-  forgot: schemaForgotten,
-  password: schemaNewPassword,
+// const schemes = {
+//   signup: schemaSingUp,
+//   login: schemaLogIn,
+//   forgot: schemaForgotten,
+//   password: schemaNewPassword,
+// };
+
+export enum ETypeUseAuth {
+  SIGNUP = "signup",
+  LOGIN = "login",
+  GOOGLE = "google",
+}
+
+// type TFormType = "signup" | "login" | "forgot" | "password";
+
+const method = {
+  [ETypeUseAuth.SIGNUP]: {
+    schema: schemaSingUp,
+    fn: singUp,
+  },
+  [ETypeUseAuth.LOGIN]: {
+    schema: schemaLogIn,
+    fn: logIn,
+  },
+  [ETypeUseAuth.GOOGLE]: {
+    schema: schemaLogIn,
+    fn: googleAuth,
+  },
 };
 
-type TFormType = "signup" | "login" | "forgot" | "password";
-
-export const useAuth = (type: TFormType) => {
-  const schema = schemes[type];
+export const useAuth = (type: ETypeUseAuth) => {
+  const { schema, fn } = method[type];
   const dispatch = useAppDispatch();
+
+  const { mutateAsync } = useMutation<
+    IUser,
+    AxiosError<string[], any>,
+    authSchema,
+    unknown
+  >({
+    mutationFn: fn,
+    onSuccess: (data: IUser) => {
+      dispatch(logInReducer(data));
+      navigate("/", { replace: true });
+      methods.reset();
+    },
+    onError: (error: AxiosError<string[]>) => {
+      const mes = error.response?.data[0] ?? "Невідома помилка";
+      dispatch(errorReducer(mes));
+    },
+  });
+
   const user = useSelector(getUser);
-  const loader = useSelector(getIsLoggedIn);
-  const error = useSelector(getError);
+  const error = useSelector(getIsError);
   const errorMessage = useSelector(getErrorMessage);
   const navigate = useNavigate();
   const methods = useForm<authSchema>({
@@ -45,22 +77,14 @@ export const useAuth = (type: TFormType) => {
   });
 
   const onSubmit = async (data: authSchema) => {
-    try {
-      console.log(11111111);
-      const res = await dispatch(authorization({ type, body: data }));
-
-      if (res.type === "auth/authorization/rejected") return;
-
-      navigate("/", { replace: true });
-      methods.reset();
-    } catch (error) {
-      console.log(error);
+    if (typeof data === "string") {
+      mutateAsync(data);
+    } else {
+      mutateAsync(data);
     }
   };
-
   return {
     user,
-    loader,
     error,
     errorMessage,
     methods,

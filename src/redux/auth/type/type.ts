@@ -7,7 +7,6 @@ export type TUserState = {
   isAuth: boolean;
   user: TUser;
   token: string | null;
-  isLoader: boolean;
   error: boolean;
   errorMessage: string;
 };

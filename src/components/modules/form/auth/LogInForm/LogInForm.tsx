@@ -1,12 +1,5 @@
 import { FC } from "react";
 
-// import { Box } from "../../../global/Box";
-// import { Button } from "../../../global/button/Button/Button";
-// import { TextErrorServer, WrapperAuthForm } from "../GlobalForm.styled";
-// import { useAuth, typeSchema } from "../hook/useAuth";
-// import { FormBox } from "../FormBox/FormBox";
-// import { InputForm } from "../InputForm/InputForm";
-// import { AuthTitleForm } from "../auth/AuthTitleForm";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { AuthText } from "components/modules/form/auth/AuthText";
 import { Box } from "components/global/Box";
@@ -15,11 +8,12 @@ import { FormBox } from "../../../../global/form/FormBox";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { InputCheckboxForm, InputForm } from "components/global/form/InputForm";
 import { Button } from "components/global/button/Button";
-import { typeSchema, useAuth } from "../../hook/useAuth";
-// import { InputCheckboxForm } from "../InputForm";
+import { ETypeUseAuth, useAuth } from "../../hook/useAuth";
 
 export const LogInForm: FC = () => {
-  const { error, errorMessage, methods, onSubmit } = useAuth(typeSchema.LOGIN);
+  const { error, errorMessage, methods, onSubmit } = useAuth(
+    ETypeUseAuth.LOGIN
+  );
 
   const { handleSubmit } = methods;
 

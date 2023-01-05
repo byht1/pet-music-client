@@ -3,4 +3,5 @@ export interface authSchema {
   email?: string;
   password: string;
   roles?: string;
+  token?: string;
 }

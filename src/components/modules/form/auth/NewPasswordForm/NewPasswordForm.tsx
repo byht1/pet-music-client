@@ -3,20 +3,22 @@ import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { FormBox } from "../../../../global/form/FormBox";
 import { WrapperAuthForm } from "../../GlobalForm.styled";
-import { typeSchema, useAuth } from "../../hook/useAuth";
+import { ETypeUseAuth, useAuth } from "../../hook/useAuth";
 import { InputForm } from "components/global/form/InputForm";
 import { TextForm } from "../../../../global/form/TextForm";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { ListRequirements, Title } from "./NewPasswordForm.styled";
 
 export const NewPasswordForm = () => {
-  const { methods, onSubmit } = useAuth(typeSchema.PASSWORD);
+  const { methods, onSubmit } = useAuth(ETypeUseAuth.LOGIN); //Переробить
 
   const { handleSubmit } = methods;
 
+  const submit = () => {};
+
   return (
     <WrapperAuthForm>
-      <FormBox methods={methods} submit={handleSubmit(onSubmit)} box>
+      <FormBox methods={methods} submit={handleSubmit(submit)} box>
         <ArrowBack />
 
         <AuthTitleForm header="Новий пароль" message />

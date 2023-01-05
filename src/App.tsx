@@ -1,10 +1,9 @@
-import { useEffect } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useAppDispatch } from "redux/hook";
+import { useAppDispatch, useAppSelector } from "redux/hook";
 
-import { current } from "redux/auth";
+import { getToken, logInReducer } from "redux/auth";
 
 import Home from "./page/Home/Home";
 import AppBar from "./page/AppBar/AppBar";
@@ -24,24 +23,21 @@ import { Nav } from "page/Nav/Nav";
 import { Track, Album, StepOne, StepTwo } from "page/NewTrack";
 import NewTrack from "page/NewTrack/NewTrack";
 import { Footer } from "components/modules/Footer";
-
-const queryClient = new QueryClient();
+import { tokenLogIn } from "api";
+import { IUser } from "redux/auth/type/type";
+import { AxiosError } from "axios";
 
 function App() {
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    dispatch(current(controller.signal));
-
-    return () => {
-      controller.abort();
-    };
-  }, [dispatch]);
+  const token = useAppSelector(getToken);
+  const { data } = useQuery<IUser, unknown, IUser, string[]>({
+    queryKey: ["user"],
+    queryFn: () => tokenLogIn(token),
+    onSuccess: (data) => dispatch(logInReducer(data)),
+  });
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Routes>
         <Route path="/" element={<AppBar />}>
           <Route index element={<Home />} />
@@ -97,7 +93,7 @@ function App() {
       <Footer />
       <CardAudioPlayer />
       <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    </>
   );
 }
 

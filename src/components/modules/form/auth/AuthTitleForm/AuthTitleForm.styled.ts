@@ -1,4 +1,3 @@
-import { GoogleLogin } from "@leecheuk/react-google-login";
 import styled from "styled-components";
 
 export const Title = styled.h2`
@@ -13,18 +12,4 @@ export const ListAuth = styled.ul`
   gap: 24px;
 
   margin: 0 auto;
-`;
-
-export const CrutchBox = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 40px;
-  height: 40px;
-
-  overflow: hidden;
-  opacity: 0;
-
-  /* transform: translate(-50%, -50%); */
 `;

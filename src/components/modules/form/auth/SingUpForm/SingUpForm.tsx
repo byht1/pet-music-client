@@ -1,26 +1,18 @@
 import { FC } from "react";
 
-// import { Box } from "../../../global/Box";
-// import { Button } from "../../../global/button/Button/Button";
-// import { TextErrorServer, WrapperAuthForm } from "../GlobalForm.styled";
-// import { useAuth, typeSchema } from "../hook/useAuth";
-// import { FormBox } from "../FormBox/FormBox";
-// import { InputCheckboxForm, InputForm } from "../InputForm";
-// import { AuthTitleForm } from "../auth/AuthTitleForm";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { AuthText } from "components/modules/form/auth/AuthText";
 import { Box } from "components/global/Box";
-import { typeSchema, useAuth } from "../../hook/useAuth";
+import { ETypeUseAuth, useAuth } from "../../hook/useAuth";
 import { TextErrorServer, WrapperAuthForm } from "../../GlobalForm.styled";
 import { FormBox } from "../../../../global/form/FormBox";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { InputCheckboxForm, InputForm } from "components/global/form/InputForm";
 import { Button } from "components/global/button/Button";
-// import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export const SingUpForm: FC = () => {
-  const { loader, error, errorMessage, methods, onSubmit } = useAuth(
-    typeSchema.SIGNUP
+  const { error, errorMessage, methods, onSubmit } = useAuth(
+    ETypeUseAuth.SIGNUP
   );
 
   const { handleSubmit } = methods;
@@ -28,14 +20,11 @@ export const SingUpForm: FC = () => {
   return (
     <>
       <Box>
-        {loader && <p>Loader...</p>}
         {error && <TextErrorServer>{errorMessage}</TextErrorServer>}
         <WrapperAuthForm>
           <FormBox methods={methods} submit={handleSubmit(onSubmit)} box>
             <ArrowBack />
-            {/* <GoogleOAuthProvider clientId="894802329259-ksrjdmuhasgtdhsbb14ng3vba8ji12l9.apps.googleusercontent.com"> */}
             <AuthTitleForm header="Новий користувач" />
-            {/* </GoogleOAuthProvider> */}
             <Box display="grid" gridGap="32px">
               <InputForm title="Email" inputType="email" name="email" />
 
