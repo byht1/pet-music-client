@@ -5,16 +5,17 @@ import { TextError } from "./InputForm.styled";
 
 type Props = {
   text?: string | any;
+  checkbox?: boolean;
 };
 
-export const InputError: FC<Props> = ({ text }) => {
+export const InputError: FC<Props> = ({ text, checkbox }) => {
   return (
     <Box
       display="flex"
       gridGap="8px"
       position="absolute"
       top="calc(100% + 7px)"
-      left="24px"
+      left={checkbox ? "-3px" : "24px"}
     >
       <MdError color="var(--error)" size={20} />
       <TextError>{text}</TextError>

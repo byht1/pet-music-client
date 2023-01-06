@@ -41,7 +41,7 @@ export const InputCheckboxForm: FC<Props> = ({
         </Box>
         <InputCheckbox type="checkbox" {...register(name)} />
         <Text>{text}</Text>
-        {isError && error && <InputError text={error?.message} />}
+        {isError && error && <InputError checkbox text={error?.message} />}
       </Label>
     </>
   );

@@ -58,11 +58,8 @@ export const Header: FC<Props> = ({ path }) => {
         </Nav>
 
         <ButtonLink link={"/new"} ml={98}>
-          <>
-            {" "}
-            Додати пісню
-            <Plus size={24} />
-          </>
+          Додати пісню
+          <Plus size={24} />
         </ButtonLink>
 
         <Language />

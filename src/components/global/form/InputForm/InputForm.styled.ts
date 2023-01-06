@@ -21,7 +21,7 @@ export const Label = styled.label<any>`
   cursor: pointer;
 `;
 
-export const NameInput = styled.span`
+export const NameInput = styled.span<any>`
   position: absolute;
   top: 12px;
   left: 24px;

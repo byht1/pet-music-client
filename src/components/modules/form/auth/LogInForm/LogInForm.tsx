@@ -30,7 +30,7 @@ export const LogInForm: FC = () => {
 
           <InputForm title="Пароль" inputType="password" name="password" />
 
-          <InputCheckboxForm text="Залишитася в мережі" name="roles" />
+          <InputCheckboxForm text="Залишитися в мережі" name="roles" />
 
           <Button>Увійти</Button>
 

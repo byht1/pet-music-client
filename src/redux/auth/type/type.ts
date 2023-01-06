@@ -9,6 +9,7 @@ export type TUserState = {
   token: string | null;
   error: boolean;
   errorMessage: string;
+  picture: string;
 };
 
 export interface IUser {
@@ -16,6 +17,7 @@ export interface IUser {
   username: string;
   email: string;
   token: string;
+  picture: string;
   track_list: string[];
   track_push: string[];
   createdAt: string;

@@ -32,6 +32,7 @@ export const AuthTitleForm: FC<Props> = ({ header, message }) => {
               hoverBg="transparent"
               hoverC="var(--violet)"
               p={false}
+              type="button"
             >
               <BsApple size={40} />
             </Button>
@@ -43,6 +44,7 @@ export const AuthTitleForm: FC<Props> = ({ header, message }) => {
               hoverBg="transparent"
               hoverC="var(--violet)"
               p={false}
+              type="button"
             >
               <FaFacebookF size={40} />
             </Button>

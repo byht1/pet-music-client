@@ -7,6 +7,7 @@ const initialState: TUserState = {
   token: null,
   error: false,
   errorMessage: "",
+  picture: "",
 };
 
 // const isError = (action: AnyAction) => {
@@ -23,6 +24,7 @@ export const authSlice = createSlice({
       state.isAuth = true;
       state.error = false;
       state.errorMessage = "";
+      state.picture = payload.picture;
     },
     logOutReducer(state) {
       state.user = { username: null, email: null };

@@ -16,6 +16,7 @@ export const Google = () => {
         hoverBg="transparent"
         hoverC="var(--violet)"
         p={false}
+        type="button"
       >
         <BsGoogle size={40} />
       </Button>

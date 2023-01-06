@@ -6,9 +6,7 @@ import { useAppDispatch } from "redux/hook";
 import { errorReducer, logInReducer } from "redux/auth";
 import { getErrorMessage, getIsError, getUser } from "redux/auth/auth-selector";
 import { useSelector } from "react-redux";
-import { schemaForgotten } from "../auth/ForgottenPasswordForm";
 import { schemaLogIn } from "../auth/LogInForm/schema";
-import { schemaNewPassword } from "../auth/NewPasswordForm";
 import { schemaSingUp } from "../auth/SingUpForm/schema";
 import { useMutation } from "@tanstack/react-query";
 import { googleAuth, logIn, singUp } from "api";
@@ -77,11 +75,7 @@ export const useAuth = (type: ETypeUseAuth) => {
   });
 
   const onSubmit = async (data: authSchema) => {
-    if (typeof data === "string") {
-      mutateAsync(data);
-    } else {
-      mutateAsync(data);
-    }
+    mutateAsync(data);
   };
   return {
     user,

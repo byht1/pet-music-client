@@ -6,11 +6,14 @@ import { YouWillLike } from "components/modules/home/YouWillLike";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <YouWillLike />
-      <TheyAreListeningNow />
-      <Again />
-    </main>
+    <>
+      <main>
+        <Hero />
+        <YouWillLike />
+        <TheyAreListeningNow />
+        <Again />
+      </main>
+      <Footer />
+    </>
   );
 }

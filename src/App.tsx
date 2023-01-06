@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "redux/hook";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { getToken, logInReducer } from "redux/auth";
 
@@ -22,18 +24,22 @@ import { CardAudioPlayer } from "components/global/audio/CardAudioPlayer";
 import { Nav } from "page/Nav/Nav";
 import { Track, Album, StepOne, StepTwo } from "page/NewTrack";
 import NewTrack from "page/NewTrack/NewTrack";
-import { Footer } from "components/modules/Footer";
 import { tokenLogIn } from "api";
 import { IUser } from "redux/auth/type/type";
-import { AxiosError } from "axios";
 
 function App() {
   const dispatch = useAppDispatch();
   const token = useAppSelector(getToken);
-  const { data } = useQuery<IUser, unknown, IUser, string[]>({
+  useQuery<IUser | string, unknown, IUser, string[]>({
     queryKey: ["user"],
-    queryFn: () => tokenLogIn(token),
-    onSuccess: (data) => dispatch(logInReducer(data)),
+    queryFn: () => {
+      if (!token) return "error";
+      return tokenLogIn(token);
+    },
+    onSuccess: (data) => {
+      if (typeof data === "string") return;
+      dispatch(logInReducer(data));
+    },
   });
 
   return (
@@ -41,20 +47,6 @@ function App() {
       <Routes>
         <Route path="/" element={<AppBar />}>
           <Route index element={<Home />} />
-          <Route path="/user">
-            <Route
-              index
-              element={
-                // <PrivateRouter>
-                <PersonalOffice />
-                // </PrivateRouter>
-              }
-            />
-            <Route path="sing-up" element={<SingUp />} />
-            <Route path="log-in" element={<LogIn />} />
-            <Route path="forgotten" element={<ForgottenPassword />} />
-            <Route path="new-password" element={<NewPassword />} />
-          </Route>
 
           <Route path="nav" element={<Nav />} />
           <Route path="track-list" element={<TrackList />} />
@@ -88,9 +80,33 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="comment" element={<Comment />} />
         </Route>
+        <Route path="/user">
+          <Route
+            index
+            element={
+              // <PrivateRouter>
+              <PersonalOffice />
+              // </PrivateRouter>
+            }
+          />
+          <Route path="sing-up" element={<SingUp />} />
+          <Route path="log-in" element={<LogIn />} />
+          <Route path="forgotten" element={<ForgottenPassword />} />
+          <Route path="new-password/:id" element={<NewPassword />} />
+        </Route>
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Footer />
+
+      <ToastContainer
+        theme="colored"
+        position="top-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+      />
+
       <CardAudioPlayer />
       <ReactQueryDevtools initialIsOpen={false} />
     </>

@@ -7,6 +7,8 @@ export enum AuthUtl {
   SingUp = "/users/sing-up",
   LogIn = "/users/login", // Вінже tokenLogIn
   LogOut = "/users/logout",
+  Forgotten = "/users/forgotten-password",
+  Password = "/users/new-password",
 }
 
 export const googleAuth = async (body: authSchema) => {
@@ -72,4 +74,15 @@ export const tokenLogIn = async (token: string | null) => {
   } catch (error) {
     throw error;
   }
+};
+
+export const forgottenPassword = async (body: { email: string }) => {
+  await server.patch(AuthUtl.Forgotten, body);
+};
+
+export const newPasswordServer = async (
+  body: { password: string },
+  linkId: string
+) => {
+  await server.patch(`${AuthUtl.Password}/${linkId}`, body);
 };

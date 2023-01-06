@@ -9,6 +9,7 @@ import { ITrackForm } from "components/modules/form/old/TrackForm/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaTrackNew } from "./step/StepTwo/Track/schema";
 import { EFormName } from "helper";
+import { Footer } from "components/modules/Footer";
 
 export default function NewTrack() {
   const methods = useForm<ITrackForm>({
@@ -43,6 +44,7 @@ export default function NewTrack() {
       </Container>
 
       <InfoPlatform />
+      <Footer />
     </>
   );
 }

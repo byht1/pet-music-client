@@ -1,10 +1,10 @@
 import { FC } from "react";
 import UserIcon from "img/user-icon.png";
-import { Icon } from "./UserMenu.styled";
+import { CircleBox, Icon } from "./UserMenu.styled";
 import { Button } from "components/global/button/Button";
 import { Box } from "components/global/Box";
 import { useSelector } from "react-redux";
-import { getUser, logOutReducer } from "redux/auth";
+import { getPicture, getUser, logOutReducer } from "redux/auth";
 import { useAppDispatch } from "redux/hook";
 import { useMutation } from "@tanstack/react-query";
 import { logOut } from "api";
@@ -12,7 +12,7 @@ import { logOut } from "api";
 // type Props = {};
 
 export const UserMenu: FC = () => {
-  const { username } = useSelector(getUser);
+  const picture = useSelector(getPicture);
   const dispatch = useAppDispatch();
   const { mutateAsync } = useMutation({
     mutationFn: logOut,
@@ -20,10 +20,15 @@ export const UserMenu: FC = () => {
   });
 
   return (
-    <Box display="flex" alignItems="center" gridGap={3}>
-      <Icon src={UserIcon} alt="user-icon" />
-      <p>{username}</p>
-      <Button click={async () => await mutateAsync()}>Вихід</Button>
-    </Box>
+    <>
+      <Box ml="auto" width="56px" height="56px">
+        <CircleBox>
+          <Icon src={picture} alt="user-icon" />
+          {/* <p>{username}</p> */}
+        </CircleBox>
+      </Box>
+
+      {/* <Button click={async () => await mutateAsync()}>Вихід</Button> */}
+    </>
   );
 };

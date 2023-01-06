@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// const URL = "https://pet-music-server.herokuapp.com/api";
+const URL = "http://localhost:5000/api";
+
 export const server = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: URL,
 });
 
 export const tokenAuto = {

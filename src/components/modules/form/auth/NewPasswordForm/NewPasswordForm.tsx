@@ -3,23 +3,59 @@ import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { FormBox } from "../../../../global/form/FormBox";
 import { WrapperAuthForm } from "../../GlobalForm.styled";
-import { ETypeUseAuth, useAuth } from "../../hook/useAuth";
 import { InputForm } from "components/global/form/InputForm";
 import { TextForm } from "../../../../global/form/TextForm";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { ListRequirements, Title } from "./NewPasswordForm.styled";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { schemaNewPassword } from "./schema";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "@tanstack/react-query";
+import { newPasswordServer } from "api";
+import { AxiosError } from "axios";
+import { toast } from "react-toastify";
+
+type TBody = { password: string };
 
 export const NewPasswordForm = () => {
-  const { methods, onSubmit } = useAuth(ETypeUseAuth.LOGIN); //Переробить
+  const { id: idLink } = useParams();
+  const navigate = useNavigate();
+  const methods = useForm<TBody>({
+    resolver: yupResolver(schemaNewPassword),
+  });
+  const { mutateAsync } = useMutation<
+    void,
+    AxiosError<string[], any>,
+    { body: TBody; linkId: string },
+    unknown
+  >({
+    mutationFn: (data) => newPasswordServer(data.body, data.linkId),
+    onSuccess: () => {
+      toast.success("Пароль успішно змінено");
+      navigate("/", { replace: true });
+    },
+    onError: (error: any) => {
+      toast.error(`${error.response.data.message}`);
+    },
+  });
 
   const { handleSubmit } = methods;
 
-  const submit = () => {};
+  const submit = async (data: TBody) => {
+    if (!idLink) return;
+
+    await mutateAsync({ body: data, linkId: idLink });
+  };
+
+  // idLink.length = 36
+
+  if (!idLink || idLink.length < 30) return <Navigate to={"/"} />;
 
   return (
     <WrapperAuthForm>
       <FormBox methods={methods} submit={handleSubmit(submit)} box>
-        <ArrowBack />
+        <ArrowBack to="/" />
 
         <AuthTitleForm header="Новий пароль" message />
 
