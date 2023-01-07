@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaTrackNew } from "./step/StepTwo/Track/schema";
 import { EFormName } from "helper";
 import { Footer } from "components/modules/Footer";
+import { newAlbum } from "api";
 
 export default function NewTrack() {
   const methods = useForm<ITrackForm>({
@@ -22,8 +23,10 @@ export default function NewTrack() {
   });
   const { handleSubmit } = methods;
 
-  const submit = (data: any) => {
+  const submit = async (data: any) => {
     console.log("🚀  data", data);
+    const data2 = await newAlbum(data);
+    console.log("🚀  data2", data2);
   };
   return (
     <>

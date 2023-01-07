@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const CircleBox = styled.div`
+  height: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;

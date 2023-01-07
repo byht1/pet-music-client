@@ -7,20 +7,16 @@ import { Permalink } from "./element/Permalink";
 import { SelectorGenre } from "./element/SelectorGenre";
 import { RClick } from "type";
 import { IsTrackToAll } from "components/modules/IsTrackToAll";
-import { Button } from "components/global/button/Button";
-import { ButtonRest } from "./element/ButtonRest";
 import { useFormContext } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ButtonOption } from "../../ButtonOption";
 
 export const Track = () => {
-  const { trigger, getValues } = useFormContext();
+  const { trigger } = useFormContext();
   const [selectorShow, setSelectorShow] = useState(false);
   const navigate = useNavigate();
 
   const boxClick = async (e: RClick) => {
-    // console.log(getValues(EFormName.NAME));
-    // await trigger(EFormName.NAME);
-
     if (!selectorShow) return;
 
     await trigger(EFormName.GENRES);
@@ -41,10 +37,6 @@ export const Track = () => {
 
     navigate("/new/step2/album");
   };
-
-  if (!getValues(EFormName.TRACK)) {
-    return <Navigate to="/new" />;
-  }
 
   return (
     <Box
@@ -68,12 +60,7 @@ export const Track = () => {
         <TextareaForm mt={36} name={EFormName.DESCRIPTION} title="Опис:" />
         <IsTrackToAll position="start" />
 
-        <Box mt="64px" display="flex" justifyContent="flex-end" gridGap="40px">
-          <ButtonRest />
-          <Button w="136px" type="button" click={click}>
-            Далі
-          </Button>
-        </Box>
+        <ButtonOption buttonType="button" onClick={click} />
       </div>
     </Box>
   );

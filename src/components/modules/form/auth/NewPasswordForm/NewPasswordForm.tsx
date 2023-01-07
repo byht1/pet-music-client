@@ -1,10 +1,10 @@
 import { Box } from "components/global/Box";
 import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
-import { FormBox } from "../../../../global/form/FormBox";
+import { FormBox } from "components/global/form/FormBox";
 import { WrapperAuthForm } from "../../GlobalForm.styled";
 import { InputForm } from "components/global/form/InputForm";
-import { TextForm } from "../../../../global/form/TextForm";
+import { TextForm } from "components/global/form/TextForm";
 import { AuthTitleForm } from "../AuthTitleForm";
 import { ListRequirements, Title } from "./NewPasswordForm.styled";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
@@ -15,11 +15,14 @@ import { useMutation } from "@tanstack/react-query";
 import { newPasswordServer } from "api";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
+import { loaderReducer } from "redux/auth";
+import { useAppDispatch } from "redux/hook";
 
 type TBody = { password: string };
 
 export const NewPasswordForm = () => {
   const { id: idLink } = useParams();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const methods = useForm<TBody>({
     resolver: yupResolver(schemaNewPassword),
@@ -30,7 +33,10 @@ export const NewPasswordForm = () => {
     { body: TBody; linkId: string },
     unknown
   >({
-    mutationFn: (data) => newPasswordServer(data.body, data.linkId),
+    mutationFn: (data) => {
+      dispatch(loaderReducer(true));
+      return newPasswordServer(data.body, data.linkId);
+    },
     onSuccess: () => {
       toast.success("Пароль успішно змінено");
       navigate("/", { replace: true });
@@ -38,6 +44,7 @@ export const NewPasswordForm = () => {
     onError: (error: any) => {
       toast.error(`${error.response.data.message}`);
     },
+    onSettled: () => dispatch(loaderReducer(false)),
   });
 
   const { handleSubmit } = methods;

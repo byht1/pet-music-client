@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser, TUserState } from "./type/type";
 
 const initialState: TUserState = {
+  isRefreshing: true,
+  isLoader: false,
   isAuth: false,
   user: { username: null, email: null },
   token: null,
@@ -18,6 +20,12 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    refreshingReducer(state, { payload }: PayloadAction<boolean>) {
+      state.isRefreshing = payload;
+    },
+    loaderReducer(state, { payload }: PayloadAction<boolean>) {
+      state.isLoader = payload;
+    },
     logInReducer(state, { payload }: PayloadAction<IUser>) {
       state.user = { username: payload.username, email: payload.email };
       state.token = payload.token;
@@ -100,4 +108,10 @@ export const authSlice = createSlice({
 
 export const authSliceReducer = authSlice.reducer;
 
-export const { logInReducer, logOutReducer, errorReducer } = authSlice.actions;
+export const {
+  logInReducer,
+  logOutReducer,
+  errorReducer,
+  loaderReducer,
+  refreshingReducer,
+} = authSlice.actions;

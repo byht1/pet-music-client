@@ -20,7 +20,7 @@ export const ImgDropZone = () => {
   const [picturePrivy, setPicturePrivy] = useState<TPicturePrivy>();
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
     accept: { "image/*": [".png", ".jpg", ".svg"] },
-    onDrop: (files) => change(files[0]),
+    onDrop: (files) => change(files),
     disabled: !!picturePrivy,
   });
 
@@ -41,7 +41,7 @@ export const ImgDropZone = () => {
     setPicturePrivy(undefined);
   };
 
-  function change<T extends File>(file: T) {
+  function change<T extends File>(file: T[]) {
     const reader = new FileReader();
 
     reader.onload = (event: ProgressEvent<FileReader>) => {
@@ -49,7 +49,7 @@ export const ImgDropZone = () => {
       setPicturePrivy(src);
     };
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file[0]);
 
     setValue(EFormName.PICTURE, file);
   }

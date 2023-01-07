@@ -36,6 +36,7 @@ type Props = {
   ml?: number;
   mr?: number;
   mt?: number;
+  width?: string;
 };
 
 export const InputForm: FC<Props> = ({

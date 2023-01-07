@@ -3,8 +3,8 @@ import * as yup from "yup";
 
 export const schemaTrackNew = yup
   .object({
-    [EFormName.TRACK]: yup.string().required(),
-    [EFormName.PICTURE]: yup.string(),
+    [EFormName.TRACK]: yup.mixed().required(),
+    [EFormName.PICTURE]: yup.mixed(),
     [EFormName.NAME]: yup
       .string()
       .min(3, "Мінімальнум три символи")

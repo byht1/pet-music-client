@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { authSchema } from "../typeSchema/authSchema";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux/hook";
-import { errorReducer, logInReducer } from "redux/auth";
+import { errorReducer, loaderReducer, logInReducer } from "redux/auth";
 import { getErrorMessage, getIsError, getUser } from "redux/auth/auth-selector";
 import { useSelector } from "react-redux";
 import { schemaLogIn } from "../auth/LogInForm/schema";
@@ -54,7 +54,10 @@ export const useAuth = (type: ETypeUseAuth) => {
     authSchema,
     unknown
   >({
-    mutationFn: fn,
+    mutationFn: (data) => {
+      dispatch(loaderReducer(true));
+      return fn(data);
+    },
     onSuccess: (data: IUser) => {
       dispatch(logInReducer(data));
       navigate("/", { replace: true });
@@ -64,6 +67,7 @@ export const useAuth = (type: ETypeUseAuth) => {
       const mes = error.response?.data[0] ?? "Невідома помилка";
       dispatch(errorReducer(mes));
     },
+    onSettled: () => dispatch(loaderReducer(false)),
   });
 
   const user = useSelector(getUser);

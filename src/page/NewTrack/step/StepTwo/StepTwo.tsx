@@ -1,15 +1,16 @@
 import { Box } from "components/global/Box";
+import { Loader } from "components/global/Loader/Loader";
 import { motion } from "framer-motion";
-import { formNav, TNav } from "helper";
+import { EFormName, formNav, TNav } from "helper";
 import { Suspense, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { RClick } from "type";
 
 import { Current, FormZone, List, NLink } from "./StepTwo.styled";
 
 export const StepTwo = () => {
-  const { trigger } = useFormContext();
+  const { trigger, getValues } = useFormContext();
   const [hover, setHover] = useState<TNav>(formNav[0]);
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -31,6 +32,10 @@ export const StepTwo = () => {
 
     navigate("/new/step2/album");
   };
+
+  if (!getValues(EFormName.TRACK)) {
+    return <Navigate to="/new" />;
+  }
 
   return (
     <FormZone>
@@ -56,7 +61,7 @@ export const StepTwo = () => {
           })}
         </List>
       </Box>
-      <Suspense fallback={<div>...Loader</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </FormZone>

@@ -23,7 +23,7 @@ export const schemaAlbumNew = yup
 export const StepOne = () => {
   const { register, setValue, getValues, reset } = useFormContext();
   const value = getValues(EFormName.TRACK);
-  const [isDisabled, setIsDisabled] = useState(false || !!value);
+  const [isDisabled, setIsDisabled] = useState(false || !!value[0]);
 
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
     accept: { "audio/*": [".mp3", ".mp4", ".flac", ".wav", ".alac", ".aiff"] },
@@ -33,7 +33,7 @@ export const StepOne = () => {
   const navigate = useNavigate();
 
   function change<T extends File>(files: T[]) {
-    setValue(EFormName.TRACK, files[0]);
+    setValue(EFormName.TRACK, files);
     setIsDisabled(true);
   }
 

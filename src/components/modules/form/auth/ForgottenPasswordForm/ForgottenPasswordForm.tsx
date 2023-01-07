@@ -1,32 +1,42 @@
 import { Button } from "components/global/button/Button";
 import { ArrowBack } from "components/modules/ArrowBack";
 import { AuthTitleForm } from "../AuthTitleForm";
-import { FormBox } from "../../../../global/form/FormBox";
+import { FormBox } from "components/global/form/FormBox";
 import { WrapperAuthForm } from "../../GlobalForm.styled";
-import { ETypeUseAuth, useAuth } from "../../hook/useAuth";
 import { InputForm } from "components/global/form/InputForm";
-import { TextForm } from "../../../../global/form/TextForm";
+import { TextForm } from "components/global/form/TextForm";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaForgotten } from "./schema";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { forgottenPassword } from "api";
 import { toast } from "react-toastify";
+import { useAppDispatch } from "redux/hook";
+import { loaderReducer } from "redux/auth";
+import { AxiosError } from "axios";
 
-type Props = {};
-
-export const ForgottenPasswordForm = (props: Props) => {
+export const ForgottenPasswordForm = () => {
+  const dispatch = useAppDispatch();
   const methods = useForm<{ email: string }>({
     resolver: yupResolver(schemaForgotten),
   });
-  const { mutateAsync } = useMutation({
-    mutationFn: forgottenPassword,
+  const { mutateAsync } = useMutation<
+    void,
+    AxiosError<string[], any>,
+    { email: string },
+    unknown
+  >({
+    mutationFn: (data) => {
+      dispatch(loaderReducer(true));
+      return forgottenPassword(data);
+    },
     onSuccess: () => {
       toast.success(`Інструкція по зміні пароля відправлена на вказану пошту`);
     },
     onError: (error: any) => {
       toast.error(`${error.response.data.message}`);
     },
+    onSettled: () => dispatch(loaderReducer(false)),
   });
 
   const { handleSubmit } = methods;

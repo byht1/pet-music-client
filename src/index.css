@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Blinker:wght@400;600&family=Roboto:wght@400;600;700&display=swap");
 
 html {
+  --bg-loader: rgba(55, 56, 58, 0.6);
   --background-shade: #1c1c1c;
   --pink: #de3ef8;
   --background: #232426;

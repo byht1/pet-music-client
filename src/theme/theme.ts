@@ -1,5 +1,6 @@
 export const theme = {
   colors: {
+    bgl: "var(--bg-loader)",
     bs: "var(--background-shade)",
     p: "var(--pink)",
     b: "var(--background)",

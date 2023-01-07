@@ -5,7 +5,14 @@ import { useAppDispatch, useAppSelector } from "redux/hook";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { getToken, logInReducer } from "redux/auth";
+import {
+  getLoader,
+  getRefreshing,
+  getToken,
+  loaderReducer,
+  logInReducer,
+  refreshingReducer,
+} from "redux/auth";
 
 import Home from "./page/Home/Home";
 import AppBar from "./page/AppBar/AppBar";
@@ -26,13 +33,21 @@ import { Track, Album, StepOne, StepTwo } from "page/NewTrack";
 import NewTrack from "page/NewTrack/NewTrack";
 import { tokenLogIn } from "api";
 import { IUser } from "redux/auth/type/type";
+import { Loader } from "components/global/Loader/Loader";
+import {
+  PrivateRouter,
+  RestrictedRoute,
+} from "components/global/router/inddex";
+import { useEffect } from "react";
 
 function App() {
+  const refreshing = useAppSelector(getRefreshing);
   const dispatch = useAppDispatch();
   const token = useAppSelector(getToken);
   useQuery<IUser | string, unknown, IUser, string[]>({
     queryKey: ["user"],
     queryFn: () => {
+      dispatch(loaderReducer(true));
       if (!token) return "error";
       return tokenLogIn(token);
     },
@@ -40,26 +55,41 @@ function App() {
       if (typeof data === "string") return;
       dispatch(logInReducer(data));
     },
+    onSettled: () => {
+      dispatch(refreshingReducer(false));
+      dispatch(loaderReducer(false));
+    },
   });
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<AppBar />}>
-          <Route index element={<Home />} />
+      {refreshing ? (
+        <Loader />
+      ) : (
+        <>
+          <Routes>
+            <Route path="/" element={<AppBar />}>
+              <Route index element={<Home />} />
 
-          <Route path="nav" element={<Nav />} />
-          <Route path="track-list" element={<TrackList />} />
+              <Route path="nav" element={<Nav />} />
+              <Route path="track-list" element={<TrackList />} />
 
-          <Route path="new" element={<NewTrack />}>
-            <Route index element={<StepOne />} />
-            <Route path="step2" element={<StepTwo />}>
-              <Route index element={<Track />} />
-              <Route path="album" element={<Album />} />
-            </Route>
-          </Route>
+              {/* Роут додавання треку */}
+              <Route
+                path="new"
+                element={<PrivateRouter component={<NewTrack />} />}
+              >
+                <Route
+                  index
+                  element={<PrivateRouter component={<StepOne />} />}
+                />
+                <Route path="step2" element={<StepTwo />}>
+                  <Route index element={<Track />} />
+                  <Route path="album" element={<Album />} />
+                </Route>
+              </Route>
 
-          {/* <Route
+              {/* <Route
             path="new-track/track"
             element={
               // <PrivateRouter>
@@ -77,26 +107,41 @@ function App() {
             }
           /> */}
 
-          <Route path="profile" element={<Profile />} />
-          <Route path="comment" element={<Comment />} />
-        </Route>
-        <Route path="/user">
-          <Route
-            index
-            element={
-              // <PrivateRouter>
-              <PersonalOffice />
-              // </PrivateRouter>
-            }
-          />
-          <Route path="sing-up" element={<SingUp />} />
-          <Route path="log-in" element={<LogIn />} />
-          <Route path="forgotten" element={<ForgottenPassword />} />
-          <Route path="new-password/:id" element={<NewPassword />} />
-        </Route>
+              <Route path="profile" element={<Profile />} />
+              <Route path="comment" element={<Comment />} />
+            </Route>
+            {/* Роут користувача */}
+            <Route path="/user">
+              <Route
+                index
+                element={
+                  // <PrivateRouter>
+                  <PersonalOffice />
+                  // </PrivateRouter>
+                }
+              />
+              <Route
+                path="sing-up"
+                element={<RestrictedRoute component={<SingUp />} />}
+              />
+              <Route
+                path="log-in"
+                element={<RestrictedRoute component={<LogIn />} />}
+              />
+              <Route
+                path="forgotten"
+                element={<RestrictedRoute component={<ForgottenPassword />} />}
+              />
+              <Route
+                path="new-password/:id"
+                element={<RestrictedRoute component={<NewPassword />} />}
+              />
+            </Route>
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          </Routes>
+        </>
+      )}
 
       <ToastContainer
         theme="colored"

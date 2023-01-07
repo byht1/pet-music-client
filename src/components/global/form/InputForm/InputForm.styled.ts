@@ -4,10 +4,11 @@ import { MdOutlineClear } from "react-icons/md";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export const Label = styled.label<any>`
-  ${(p) => p.mt && `margin-top: ${p.mt}px;`}
-  ${(p) => p.mb && `margin-bottom: ${p.mb}px;`}
-  ${(p) => p.mr && `margin-right: ${p.mr}px;`}
+  ${(p) => p.mt && `margin-top: ${p.mt}px;`};
+  ${(p) => p.mb && `margin-bottom: ${p.mb}px;`};
+  ${(p) => p.mr && `margin-right: ${p.mr}px;`};
   ${(p) => p.ml && `margin-left: ${p.ml}px;`};
+  ${(p) => p.width && `width: ${p.width};`};
 
   position: relative;
   display: flex;
